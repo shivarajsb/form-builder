@@ -21,8 +21,7 @@ module.exports = (initialHtml = '', paths = DEFAULT_PATHS) =>
   <link rel="manifest" href="/static/manifest.json">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link media="all" href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Prompt:300,500" rel="stylesheet">
-  <link rel="stylesheet" media="all" href="/static/${paths.styles.path}" integrity="${paths.styles
-    .sri}" />
+  <link rel="stylesheet" media="all" href="/static/${paths.styles.path}" integrity="${paths.styles.sri}" />
 </head>
 <body>
   ${spriteContent}
