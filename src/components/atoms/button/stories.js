@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 
-import Button from '.'
+import Button, { DragButton } from '.'
 
 storiesOf('Button', module)
   .add('Default', () => (
@@ -22,6 +22,13 @@ storiesOf('Button', module)
     <div>
       <div style={{ backgroundColor: '#197AFF', padding: '30px' }}>
         <Button dashed>Hello World</Button>
+      </div>
+    </div>
+  ))
+  .add('Draggable Button', () => (
+    <div>
+      <div style={{ backgroundColor: '#197AFF', padding: '30px' }}>
+        <DragButton>Hello World</DragButton>
       </div>
     </div>
   ))
