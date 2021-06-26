@@ -20,7 +20,7 @@ const withToolbar = Component => props => {
     handleAction({ action, id })
   }
   return (
-    <Wrapper>
+    <Wrapper draggable>
       <PositionWrapper>
         <Toolbar
           onDelete={() => handleUserAction('delete')}

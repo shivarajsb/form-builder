@@ -28,7 +28,7 @@ const InputModule = () => {
     console.log(data)
   }
   return (
-    <div draggable>
+    <div>
       <Typography fontSize="l" bold>
         {label}
       </Typography>
