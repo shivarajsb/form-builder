@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import styled from 'styled-components'
 
@@ -9,16 +10,27 @@ const Wrapper = styled('div')({
 
 const PositionWrapper = styled('div')({
   position: 'absolute',
-  right: '-50px',
+  right: '-10px',
   top: '-40px',
 })
 
-const withToolbar = Component => props => (
-  <Wrapper>
-    <PositionWrapper>
-      <Toolbar />
-    </PositionWrapper>
-    <Component {...props} />
-  </Wrapper>
-)
+const withToolbar = Component => props => {
+  const handleUserAction = action => {
+    const { handleAction, id } = props
+    handleAction({ action, id })
+  }
+  return (
+    <Wrapper>
+      <PositionWrapper>
+        <Toolbar
+          onDelete={() => handleUserAction('delete')}
+          onDrag={() => handleUserAction('drag')}
+          onEdit={() => handleUserAction('edit')}
+          onDuplicate={() => handleUserAction('duplicate')}
+        />
+      </PositionWrapper>
+      <Component {...props} />
+    </Wrapper>
+  )
+}
 export default withToolbar

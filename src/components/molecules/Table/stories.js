@@ -3,4 +3,4 @@ import React from 'react'
 
 import Table from '.'
 
-storiesOf('Atoms/Table', module).add('Table', () => <Table />)
+storiesOf('Molecules/Table', module).add('Table', () => <Table />)
