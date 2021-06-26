@@ -25,6 +25,13 @@ storiesOf('Button', module)
       </div>
     </div>
   ))
+  .add('White Button White Background', () => (
+    <div>
+      <div style={{ backgroundColor: '#ffffff', padding: '30px' }}>
+        <Button dashed>Hello World</Button>
+      </div>
+    </div>
+  ))
   .add('Draggable Button', () => (
     <div>
       <div style={{ backgroundColor: '#197AFF', padding: '30px' }}>

@@ -10,11 +10,12 @@ const Button = styled('button')({
   color: ({ variant }) => (variant === 'primary' ? 'white' : '#197AFF'),
   fontSize: '16px',
   fontWeight: 'bold',
-  border: '1px solid white',
+  border: ({ variant }) => `${variant === 'primary' ? '1px solid white' : '1px solid #e8e8e8'}`,
   borderStyle: ({ dashed }) => (dashed ? 'dashed' : null),
 })
 
 export default Button
+
 export const DragButton = ({ children, ...other }) => {
   const buttonRef = useRef()
   useEffect(() => {
