@@ -5,4 +5,4 @@ import { storiesOf } from '@storybook/react'
 
 import Card from './'
 
-storiesOf('Card', module).add('default', () => <Card>Example of card</Card>)
+storiesOf('Atoms/Card', module).add('default', () => <Card>Example of card</Card>)

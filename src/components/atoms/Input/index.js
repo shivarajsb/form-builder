@@ -4,5 +4,6 @@ const Input = styled('input')({
   padding: '10px 8px 10px 5px ',
   border: '1px solid #e8e8e8',
   borderRadius: '5px',
+  width: '100%',
 })
 export default Input

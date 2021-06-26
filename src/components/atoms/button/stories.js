@@ -3,7 +3,7 @@ import React from 'react'
 
 import Button, { DragButton } from '.'
 
-storiesOf('Button', module)
+storiesOf('Atoms/Button', module)
   .add('Default', () => (
     <div style={{ backgroundColor: '#197AFF', padding: '30px' }}>
       <Button>Hello World</Button>

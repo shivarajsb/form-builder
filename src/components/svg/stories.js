@@ -10,7 +10,7 @@ import Edit from './edit'
 
 const HoverableSVG = withHover(Edit)
 
-storiesOf('SVG Components', module)
+storiesOf('Styling/SVG Components', module)
   .add('Edit', () => <Edit />)
   .add('Drag', () => <Drag />)
   .add('Duplicate', () => <Duplicate />)

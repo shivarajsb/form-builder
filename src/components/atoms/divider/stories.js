@@ -3,4 +3,4 @@ import React from 'react'
 
 import Divider from '.'
 
-storiesOf('Divider', module).add('Default', () => <Divider />)
+storiesOf('Atoms/Divider', module).add('Default', () => <Divider />)

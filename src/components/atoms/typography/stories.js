@@ -3,7 +3,7 @@ import React from 'react'
 
 import Typography from '.'
 
-storiesOf('Typography', module)
+storiesOf('Atoms/Typography', module)
   .add('XL Typography', () => (
     <Typography fontSize="xl">Hello World this is Shivaraj Bakale</Typography>
   ))
