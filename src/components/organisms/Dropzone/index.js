@@ -13,6 +13,7 @@ const Dropzone = props => {
   useEffect(() => {
     const dropzone = dropzoneRef.current
     dropzone.addEventListener('drop', e => {
+      e.preventDefault()
       e.target.style.transition = '0.3s'
       e.target.style.background = ''
       e.target.style.height = ''

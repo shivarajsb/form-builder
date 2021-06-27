@@ -6,7 +6,7 @@ import Divider from '../../atoms/divider'
 import Typography from '../../atoms/typography'
 
 const DividerModule = ({ handleAction, data, type }) => {
-  const DividerToolbar = withToolbar(Divider)
+  const DividerToolbar = withToolbar(Divider, 'divider')
   const { id, label } = data
   return (
     <div>

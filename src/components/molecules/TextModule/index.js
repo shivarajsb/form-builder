@@ -6,7 +6,7 @@ import Typography from '../../atoms/typography'
 
 const TextModule = ({ handleAction, data, type }) => {
   const { label, fontSize, bold, id } = data
-  const TypographyWithToolbar = withToolbar(Typography)
+  const TypographyWithToolbar = withToolbar(Typography, 'text')
   return (
     <div>
       <TypographyWithToolbar

@@ -27,7 +27,7 @@ const Sidebar = () => (
         Cell Layout
       </Typography>
       <ComponentsGroup>
-        <DragButton dashed variant="primary">
+        <DragButton dashed variant="primary" type="table">
           Table
         </DragButton>
       </ComponentsGroup>
@@ -37,19 +37,19 @@ const Sidebar = () => (
         Form Components
       </Typography>
       <ComponentsGroup>
-        <DragButton dashed variant="primary">
+        <DragButton dashed variant="primary" id="input" type="input">
           Input
         </DragButton>
-        <DragButton dashed variant="primary">
+        <DragButton dashed variant="primary" type="checkbox">
           Checkbox
         </DragButton>
-        <DragButton dashed variant="primary">
+        <DragButton dashed variant="primary" type="upload">
           File Uploader
         </DragButton>
-        <DragButton dashed variant="primary">
+        <DragButton dashed variant="primary" type="text">
           Text
         </DragButton>
-        <DragButton dashed variant="primary">
+        <DragButton dashed variant="primary" type="divider">
           Divider
         </DragButton>
       </ComponentsGroup>

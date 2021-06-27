@@ -6,7 +6,7 @@ import withToolbar from '../../../utils/hoc/withToolbar'
 import Checkbox from '../../atoms/checkbox'
 import Typography from '../../atoms/typography'
 
-const CheckboxToolbar = withToolbar(Checkbox)
+const CheckboxToolbar = withToolbar(Checkbox, 'checkbox')
 const Row = styled('div')({
   display: 'inline',
 })

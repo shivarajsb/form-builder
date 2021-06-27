@@ -12,7 +12,7 @@ const Padding = styled('div')({
 })
 const InputModule = ({ handleAction, data, type }) => {
   const { label, name, required, min, max, placeholder, id } = data
-  const InputWithToolbar = withToolbar(Input)
+  const InputWithToolbar = withToolbar(Input, 'input')
 
   return (
     <div>

@@ -19,12 +19,16 @@ const Button = styled('button')({
 
 export default Button
 
-export const DragButton = ({ children, ...other }) => {
+export const DragButton = ({ children, type, ...other }) => {
   const buttonRef = useRef()
   useEffect(() => {
     const button = buttonRef.current
+    button.addEventListener('dragstart', e => {
+      e.dataTransfer.setData('text', type)
+    })
     button.addEventListener('drag', e => {
       e.preventDefault()
+      e.dataTransfer.setData('text/plain', e.currentTarget.type)
     })
   }, [])
   return (
@@ -36,4 +40,5 @@ export const DragButton = ({ children, ...other }) => {
 
 DragButton.propTypes = {
   children: Proptypes.any.isRequired,
+  type: Proptypes.string.isRequired,
 }

@@ -16,7 +16,7 @@ const PositionWrapper = styled('div')({
   top: '-40px',
 })
 
-const withToolbar = Component => props => {
+const withToolbar = (Component, type) => props => {
   const handleUserAction = action => {
     const { handleAction, id } = props
     handleAction({ action, id })
@@ -24,6 +24,9 @@ const withToolbar = Component => props => {
   const toolbarRef = useRef()
   useEffect(() => {
     const toolbar = toolbarRef.current
+    toolbar.addEventListener('dragstart', e => {
+      e.dataTransfer.setData('text', type)
+    })
     toolbar.addEventListener('drag', e => {
       e.preventDefault()
     })
