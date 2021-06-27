@@ -1,23 +1,33 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import withToolbar from '../../../utils/hoc/withToolbar'
 import Divider from '../../atoms/divider'
 import Typography from '../../atoms/typography'
 
-const mockData = {
-  id: 3,
-  label: 'Divider (This will not be printed)',
-}
-
-const DividerModule = () => {
+const DividerModule = ({ handleAction, data }) => {
   const DividerToolbar = withToolbar(Divider)
-  const { id, label } = mockData
+  const { id, label } = data
   return (
     <div>
       <Typography fontSize="m">{label}</Typography>
-      <DividerToolbar id={id} />
+      <DividerToolbar id={id} handleAction={handleAction} />
     </div>
   )
 }
 
+DividerModule.propTypes = {
+  handleAction: PropTypes.func.isRequired,
+  data: PropTypes.objectOf({
+    id: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+  }),
+}
+
+DividerModule.defaultProps = {
+  data: {
+    id: 2,
+    label: 'Divider',
+  },
+}
 export default DividerModule

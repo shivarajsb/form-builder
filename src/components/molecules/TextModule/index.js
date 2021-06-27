@@ -1,25 +1,39 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import withToolbar from '../../../utils/hoc/withToolbar'
 import Typography from '../../atoms/typography'
 
-const mockData = {
-  id: 2,
-  label: 'Hello World this is Shivaraj',
-  fontSize: 'm',
-  bold: true,
-}
-
-const TextModule = () => {
-  const { label, fontSize, bold, id } = mockData
+const TextModule = ({ handleAction, data }) => {
+  const { label, fontSize, bold, id } = data
   const TypographyWithToolbar = withToolbar(Typography)
   return (
     <div>
-      <TypographyWithToolbar fontSize={fontSize} bold={bold} id={id}>
+      <TypographyWithToolbar fontSize={fontSize} bold={bold} id={id} handleAction={handleAction}>
         {label}
       </TypographyWithToolbar>
     </div>
   )
+}
+
+TextModule.propTypes = {
+  handleAction: PropTypes.func.isRequired,
+  data: PropTypes.objectOf({
+    id: PropTypes.number,
+    label: PropTypes.string,
+    fontSize: PropTypes.oneOf(['m', 'l', 'xl', 's']),
+    bold: PropTypes.bool,
+  }),
+}
+
+TextModule.defaultProps = {
+  data: {
+    id: 3,
+    label: 'Text',
+    name: 'text',
+    fontSize: 'm',
+    bold: true,
+  },
 }
 
 export default TextModule
