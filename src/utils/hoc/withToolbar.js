@@ -6,6 +6,8 @@ import Toolbar from '../../components/molecules/toolbar'
 
 const Wrapper = styled('div')({
   position: 'relative',
+  padding: '20px 10px 20px 10px',
+  backgroundColor: 'white',
 })
 
 const PositionWrapper = styled('div')({

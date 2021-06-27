@@ -3,4 +3,4 @@ import React from 'react'
 
 import Dropzone from '.'
 
-storiesOf('Organisms/Dropzone', module).add('Dropzone', () => <Dropzone />)
+storiesOf('Organisms/FormElements', module).add('FormElements', () => <Dropzone />)
