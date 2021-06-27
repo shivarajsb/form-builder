@@ -19,7 +19,7 @@ const Container = styled('div')({
   display: 'flex',
   justifyContent: 'center',
   width: '100%',
-  border: '1px solid grey',
+  border: '1px solid #e8e8e8',
 })
 const Wrapper = styled('div')({
   width: '90%',

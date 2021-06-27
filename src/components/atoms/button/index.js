@@ -12,6 +12,9 @@ const Button = styled('button')({
   fontWeight: 'bold',
   border: ({ variant }) => `${variant === 'primary' ? '1px solid white' : '1px solid #e8e8e8'}`,
   borderStyle: ({ dashed }) => (dashed ? 'dashed' : null),
+  ':hover': {
+    filter: 'contrast(0.8)',
+  },
 })
 
 export default Button
