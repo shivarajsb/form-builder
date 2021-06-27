@@ -1,11 +1,13 @@
 /* @flow */
 import * as React from 'react'
 
-import Button from './components/atoms/button'
+import FormBuilder from './components/templates/FormBuilder'
+import GlobalStyle from './utils/styles/globalStyles'
 
 const App = () => (
   <div>
-    <Button>Click Me</Button>
+    <GlobalStyle />
+    <FormBuilder />
   </div>
 )
 

@@ -19,9 +19,11 @@ const Container = styled('div')({
   display: 'flex',
   justifyContent: 'center',
   width: '100%',
+  border: '1px solid grey',
 })
 const Wrapper = styled('div')({
   width: '90%',
+  marginTop: 60,
 })
 const FormElements = () => (
   <Container>

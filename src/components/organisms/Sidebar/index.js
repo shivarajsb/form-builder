@@ -14,7 +14,7 @@ const ComponentsGroup = styled('div')({
 
 const Wrapper = styled('div')({
   backgroundColor: '#197AFF',
-  height: '100vh',
+  height: '95vh',
   padding: '20px',
   '>*': {
     marginTop: '40px',
