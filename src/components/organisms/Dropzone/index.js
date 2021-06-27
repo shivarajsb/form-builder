@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
+import { data } from '../../../utils/data/mockData'
 import Typography from '../../atoms/typography'
 import CheckboxModule from '../../molecules/CheckboxModule'
 import DividerModule from '../../molecules/DividerModule'
@@ -28,10 +29,10 @@ const Dropzone = () => (
       <Typography fontSize="l" bold textAlign="center" color="grey">
         Drop and Create
       </Typography>
-      <InputModule type="typography" />
-      <CheckboxModule />
-      <DividerModule />
-      <TextModule />
+      {data.map(({ type, meta }) => {
+        const Component = types[type]
+        return <Component data={{ ...meta }} key={meta.id} />
+      })}
     </Wrapper>
   </Container>
 )
