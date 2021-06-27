@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import withToolbar from '../../../utils/hoc/withToolbar'
 import Checkbox from '../../atoms/checkbox'
+import Typography from '../../atoms/typography'
 
 const CheckboxToolbar = withToolbar(Checkbox)
 const Row = styled('div')({
@@ -14,7 +15,9 @@ const CheckboxModule = ({ handleAction, data }) => {
   const { id, name, label, required } = data
   return (
     <Row>
-      <label>{label}</label>
+      <Typography fontSize="m" bold>
+        {label}
+      </Typography>
       <CheckboxToolbar name={name} id={id} required={required} handleAction={handleAction} />
     </Row>
   )

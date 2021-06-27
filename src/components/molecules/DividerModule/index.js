@@ -10,7 +10,9 @@ const DividerModule = ({ handleAction, data }) => {
   const { id, label } = data
   return (
     <div>
-      <Typography fontSize="m">{label}</Typography>
+      <Typography fontSize="m" bold>
+        {label}
+      </Typography>
       <DividerToolbar id={id} handleAction={handleAction} />
     </div>
   )

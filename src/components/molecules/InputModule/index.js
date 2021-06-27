@@ -16,7 +16,7 @@ const InputModule = ({ handleAction, data }) => {
 
   return (
     <div>
-      <Typography fontSize="l" bold>
+      <Typography fontSize="m" bold>
         {label}
       </Typography>
       <Padding>

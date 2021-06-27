@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Divider = styled.hr({
-  backgroundColor: 'red',
+  backgroundColor: 'grey',
 })
 
 export default Divider
