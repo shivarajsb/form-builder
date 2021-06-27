@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
 const DropzoneBase = styled('div').attrs({ draggable: true })({
-  height: '5px',
+  height: '3px',
   backgroundColor: '#fefefe',
   borderRadius: '5px',
   border: '1px solid #e8e8e8',

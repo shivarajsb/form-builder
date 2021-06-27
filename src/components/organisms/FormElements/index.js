@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { data } from '../../../utils/data/mockData'
-import Typography from '../../atoms/typography'
 import CheckboxModule from '../../molecules/CheckboxModule'
 import DividerModule from '../../molecules/DividerModule'
 import InputModule from '../../molecules/InputModule'
@@ -27,9 +26,6 @@ const Wrapper = styled('div')({
 const FormElements = () => (
   <Container>
     <Wrapper>
-      <Typography fontSize="l" bold textAlign="center" color="grey">
-        Drop and Create
-      </Typography>
       {data.map(({ type, meta }) => {
         const Component = types[type]
         return (
