@@ -24,7 +24,7 @@ export const data = [
   {
     type: 'input',
     meta: {
-      id: 2,
+      id: 5,
       label: 'Name',
       name: 'name',
       required: true,

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
 import Toolbar from '../../components/molecules/toolbar'
@@ -21,8 +21,15 @@ const withToolbar = Component => props => {
     const { handleAction, id } = props
     handleAction({ action, id })
   }
+  const toolbarRef = useRef()
+  useEffect(() => {
+    const toolbar = toolbarRef.current
+    toolbar.addEventListener('drag', e => {
+      e.preventDefault()
+    })
+  }, [])
   return (
-    <Wrapper draggable>
+    <Wrapper draggable ref={toolbarRef}>
       <PositionWrapper>
         <Toolbar
           onDelete={() => handleUserAction('delete')}

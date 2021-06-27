@@ -42,4 +42,5 @@ Toolbar.propTypes = {
   onDuplicate: PropTypes.func.isRequired,
   onDrag: PropTypes.func.isRequired,
 }
+
 export default Toolbar
