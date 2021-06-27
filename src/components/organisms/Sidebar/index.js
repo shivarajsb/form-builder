@@ -13,7 +13,7 @@ const ComponentsGroup = styled('div')({
 })
 
 const Wrapper = styled('div')({
-  backgroundColor: 'blue',
+  backgroundColor: '#197AFF',
   height: '100vh',
   padding: '20px',
   '>*': {
