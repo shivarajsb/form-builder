@@ -4,12 +4,18 @@ import PropTypes from 'prop-types'
 import withToolbar from '../../../utils/hoc/withToolbar'
 import Typography from '../../atoms/typography'
 
-const TextModule = ({ handleAction, data }) => {
+const TextModule = ({ handleAction, data, type }) => {
   const { label, fontSize, bold, id } = data
   const TypographyWithToolbar = withToolbar(Typography)
   return (
     <div>
-      <TypographyWithToolbar fontSize={fontSize} bold={bold} id={id} handleAction={handleAction}>
+      <TypographyWithToolbar
+        fontSize={fontSize}
+        bold={bold}
+        id={id}
+        handleAction={handleAction}
+        type={type}
+      >
         {label}
       </TypographyWithToolbar>
     </div>
@@ -17,6 +23,7 @@ const TextModule = ({ handleAction, data }) => {
 }
 
 TextModule.propTypes = {
+  type: PropTypes.string.isRequired,
   handleAction: PropTypes.func.isRequired,
   data: PropTypes.objectOf({
     id: PropTypes.number,

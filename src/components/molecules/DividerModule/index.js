@@ -5,12 +5,12 @@ import withToolbar from '../../../utils/hoc/withToolbar'
 import Divider from '../../atoms/divider'
 import Typography from '../../atoms/typography'
 
-const DividerModule = ({ handleAction, data }) => {
+const DividerModule = ({ handleAction, data, type }) => {
   const DividerToolbar = withToolbar(Divider)
   const { id, label } = data
   return (
     <div>
-      <Typography fontSize="m" bold>
+      <Typography fontSize="m" bold type={type}>
         {label}
       </Typography>
       <DividerToolbar id={id} handleAction={handleAction} />
@@ -19,6 +19,7 @@ const DividerModule = ({ handleAction, data }) => {
 }
 
 DividerModule.propTypes = {
+  type: PropTypes.string.isRequired,
   handleAction: PropTypes.func.isRequired,
   data: PropTypes.objectOf({
     id: PropTypes.string.isRequired,

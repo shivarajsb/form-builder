@@ -11,11 +11,11 @@ const Row = styled('div')({
   display: 'inline',
 })
 
-const CheckboxModule = ({ handleAction, data }) => {
+const CheckboxModule = ({ handleAction, data, type }) => {
   const { id, name, label, required } = data
   return (
     <Row>
-      <Typography fontSize="m" bold>
+      <Typography fontSize="m" bold type={type}>
         {label}
       </Typography>
       <CheckboxToolbar name={name} id={id} required={required} handleAction={handleAction} />
@@ -24,6 +24,7 @@ const CheckboxModule = ({ handleAction, data }) => {
 }
 
 CheckboxModule.propTypes = {
+  type: PropTypes.string.isRequired,
   handleAction: PropTypes.func.isRequired,
   data: PropTypes.objectOf({
     id: PropTypes.string.isRequired,

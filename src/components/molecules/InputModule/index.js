@@ -10,7 +10,7 @@ import Typography from '../../atoms/typography'
 const Padding = styled('div')({
   padding: '10px 0px 5px 0px',
 })
-const InputModule = ({ handleAction, data }) => {
+const InputModule = ({ handleAction, data, type }) => {
   const { label, name, required, min, max, placeholder, id } = data
   const InputWithToolbar = withToolbar(Input)
 
@@ -21,6 +21,7 @@ const InputModule = ({ handleAction, data }) => {
       </Typography>
       <Padding>
         <InputWithToolbar
+          type={type}
           name={name}
           id={id}
           required={required}
@@ -34,6 +35,7 @@ const InputModule = ({ handleAction, data }) => {
   )
 }
 InputModule.propTypes = {
+  type: PropTypes.string.isRequired,
   handleAction: PropTypes.func.isRequired,
   data: PropTypes.objectOf({
     label: PropTypes.string.isRequired,
