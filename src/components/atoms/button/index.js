@@ -24,7 +24,7 @@ export const DragButton = ({ children, type, ...other }) => {
   useEffect(() => {
     const button = buttonRef.current
     button.addEventListener('dragstart', e => {
-      e.dataTransfer.setData('text', type)
+      e.dataTransfer.setData('text', JSON.stringify({ type, id: null }))
     })
     button.addEventListener('drag', e => {
       e.preventDefault()

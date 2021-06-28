@@ -17,6 +17,7 @@ const Dropzone = props => {
       e.target.style.transition = '0.3s'
       e.target.style.background = ''
       e.target.style.height = ''
+      /* const data = JSON.parse(e.dataTransfer.getData('text')) */
     })
     dropzone.addEventListener('dragover', e => {
       e.preventDefault()

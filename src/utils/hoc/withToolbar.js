@@ -22,10 +22,11 @@ const withToolbar = (Component, type) => props => {
     handleAction({ action, id })
   }
   const toolbarRef = useRef()
+  const { id } = props
   useEffect(() => {
     const toolbar = toolbarRef.current
     toolbar.addEventListener('dragstart', e => {
-      e.dataTransfer.setData('text', type)
+      e.dataTransfer.setData('text', JSON.stringify({ type, id }))
     })
     toolbar.addEventListener('drag', e => {
       e.preventDefault()
