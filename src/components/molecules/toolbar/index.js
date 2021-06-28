@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import withHover from '../../../utils/hoc/withHover'
-import Delete from '../../svg/delete'
-import Drag from '../../svg/drag'
-import Duplicate from '../../svg/duplicate'
-import Edit from '../../svg/edit'
+import Delete from '../../atoms/svg/delete'
+import Drag from '../../atoms/svg/drag'
+import Duplicate from '../../atoms/svg/duplicate'
+import Edit from '../../atoms/svg/edit'
 
 const ToolbarBase = styled('div')({
   flexDirection: 'row',
