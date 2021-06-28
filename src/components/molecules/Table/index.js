@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { v4 as uuid } from 'uuid'
 
 import { GridContainer, GridItem } from '../../atoms/GridContainer'
-import Minus from '../../svg/minus'
-import Plus from '../../svg/plus'
+import Minus from '../../atoms/svg/minus'
+import Plus from '../../atoms/svg/plus'
 
 const HorizontalDiv = styled('div')({
   position: 'absolute',

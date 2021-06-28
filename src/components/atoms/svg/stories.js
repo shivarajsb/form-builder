@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 
-import withHover from '../../utils/hoc/withHover'
+import withHover from '../../../utils/hoc/withHover'
 
 import Delete from './delete'
 import Drag from './drag'
