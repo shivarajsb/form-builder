@@ -1,9 +1,10 @@
+import { data } from '../../../utils/data/mockData'
 import { componentTypes } from '../types'
 
 const initialState = {
   loading: false,
   currentForm: null,
-  components: [],
+  components: data,
 }
 
 const componentsReducer = (state = initialState, action) => {

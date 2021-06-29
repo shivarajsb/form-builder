@@ -1,5 +1,5 @@
 export const generateTypes = type => ({
-  request: `${type}_request`,
-  success: `${type}_success`,
-  failure: `${type}_failure`,
+  request: `${type}_REQUEST`,
+  success: `${type}_SUCCESS`,
+  failure: `${type}_FAILURE`,
 })

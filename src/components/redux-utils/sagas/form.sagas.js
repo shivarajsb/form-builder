@@ -18,9 +18,9 @@ function* deleteForm(action) {
     yield put(formActions.deleteFormFailure(action))
   }
 }
-function* FormSagas() {
-  yield takeLatest(formTypes.form_create.request, createForm)
-  yield takeLatest(formTypes.form_delete.request, deleteForm)
-}
+const watcherSaga = [
+  takeLatest(formTypes.form_create.request, createForm),
+  takeLatest(formTypes.form_delete.request, deleteForm),
+]
 
-export default FormSagas
+export default watcherSaga

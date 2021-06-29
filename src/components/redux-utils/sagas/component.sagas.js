@@ -32,10 +32,10 @@ function* swapComponent(action) {
     yield put(componentActions.swapComponentFailure(err))
   }
 }
-function* ComponentSaga() {
-  yield takeLatest(componentTypes.component_create.request, createComponent)
-  yield takeLatest(componentTypes.component_delete.request, deleteComponent)
-  yield takeLatest(componentTypes.component_edit.request, editComponent)
-  yield takeLatest(componentTypes.component_swap, swapComponent)
-}
-export default ComponentSaga
+const watcherSaga = [
+  takeLatest(componentTypes.component_create.request, createComponent),
+  takeLatest(componentTypes.component_delete.request, deleteComponent),
+  takeLatest(componentTypes.component_edit.request, editComponent),
+  takeLatest(componentTypes.component_swap.request, swapComponent),
+]
+export default watcherSaga

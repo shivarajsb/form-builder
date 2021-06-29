@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const DropzoneBase = styled('div').attrs({ draggable: true })({
   height: '5px',
@@ -8,7 +9,7 @@ const DropzoneBase = styled('div').attrs({ draggable: true })({
   border: '1px solid #e8e8e8',
   marginBottom: '30px',
 })
-const Dropzone = props => {
+const Dropzone = ({ onItemDrop, ...others }) => {
   const dropzoneRef = useRef()
   useEffect(() => {
     const dropzone = dropzoneRef.current
@@ -17,7 +18,9 @@ const Dropzone = props => {
       e.target.style.transition = '0.3s'
       e.target.style.background = ''
       e.target.style.height = ''
-      /* const data = JSON.parse(e.dataTransfer.getData('text')) */
+      const data = JSON.parse(e.dataTransfer.getData('text'))
+      const modified = { ...data, target: e.target.id }
+      onItemDrop(modified)
     })
     dropzone.addEventListener('dragover', e => {
       e.preventDefault()
@@ -32,6 +35,10 @@ const Dropzone = props => {
       e.target.style.height = ''
     })
   }, [])
-  return <DropzoneBase ref={dropzoneRef} {...props} />
+  return <DropzoneBase ref={dropzoneRef} {...others} />
+}
+
+Dropzone.propTypes = {
+  onItemDrop: PropTypes.func.isRequired,
 }
 export default Dropzone

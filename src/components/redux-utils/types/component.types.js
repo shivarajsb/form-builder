@@ -1,8 +1,8 @@
 import { generateTypes } from '../../../utils/helpers'
 
 export default {
-  component_create: generateTypes('component_create'),
-  component_edit: generateTypes('component_edit'),
-  component_delete: generateTypes('component_delete'),
-  component_swap: generateTypes('component_swap'),
+  component_create: generateTypes('COMPONENT_CREATE'),
+  component_edit: generateTypes('COMPONENT_EDIT'),
+  component_delete: generateTypes('COMPONENT_DELETE'),
+  component_swap: generateTypes('COMPONENT_SWAP'),
 }
