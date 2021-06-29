@@ -12,12 +12,18 @@ function* createComponent(action) {
     const { type, target } = action.payload
     const newElement = generateSchema(type)
     const components = yield select(getComponentElements)
-    const targetIndex = components.findIndex(i => i.id == target)
-    const modifiedArray = [
-      ...components.slice(0, targetIndex),
-      newElement,
-      ...components.slice(targetIndex),
-    ]
+    let modifiedArray = []
+    if (target === 'end') {
+      modifiedArray = [...components, newElement]
+    } else {
+      const targetIndex = components.findIndex(i => i.id == target)
+      modifiedArray = [
+        ...components.slice(0, targetIndex),
+        newElement,
+        ...components.slice(targetIndex),
+      ]
+    }
+
     yield put(componentActions.createComponentSuccess(modifiedArray))
   } catch (err) {
     yield put(componentActions.createComponentFailure(err))

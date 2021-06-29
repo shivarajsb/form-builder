@@ -48,6 +48,7 @@ const FormElements = () => {
             </Grid>
           )
         })}
+        <Dropzone id={'end'} onItemDrop={handleItemDrop} key={'end'} />
       </Wrapper>
     </Container>
   )
