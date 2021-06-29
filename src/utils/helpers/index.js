@@ -3,3 +3,11 @@ export const generateTypes = type => ({
   success: `${type}_SUCCESS`,
   failure: `${type}_FAILURE`,
 })
+export const swapArray = (array, from, to) => {
+  const arr = [...array]
+  const temp = arr[to]
+
+  arr[to] = arr[from]
+  arr[from] = temp
+  return arr
+}

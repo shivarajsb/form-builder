@@ -13,7 +13,7 @@ const componentsReducer = (state = initialState, action) => {
     case componentTypes.component_create.request:
       return { ...state, loading: true }
     case componentTypes.component_create.success:
-      return { ...state, loading: false }
+      return { ...state, components: action.payload, loading: false }
     case componentTypes.component_create.failure:
       return { ...state, loading: false }
     /* Component Edit */
@@ -34,7 +34,7 @@ const componentsReducer = (state = initialState, action) => {
     case componentTypes.component_swap.request:
       return { ...state, loading: true }
     case componentTypes.component_swap.success:
-      return { ...state, loading: false }
+      return { ...state, components: action.payload, loading: false }
     case componentTypes.component_swap.failure:
       return { ...state, loading: false }
     default:

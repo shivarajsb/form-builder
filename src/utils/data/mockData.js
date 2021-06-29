@@ -1,8 +1,8 @@
 export const data = [
   {
     type: 'text',
+    id: 1,
     meta: {
-      id: 1,
       label: 'Text',
       name: 'text',
       fontSize: 'm',
@@ -11,8 +11,8 @@ export const data = [
   },
   {
     type: 'input',
+    id: 2,
     meta: {
-      id: 2,
       label: 'Name',
       name: 'name',
       required: true,
@@ -23,8 +23,8 @@ export const data = [
   },
   {
     type: 'input',
+    id: 5,
     meta: {
-      id: 5,
       label: 'Name',
       name: 'name',
       required: true,
@@ -35,8 +35,8 @@ export const data = [
   },
   {
     type: 'divider',
+    id: 3,
     meta: {
-      id: 3,
       label: 'Divider',
     },
   },

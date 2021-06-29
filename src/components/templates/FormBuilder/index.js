@@ -13,7 +13,6 @@ const GridParent = styled('div')({
   gridColumnGap: '0px',
   gridRowGap: '0px',
   height: '100vh',
-  width: '100vw',
 })
 
 const SidebarContainer = styled('div')({
@@ -27,6 +26,7 @@ const HeaderContainer = styled('div')({
 })
 const BuilderContainer = styled('div')({
   gridArea: '2 / 2 / 5 / 6',
+  overflow: 'scroll',
 })
 
 const FooterContainer = styled('div')({

@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { data } from '../../../utils/data/mockData'
 import CheckboxModule from '../../molecules/CheckboxModule'
 import DividerModule from '../../molecules/DividerModule'
 import InputModule from '../../molecules/InputModule'
 import TextModule from '../../molecules/TextModule'
 import Dropzone from '../../molecules/Dropzone'
 import { componentActions } from '../../redux-utils/actions'
+import { getComponentElements } from '../../redux-utils/selectors/component.selector'
 
 const types = {
   text: TextModule,
@@ -35,15 +35,16 @@ const FormElements = () => {
   const handleItemDrop = e => {
     dispatch(componentActions.swapComponent(e))
   }
+  const components = useSelector(getComponentElements)
   return (
     <Container>
       <Wrapper>
-        {data.map(({ type, meta }) => {
+        {components.map(({ type, id, meta }) => {
           const Component = types[type]
           return (
-            <Grid key={meta.id}>
-              <Component data={{ ...meta }} />
-              <Dropzone id={meta.id} onItemDrop={handleItemDrop} key={meta.id} />
+            <Grid key={id}>
+              <Dropzone id={id} onItemDrop={handleItemDrop} key={id} />
+              <Component data={{ ...meta, id }} />
             </Grid>
           )
         })}
