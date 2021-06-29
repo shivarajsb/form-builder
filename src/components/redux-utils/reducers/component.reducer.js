@@ -27,7 +27,7 @@ const componentsReducer = (state = initialState, action) => {
     case componentTypes.component_delete.request:
       return { ...state, loading: true }
     case componentTypes.component_delete.success:
-      return { ...state, loading: false }
+      return { ...state, components: action.payload, loading: false }
     case componentTypes.component_delete.failure:
       return { ...state, loading: false }
     /* Component Swap */
@@ -36,6 +36,13 @@ const componentsReducer = (state = initialState, action) => {
     case componentTypes.component_swap.success:
       return { ...state, components: action.payload, loading: false }
     case componentTypes.component_swap.failure:
+      return { ...state, loading: false }
+    /* Duplicate Component */
+    case componentTypes.component_duplicate.request:
+      return { ...state, loading: true }
+    case componentTypes.component_duplicate.success:
+      return { ...state, components: action.payload, loading: false }
+    case componentTypes.component_duplicate.failure:
       return { ...state, loading: false }
     default:
       return state

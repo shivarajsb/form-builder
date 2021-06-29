@@ -36,19 +36,28 @@ const FormElements = () => {
     dispatch(componentActions.swapComponent(e))
   }
   const components = useSelector(getComponentElements)
+
+  const handleToolbarAction = e => {
+    const { action } = e
+    if (action === 'delete') {
+      dispatch(componentActions.deleteComponent(e))
+    } else if (action === 'duplicate') {
+      dispatch(componentActions.createDuplicate(e))
+    }
+  }
   return (
     <Container>
       <Wrapper>
+        <Dropzone id={'start'} onItemDrop={handleItemDrop} key={'start'} />
         {components.map(({ type, id, meta }) => {
           const Component = types[type]
           return (
             <Grid key={id}>
+              <Component data={{ ...meta, id }} handleAction={handleToolbarAction} />
               <Dropzone id={id} onItemDrop={handleItemDrop} key={id} />
-              <Component data={{ ...meta, id }} />
             </Grid>
           )
         })}
-        <Dropzone id={'end'} onItemDrop={handleItemDrop} key={'end'} />
       </Wrapper>
     </Container>
   )

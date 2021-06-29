@@ -47,3 +47,18 @@ export const swapComponentFailure = payload => ({
   type: componentTypes.component_swap.failure,
   payload,
 })
+/* Duplicate Components */
+export const createDuplicate = payload => ({
+  type: componentTypes.component_duplicate.request,
+  payload,
+})
+
+export const createDuplicateSuccess = payload => ({
+  type: componentTypes.component_duplicate.success,
+  payload,
+})
+
+export const createDuplicateFailure = payload => ({
+  type: componentTypes.component_duplicate.failure,
+  payload,
+})
