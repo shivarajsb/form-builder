@@ -15,6 +15,10 @@ const Button = styled('button')({
   ':hover': {
     filter: 'contrast(0.8)',
   },
+  ':disabled': {
+    pointerEvents: 'none',
+    color: 'grey',
+  },
 })
 
 export default Button

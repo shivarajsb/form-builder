@@ -24,6 +24,7 @@
         "classnames": "^2.2.5",
         "express": "^4.16.0",
         "express-static-gzip": "^0.3.0",
+        "formik": "^2.2.9",
         "prop-types": "^15.7.2",
         "react": "^16.0.0",
         "react-dom": "^16.0.1",
@@ -35,7 +36,8 @@
         "regenerator-runtime": "^0.13.7",
         "reselect": "^4.0.0",
         "styled-components": "^5.3.0",
-        "uuid": "^8.3.2"
+        "uuid": "^8.3.2",
+        "yup": "^0.32.9"
     },
     "devDependencies": {
         "@storybook/addon-actions": "^3.2.12",
