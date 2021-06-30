@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -9,6 +9,7 @@ import TextModule from '../../molecules/TextModule'
 import Dropzone from '../../molecules/Dropzone'
 import { componentActions } from '../../redux-utils/actions'
 import { getComponentElements } from '../../redux-utils/selectors/component.selector'
+import Modal from '../../atoms/modal'
 
 const types = {
   text: TextModule,
@@ -32,6 +33,7 @@ const Grid = styled('div')({
 })
 const FormElements = () => {
   const dispatch = useDispatch()
+  const [modalOpen, setModalOpen] = useState(false)
   const handleItemDrop = e => {
     dispatch(componentActions.swapComponent(e))
   }
@@ -43,6 +45,8 @@ const FormElements = () => {
       dispatch(componentActions.deleteComponent(e))
     } else if (action === 'duplicate') {
       dispatch(componentActions.createDuplicate(e))
+    } else if (action === 'edit') {
+      setModalOpen(true)
     }
   }
   return (
@@ -59,6 +63,7 @@ const FormElements = () => {
           )
         })}
       </Wrapper>
+      <Modal open={modalOpen} handleClose={() => setModalOpen(false)} />
     </Container>
   )
 }

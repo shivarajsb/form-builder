@@ -3,6 +3,7 @@ import React from 'react'
 
 import withHover from '../../../utils/hoc/withHover'
 
+import Close from './close'
 import Delete from './delete'
 import Drag from './drag'
 import Duplicate from './duplicate'
@@ -20,3 +21,4 @@ storiesOf('Styling/SVG Components', module)
   .add('With With Hover', () => <HoverableSVG />)
   .add('Plus', () => <Plus />)
   .add('Minus', () => <Minus />)
+  .add('Close', () => <Close />)
