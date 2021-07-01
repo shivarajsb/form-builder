@@ -8,6 +8,6 @@ const Typography = styled('p')({
     return map[fontSize]
   },
   textAlign: ({ textAlign }) => textAlign,
-  color: ({ color }) => color || '#333333',
+  color: ({ color }) => color || '#888888',
 })
 export default Typography

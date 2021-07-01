@@ -2,7 +2,7 @@
 import * as React from 'react'
 
 import FormBuilder from './components/templates/FormBuilder'
-import GlobalStyle from './utils/styles/globalStyles'
+import { GlobalStyle } from './utils/styles/globalStyles'
 
 const App = () => (
   <div>

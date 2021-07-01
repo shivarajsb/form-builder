@@ -1,2 +1,3 @@
 flow-typed
 src/graphql/graphql-types.flow.js
+src/**/*.css
