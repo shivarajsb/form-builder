@@ -15,7 +15,7 @@ export const createComponentFailure = payload => ({
 })
 
 /* Edit Component */
-export const editComponent = payload => ({ type: componentTypes.component_swap.request, payload })
+export const editComponent = payload => ({ type: componentTypes.component_edit.request, payload })
 export const editComponentSuccess = payload => ({
   type: componentTypes.component_edit.success,
   payload,

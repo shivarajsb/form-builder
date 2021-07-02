@@ -10,23 +10,28 @@ const mapper = {
 
 export const getInitialValues = values => {
   const initialValues = {
-    text: '',
-    size: {
+    label: '',
+    fontSize: {
       label: 'Medium',
       value: 'm',
     },
+    bold: false,
   }
-  if (values && values.text) {
-    initialValues.text = values.text || ''
+  if (values && values.label) {
+    initialValues.label = values.label || ''
   }
 
-  if (values && values.size) {
-    initialValues.size = { label: `${mapper[values.size]}`, value: values.size }
+  if (values && values.fontSize) {
+    initialValues.fontSize = { label: `${mapper[values.fontSize]}`, value: values.fontSize }
+  }
+  if (values && values.bold) {
+    initialValues.bold = values.bold
   }
   return { initialValues }
 }
 
 export const textValidationSchema = yup.object().shape({
-  text: yup.string().required(),
-  size: yup.object().required(),
+  label: yup.string().required('Text is a required field'),
+  fontSize: yup.object().required('Font Size is a required field'),
+  bold: yup.bool(),
 })

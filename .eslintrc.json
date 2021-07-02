@@ -26,5 +26,7 @@
         "allowChildren": true
       }
     ]
+    ,
+    "no-debugger":"off"
   }
 }

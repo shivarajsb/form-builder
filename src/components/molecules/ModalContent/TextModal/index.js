@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 import { Formik } from 'formik'
-import React, { useRef } from 'react'
+import React, { useMemo, useRef } from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
 
@@ -9,6 +9,7 @@ import { Centered, Form } from '../InputModal'
 import Input from '../../../atoms/Input'
 import { getInitialValues, textValidationSchema } from '../../../../utils/FormSchemas/Text'
 import Typography from '../../../atoms/typography'
+import Checkbox from '../../../atoms/checkbox'
 
 const selectValues = [
   { label: 'Small', value: 's' },
@@ -18,15 +19,11 @@ const selectValues = [
 ]
 
 const TextModal = ({ values, handleSubmitForm }) => {
-  const { initialValues } = getInitialValues(values)
   const formRef = useRef()
-
+  const { initialValues } = useMemo(() => getInitialValues(values), [values])
   const handleSubmit = e => {
-    const value = { ...e, size: e.size.value }
-    const { current } = formRef
-
+    const value = { ...e, fontSize: e.fontSize.value }
     handleSubmitForm(value)
-    current.resetForm()
   }
   return (
     <div>
@@ -44,22 +41,21 @@ const TextModal = ({ values, handleSubmitForm }) => {
           setFieldValue,
           touched,
           errors,
-          dirty,
           isValid,
         }) => {
-          const buttonValidState = !isValid || !dirty
+          const buttonValidState = isValid
           return (
             <Form>
               <div>
                 <label>Text</label>
                 <Input
                   placeholder="Enter the text"
-                  name="text"
+                  name="label"
                   onChange={handleChange}
-                  value={values.text}
+                  value={values.label}
                   onBlur={handleBlur}
                 />
-                {touched.text && errors.text && (
+                {touched.label && errors.label && (
                   <Typography fontSize="s" color="red">
                     {errors.name}
                   </Typography>
@@ -70,13 +66,17 @@ const TextModal = ({ values, handleSubmitForm }) => {
                 <Select
                   placeholder="Text Size"
                   options={selectValues}
-                  name="size"
-                  value={values.size}
-                  onChange={e => setFieldValue('size', e)}
+                  name="fontSize"
+                  value={values.fontSize}
+                  onChange={e => setFieldValue('fontSize', e)}
                 />
               </div>
+              <div>
+                <label>Bold</label>
+                <Checkbox checked={values.bold} onChange={handleChange} name="bold" />
+              </div>
               <Centered style={{ marginTop: '20px' }}>
-                <Button onClick={handleSubmit} disabled={buttonValidState}>
+                <Button onClick={handleSubmit} disabled={!buttonValidState}>
                   Save
                 </Button>
               </Centered>
@@ -89,10 +89,11 @@ const TextModal = ({ values, handleSubmitForm }) => {
 }
 
 TextModal.propTypes = {
-  values: PropTypes.objectOf({ text: PropTypes.string, size: PropTypes.string }),
+  values: PropTypes.objectOf({
+    label: PropTypes.string,
+    fontSize: PropTypes.string,
+    bold: PropTypes.bool,
+  }).isRequired,
   handleSubmitForm: PropTypes.func.isRequired,
-}
-TextModal.defaultProps = {
-  values: { text: 'Text', size: 'm' },
 }
 export default TextModal

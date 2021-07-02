@@ -38,16 +38,20 @@ const IconWrapper = styled('span')({
 })
 
 const Modal = ({ open, children, handleClose }) => (
-  <Background style={{ display: open ? 'flex' : 'none' }}>
-    <ModalWrapper>
-      <RowReverse>
-        <IconWrapper onClick={handleClose}>
-          <Close />
-        </IconWrapper>
-      </RowReverse>
-      {children}
-    </ModalWrapper>
-  </Background>
+  <div>
+    {open ? (
+      <Background>
+        <ModalWrapper>
+          <RowReverse>
+            <IconWrapper onClick={handleClose}>
+              <Close />
+            </IconWrapper>
+          </RowReverse>
+          {children}
+        </ModalWrapper>
+      </Background>
+    ) : null}
+  </div>
 )
 Modal.propTypes = {
   open: PropTypes.bool.isRequired,

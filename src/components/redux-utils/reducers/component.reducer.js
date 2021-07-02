@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import { data } from '../../../utils/data/mockData'
 import { componentTypes } from '../types'
 
@@ -20,7 +21,14 @@ const componentsReducer = (state = initialState, action) => {
     case componentTypes.component_edit.request:
       return { ...state, loading: true }
     case componentTypes.component_edit.success:
-      return { ...state, loading: false }
+      const { payload } = action
+      const updatedComponents = state.components.map(item => {
+        if (item.id === payload.id) {
+          return { ...item, meta: payload.data }
+        }
+        return item
+      })
+      return { ...state, loading: false, components: updatedComponents }
     case componentTypes.component_edit.failure:
       return { ...state, loading: false }
     /* Component Delete */

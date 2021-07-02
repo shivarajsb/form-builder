@@ -41,7 +41,10 @@ function* deleteComponent(action) {
 }
 function* editComponent(action) {
   try {
-    yield put(componentActions.editComponentSuccess(action))
+    const { payload } = action
+    yield put(
+      componentActions.editComponentSuccess({ id: payload.selected.id, data: payload.data })
+    )
   } catch (err) {
     yield put(componentActions.editComponentFailure(err))
   }

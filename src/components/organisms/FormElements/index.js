@@ -56,7 +56,7 @@ const FormElements = () => {
     setModalOpen(false)
   }
   const handleSubmit = e => {
-    console.log(e)
+    dispatch(componentActions.editComponent({ selected, data: e }))
   }
   return (
     <Container>
@@ -72,12 +72,14 @@ const FormElements = () => {
         })}
         <Dropzone id={'end'} onItemDrop={handleItemDrop} key={'end'} />
       </Wrapper>
-      <ModalForm
-        selected={selected}
-        open={modalOpen}
-        handleClose={handleModalClose}
-        handleSubmit={handleSubmit}
-      />
+      {modalOpen && (
+        <ModalForm
+          selected={selected}
+          open={modalOpen}
+          handleClose={handleModalClose}
+          handleSubmit={handleSubmit}
+        />
+      )}
     </Container>
   )
 }

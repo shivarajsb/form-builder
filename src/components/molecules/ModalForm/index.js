@@ -15,13 +15,10 @@ const mapper = {
 }
 
 const ModalForm = ({ selected, handleSubmit, open, handleClose }) => {
-  // eslint-disable-next-line prettier/prettier
   const Component = mapper[selected && selected.type]
   const handleSubmitForm = e => {
-    setTimeout(() => {
-      handleClose()
-    }, 500)
     handleSubmit(e)
+    handleClose()
   }
   return (
     <Modal open={open} handleClose={handleClose}>

@@ -37,7 +37,6 @@ TextModule.defaultProps = {
   data: {
     id: 3,
     label: 'Text',
-    name: 'text',
     fontSize: 'm',
     bold: true,
   },
