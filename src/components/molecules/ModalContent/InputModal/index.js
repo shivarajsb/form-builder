@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 import { Formik } from 'formik'
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
@@ -33,13 +33,21 @@ export const Centered = styled('div')({
 
 const InputModal = ({ values, handleSubmitForm }) => {
   const { placeholders, initialValues } = getInitialValues(values)
+  const formRef = useRef()
+
+  const handleSubmit = e => {
+    const { current } = formRef
+    handleSubmitForm(e)
+    current.resetForm()
+  }
 
   return (
     <div>
       <Formik
         initialValues={initialValues}
-        onSubmit={handleSubmitForm}
+        onSubmit={handleSubmit}
         validationSchema={inputValidationSchema}
+        innerRef={formRef}
       >
         {({ handleChange, errors, touched, handleSubmit, handleBlur, values, isValid }) => {
           const buttonValidState = isValid

@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 import { Formik } from 'formik'
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
 
@@ -19,11 +19,21 @@ const selectValues = [
 
 const TextModal = ({ values, handleSubmitForm }) => {
   const { initialValues } = getInitialValues(values)
+  const formRef = useRef()
+
+  const handleSubmit = e => {
+    const value = { ...e, size: e.size.value }
+    const { current } = formRef
+
+    handleSubmitForm(value)
+    current.resetForm()
+  }
   return (
     <div>
       <Formik
         initialValues={initialValues}
-        onSubmit={handleSubmitForm}
+        onSubmit={handleSubmit}
+        innerRef={formRef}
         validationSchema={textValidationSchema}
       >
         {({

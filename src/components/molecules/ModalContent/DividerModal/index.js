@@ -1,5 +1,5 @@
 import { Formik } from 'formik'
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import Button from '../../../atoms/button'
@@ -9,9 +9,15 @@ import Input from '../../../atoms/Input'
 
 const DividerModal = ({ values, handleSubmitForm }) => {
   const { initialValues } = getInitialValues(values)
+  const formRef = useRef()
+  const submitForm = e => {
+    const { current } = formRef
+    current.resetForm()
+    handleSubmitForm(e)
+  }
   return (
     <div>
-      <Formik initialValues={initialValues} onSubmit={handleSubmitForm}>
+      <Formik initialValues={initialValues} onSubmit={submitForm} innerRef={formRef}>
         {({ handleChange, handleSubmit, handleBlur }) => (
           <Form>
             <div>
