@@ -23,6 +23,6 @@ export const getInitialValues = values => {
 export const inputValidationSchema = yup.object().shape({
   name: yup.string().required('Name is a required field'),
   label: yup.string().required('Label is a required field'),
-  required: yup.array(),
+  required: yup.bool(),
   placeholder: yup.string(),
 })

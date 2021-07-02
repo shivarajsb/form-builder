@@ -41,8 +41,8 @@ const InputModal = ({ values, handleSubmitForm }) => {
         onSubmit={handleSubmitForm}
         validationSchema={inputValidationSchema}
       >
-        {({ handleChange, errors, touched, handleSubmit, handleBlur, values, isValid, dirty }) => {
-          const buttonValidState = !isValid || !dirty
+        {({ handleChange, errors, touched, handleSubmit, handleBlur, values, isValid }) => {
+          const buttonValidState = isValid
           return (
             <Form>
               <Flex>
@@ -104,7 +104,7 @@ const InputModal = ({ values, handleSubmitForm }) => {
                 </div>
               </Flex>
               <Centered>
-                <Button type="button" onClick={handleSubmit} disabled={buttonValidState}>
+                <Button type="button" onClick={handleSubmit} disabled={!buttonValidState}>
                   Save
                 </Button>
               </Centered>

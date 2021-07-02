@@ -21,7 +21,7 @@ export const Background = styled('div')({
 
 const ModalWrapper = styled('div')({
   minWidth: '800px',
-  minHeight: '500px',
+  minHeight: '300px',
   backgroundColor: 'white',
   zIndex: 10,
   borderRadius: '10px',

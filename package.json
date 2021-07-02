@@ -13,7 +13,7 @@
         "build-storybook": "build-storybook",
         "eslint": "eslint src webpack",
         "eslint-staged": "files=`git diff --staged --diff-filter=AM --name-only | grep .js$ | tr '\n' ' '`; if [ -n \"$files\" ]; then eslint $files; fi;",
-        "flow": "flow check",
+        "flow": "flow check"
     },
     "dependencies": {
         "@storybook/addon-info": "^3.2.13",
