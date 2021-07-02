@@ -14,8 +14,6 @@
         "eslint": "eslint src webpack",
         "eslint-staged": "files=`git diff --staged --diff-filter=AM --name-only | grep .js$ | tr '\n' ' '`; if [ -n \"$files\" ]; then eslint $files; fi;",
         "flow": "flow check",
-        "precommit": "npm run eslint-staged && npm run flow",
-        "prepush": "npm run eslint && npm run flow"
     },
     "dependencies": {
         "@storybook/addon-info": "^3.2.13",
@@ -28,6 +26,7 @@
         "react": "^16.0.0",
         "react-dom": "^16.0.1",
         "react-redux": "^7.2.4",
+        "react-select": "^4.3.1",
         "recompose": "^0.26.0",
         "redux": "^4.1.0",
         "redux-devtools-extension": "^2.13.9",

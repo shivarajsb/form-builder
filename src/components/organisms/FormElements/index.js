@@ -52,16 +52,16 @@ const FormElements = () => {
   return (
     <Container>
       <Wrapper>
-        <Dropzone id={'start'} onItemDrop={handleItemDrop} key={'start'} />
         {components.map(({ type, id, meta }) => {
           const Component = types[type]
           return (
             <Grid key={id}>
-              <Component data={{ ...meta, id }} handleAction={handleToolbarAction} />
               <Dropzone id={id} onItemDrop={handleItemDrop} key={id} />
+              <Component data={{ ...meta, id }} handleAction={handleToolbarAction} />
             </Grid>
           )
         })}
+        <Dropzone id={'end'} onItemDrop={handleItemDrop} key={'end'} />
       </Wrapper>
       <Modal open={modalOpen} handleClose={() => setModalOpen(false)} />
     </Container>

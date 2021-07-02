@@ -21,6 +21,9 @@ export const Flex = styled('div')({
 export const Form = styled('form')({
   backgroundColor: 'white',
   padding: '20px',
+  '>*': {
+    marginTop: '20px',
+  },
 })
 
 export const Centered = styled('div')({

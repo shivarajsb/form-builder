@@ -13,8 +13,8 @@ function* createComponent(action) {
     const newElement = generateSchema(type)
     const components = yield select(getComponentElements)
     let modifiedArray = []
-    if (target === 'start') {
-      modifiedArray = [newElement, ...components]
+    if (target === 'end') {
+      modifiedArray = [...components, newElement]
     } else {
       const targetIndex = components.findIndex(i => i.id == target)
       modifiedArray = [
