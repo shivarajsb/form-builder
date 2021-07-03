@@ -6,7 +6,7 @@ export const getInitialValues = values => {
     label: '',
     name: '',
     placeholder: '',
-    required: [],
+    required: false,
   }
   const placeholders = {
     label: 'Enter the label',

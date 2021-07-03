@@ -108,7 +108,7 @@ const InputModal = ({ values, handleSubmitForm }) => {
               <Flex>
                 <div>
                   <label>Required</label>
-                  <Checkbox name="required" onChange={handleChange} value={values.required} />
+                  <Checkbox name="required" onChange={handleChange} checked={values.required} />
                 </div>
               </Flex>
               <Centered>
