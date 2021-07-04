@@ -23,11 +23,15 @@ const checkboxSchema = {
   label: 'Checkbox Label',
   required: false,
 }
+const containerSchema = {
+  flex: false,
+}
 const schemas = {
   input: inputSchema,
   text: textSchema,
   divider: dividerSchema,
   checkbox: checkboxSchema,
+  container: containerSchema,
 }
 
 export const generateSchema = type => ({ type, id: v4(), meta: { ...schemas[type] } })

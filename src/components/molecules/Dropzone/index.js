@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const DropzoneBase = styled('div').attrs({ draggable: true })({
   height: '5px',
-  backgroundColor: '#fefefe',
+  backgroundColor: '#e8e8e8',
   borderRadius: '5px',
   border: '1px solid #e8e8e8',
   marginBottom: '30px',

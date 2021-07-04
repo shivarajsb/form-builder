@@ -1,5 +1,27 @@
 export const data = [
   {
+    id: '123',
+    type: 'container',
+    meta: {
+      displayType: 'flex',
+      childElements: [
+        {
+          position: 1,
+          type: 'input',
+          meta: {
+            id: 1,
+            label: 'Hello World',
+            name: 'name',
+            required: true,
+            min: 4,
+            max: 100,
+            placeholder: 'Whats up Dork?',
+          },
+        },
+      ],
+    },
+  },
+  {
     type: 'text',
     id: 1,
     meta: {

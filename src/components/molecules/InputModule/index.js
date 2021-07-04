@@ -7,7 +7,7 @@ import withToolbar from '../../../utils/hoc/withToolbar'
 import Input from '../../atoms/Input'
 import Typography from '../../atoms/typography'
 
-const Padding = styled('div')({
+export const Padding = styled('div')({
   padding: '10px 0px 5px 0px',
 })
 const InputModule = ({ handleAction, data, type }) => {

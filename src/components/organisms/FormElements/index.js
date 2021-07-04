@@ -10,12 +10,14 @@ import Dropzone from '../../molecules/Dropzone'
 import { componentActions } from '../../redux-utils/actions'
 import { getComponentElements } from '../../redux-utils/selectors/component.selector'
 import ModalForm from '../../molecules/ModalForm'
+import ContainerModule from '../../molecules/ContainerModule'
 
-const types = {
+export const types = {
   text: TextModule,
   input: InputModule,
   checkbox: CheckboxModule,
   divider: DividerModule,
+  container: ContainerModule,
 }
 
 const Container = styled('div')({

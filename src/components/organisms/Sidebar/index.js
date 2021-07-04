@@ -27,8 +27,8 @@ const Sidebar = () => (
         Cell Layout
       </Typography>
       <ComponentsGroup>
-        <DragButton dashed variant="primary" type="table">
-          Table
+        <DragButton dashed variant="primary" type="container">
+          Container
         </DragButton>
       </ComponentsGroup>
     </div>
