@@ -5,6 +5,7 @@ import { formData } from '../../../utils/data/mockData'
 import Button from '../../atoms/button'
 import Modal from '../../atoms/modal'
 import Typography from '../../atoms/typography'
+import CreateFormModal from '../../molecules/CreateFormModal'
 import FormElements from '../../organisms/FormElements'
 import Sidebar from '../../organisms/Sidebar'
 
@@ -42,6 +43,9 @@ const FormBuilder = () => {
   const handleModalActions = action => {
     setModalOpen(action === 'open')
   }
+  const handleFormSubmit = e => {
+    handleModalActions('close')
+  }
   return (
     <GridParent>
       <SidebarContainer>
@@ -59,7 +63,7 @@ const FormBuilder = () => {
         <Button>Save</Button>
       </FooterContainer>
       <Modal open={modalOpen} handleClose={() => handleModalActions('close')}>
-        <h1>Creating the form element here </h1>
+        {modalOpen && <CreateFormModal onSubmit={handleFormSubmit} />}
       </Modal>
     </GridParent>
   )

@@ -25,56 +25,63 @@ const Wrapper = styled('div')({
     marginTop: '40px',
   },
 })
-const Sidebar = ({ handleCreateForm, formList }) => {
-  console.log(formList)
-  return (
-    <Wrapper>
-      <div>
-        <SpaceBetween>
-          <Typography bold fontSize="m" color="white">
-            Forms
-          </Typography>
-          <span onClick={handleCreateForm}>
-            <Plus color="white" />
-          </span>
-        </SpaceBetween>
-        <div>{formList && formList.map(item => <ListItem label={item.name} key={item.id} />)}</div>
-      </div>
-      <div>
+const Sidebar = ({ handleCreateForm, formList }) => (
+  <Wrapper>
+    <div>
+      <SpaceBetween>
         <Typography bold fontSize="m" color="white">
-          Cell Layout
+          Forms
         </Typography>
-        <ComponentsGroup>
-          <DragButton dashed variant="primary" type="container">
-            Container
-          </DragButton>
-        </ComponentsGroup>
-      </div>
+        <span onClick={handleCreateForm}>
+          <Plus color="white" />
+        </span>
+      </SpaceBetween>
       <div>
-        <Typography bold fontSize="m" color="white">
-          Form Components
-        </Typography>
-        <ComponentsGroup>
-          <DragButton dashed variant="primary" id="input" type="input">
-            Input
-          </DragButton>
-          <DragButton dashed variant="primary" type="checkbox">
-            Checkbox
-          </DragButton>
-          <DragButton dashed variant="primary" type="upload">
-            File Uploader
-          </DragButton>
-          <DragButton dashed variant="primary" type="text">
-            Text
-          </DragButton>
-          <DragButton dashed variant="primary" type="divider">
-            Divider
-          </DragButton>
-        </ComponentsGroup>
+        {formList &&
+          formList.map(item => (
+            <ListItem
+              label={item.name}
+              key={item.id}
+              id={item.id}
+              onClickItem={e => console.log('handling the selection of a particular form', e)}
+            />
+          ))}
       </div>
-    </Wrapper>
-  )
-}
+    </div>
+    <div>
+      <Typography bold fontSize="m" color="white">
+        Cell Layout
+      </Typography>
+      <ComponentsGroup>
+        <DragButton dashed variant="primary" type="container">
+          Container
+        </DragButton>
+      </ComponentsGroup>
+    </div>
+    <div>
+      <Typography bold fontSize="m" color="white">
+        Form Components
+      </Typography>
+      <ComponentsGroup>
+        <DragButton dashed variant="primary" id="input" type="input">
+          Input
+        </DragButton>
+        <DragButton dashed variant="primary" type="checkbox">
+          Checkbox
+        </DragButton>
+        <DragButton dashed variant="primary" type="upload">
+          File Uploader
+        </DragButton>
+        <DragButton dashed variant="primary" type="text">
+          Text
+        </DragButton>
+        <DragButton dashed variant="primary" type="divider">
+          Divider
+        </DragButton>
+      </ComponentsGroup>
+    </div>
+  </Wrapper>
+)
 Sidebar.propTypes = {
   handleCreateForm: PropTypes.func.isRequired,
   formList: PropTypes.arrayOf({
