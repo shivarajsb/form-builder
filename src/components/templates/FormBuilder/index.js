@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
+import { formData } from '../../../utils/data/mockData'
 import Button from '../../atoms/button'
+import Modal from '../../atoms/modal'
 import Typography from '../../atoms/typography'
 import FormElements from '../../organisms/FormElements'
 import Sidebar from '../../organisms/Sidebar'
@@ -35,22 +37,31 @@ const FooterContainer = styled('div')({
   alignItems: 'center',
   justifyContent: 'center',
 })
-const FormBuilder = () => (
-  <GridParent>
-    <SidebarContainer>
-      <Sidebar />
-    </SidebarContainer>
-    <HeaderContainer>
-      <Typography fontSize="l" bold textAlign="center">
-        Drop and Create
-      </Typography>
-    </HeaderContainer>
-    <BuilderContainer>
-      <FormElements />
-    </BuilderContainer>
-    <FooterContainer>
-      <Button>Save</Button>
-    </FooterContainer>
-  </GridParent>
-)
+const FormBuilder = () => {
+  const [modalOpen, setModalOpen] = useState(false)
+  const handleModalActions = action => {
+    setModalOpen(action === 'open')
+  }
+  return (
+    <GridParent>
+      <SidebarContainer>
+        <Sidebar handleCreateForm={() => handleModalActions('open')} formList={formData} />
+      </SidebarContainer>
+      <HeaderContainer>
+        <Typography fontSize="l" bold textAlign="center">
+          Drop and Create
+        </Typography>
+      </HeaderContainer>
+      <BuilderContainer>
+        <FormElements />
+      </BuilderContainer>
+      <FooterContainer>
+        <Button>Save</Button>
+      </FooterContainer>
+      <Modal open={modalOpen} handleClose={() => handleModalActions('close')}>
+        <h1>Creating the form element here </h1>
+      </Modal>
+    </GridParent>
+  )
+}
 export default FormBuilder

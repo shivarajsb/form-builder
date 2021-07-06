@@ -68,7 +68,11 @@ const FormElements = () => {
           return (
             <Grid key={id}>
               <Dropzone id={id} onItemDrop={handleItemDrop} key={id} />
-              <Component data={{ ...meta, id }} handleAction={handleToolbarAction} />
+              <Component
+                data={{ ...meta, id }}
+                handleAction={handleToolbarAction}
+                onItemDrop={e => console.log(e)}
+              />
             </Grid>
           )
         })}

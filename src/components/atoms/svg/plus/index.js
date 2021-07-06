@@ -1,6 +1,7 @@
 import * as React from 'react'
+import PropTypes from 'prop-types'
 
-function Plus(props) {
+function Plus({ color, ...props }) {
   return (
     <svg
       width={18}
@@ -12,17 +13,24 @@ function Plus(props) {
     >
       <path
         d="M12 12H8m4-4v4-4zm0 4v4-4zm0 0h4-4z"
-        stroke="#888"
+        stroke={color}
         strokeWidth={2}
         strokeLinecap="round"
       />
       <path
         d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"
-        stroke="#888"
+        stroke={color}
         strokeWidth={2}
       />
     </svg>
   )
+}
+
+Plus.propTypes = {
+  color: PropTypes.string.isRequired,
+}
+Plus.defaultProps = {
+  color: '#888',
 }
 
 export default Plus
