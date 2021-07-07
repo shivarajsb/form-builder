@@ -1,11 +1,14 @@
 import { put, takeLatest } from 'redux-saga/effects'
+import { v4 as uuid } from 'uuid'
 
 import { formActions } from '../actions'
 import { formTypes } from '../types'
 
 function* createForm(action) {
   try {
-    yield put(formActions.createFormSuccess(action))
+    const { payload } = action
+    const formValues = { name: payload.label, id: uuid(), createdAt: Date.now() }
+    yield put(formActions.createFormSuccess(formValues))
   } catch (err) {
     yield put(formActions.createFormFailure(action))
   }

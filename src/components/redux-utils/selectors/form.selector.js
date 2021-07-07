@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect'
 
-const getForms = state => state.forms
+const getFormsBase = state => state.forms
 
 /* Memoized selector creators */
-const getFormState = createSelector([getForms], state => state)
+const getFormState = createSelector([getFormsBase], state => state)
 
 /* Get Forms */
-export const getFormsElements = createSelector([getFormState], state => state.forms)
+export const getForms = createSelector([getFormState], state => state.forms)

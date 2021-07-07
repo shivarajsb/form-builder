@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 
-import { formData } from '../../../utils/data/mockData'
 import Button from '../../atoms/button'
 import Modal from '../../atoms/modal'
 import Typography from '../../atoms/typography'
 import CreateFormModal from '../../molecules/CreateFormModal'
 import FormElements from '../../organisms/FormElements'
 import Sidebar from '../../organisms/Sidebar'
+import { createForm } from '../../redux-utils/actions/form.actions'
+import { getForms } from '../../redux-utils/selectors/form.selector'
 
 const GridParent = styled('div')({
   display: 'grid',
@@ -39,21 +41,31 @@ const FooterContainer = styled('div')({
   justifyContent: 'center',
 })
 const FormBuilder = () => {
+  const dispatch = useDispatch()
+  const forms = useSelector(getForms)
   const [modalOpen, setModalOpen] = useState(false)
   const handleModalActions = action => {
     setModalOpen(action === 'open')
   }
   const handleFormSubmit = e => {
+    dispatch(createForm(e))
     handleModalActions('close')
+  }
+  const handleClickForm = e => {
+    console.log(e)
   }
   return (
     <GridParent>
       <SidebarContainer>
-        <Sidebar handleCreateForm={() => handleModalActions('open')} formList={formData} />
+        <Sidebar
+          handleCreateForm={() => handleModalActions('open')}
+          formList={forms}
+          handleFormClick={handleClickForm}
+        />
       </SidebarContainer>
       <HeaderContainer>
         <Typography fontSize="l" bold textAlign="center">
-          Drop and Create
+          {forms.length ? 'Drop and Create' : 'No Forms present. Create a form'}
         </Typography>
       </HeaderContainer>
       <BuilderContainer>

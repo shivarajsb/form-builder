@@ -3,6 +3,7 @@ import { formTypes } from '../types/'
 const initialState = {
   loading: false,
   forms: [],
+  currentForm: null,
 }
 const formReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -24,6 +25,12 @@ const formReducer = (state = initialState, action) => {
       }
     case formTypes.form_delete.failure:
       return { ...state, loading: false }
+    case formTypes.select_form.request:
+      return { ...state, loading: true }
+    case formTypes.select_form.success:
+      return { ...state, loading: false, currentForm: action.payload }
+    case formTypes.select_form.failure:
+      return { ...state, loading: false, error: action.payload }
     default: {
       return state
     }

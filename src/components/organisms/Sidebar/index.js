@@ -25,7 +25,7 @@ const Wrapper = styled('div')({
     marginTop: '40px',
   },
 })
-const Sidebar = ({ handleCreateForm, formList }) => (
+const Sidebar = ({ handleCreateForm, formList, handleFormClick }) => (
   <Wrapper>
     <div>
       <SpaceBetween>
@@ -39,12 +39,7 @@ const Sidebar = ({ handleCreateForm, formList }) => (
       <div>
         {formList &&
           formList.map(item => (
-            <ListItem
-              label={item.name}
-              key={item.id}
-              id={item.id}
-              onClickItem={e => console.log('handling the selection of a particular form', e)}
-            />
+            <ListItem label={item.name} key={item.id} id={item.id} onClickItem={handleFormClick} />
           ))}
       </div>
     </div>
