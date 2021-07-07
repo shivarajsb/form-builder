@@ -8,6 +8,7 @@ const ListItemBase = styled('div')({
   padding: '15px',
   cursor: 'pointer',
   backgroundColor: ({ selected }) => (selected ? '#ffffff' : '#197AFF'),
+  borderRadius: '10px',
   transition: '0.2s',
   ':hover': {
     filter: 'contrast(0.8)',
