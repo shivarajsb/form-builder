@@ -36,7 +36,7 @@ const Sidebar = ({ handleCreateForm, formList, handleFormClick }) => (
           <Plus color="white" />
         </span>
       </SpaceBetween>
-      <div>
+      <div style={{ maxHeight: '200px', overflow: 'scroll' }}>
         {formList &&
           formList.map(item => (
             <ListItem label={item.name} key={item.id} id={item.id} onClickItem={handleFormClick} />
@@ -84,6 +84,7 @@ Sidebar.propTypes = {
     id: PropTypes.string,
     createdAt: PropTypes.number,
   }).isRequired,
+  handleFormClick: PropTypes.func.isRequired,
 }
 
 export default Sidebar

@@ -68,12 +68,16 @@ const FormBuilder = () => {
           {forms.length ? 'Drop and Create' : 'No Forms present. Create a form'}
         </Typography>
       </HeaderContainer>
-      <BuilderContainer>
-        <FormElements />
-      </BuilderContainer>
-      <FooterContainer>
-        <Button>Save</Button>
-      </FooterContainer>
+      {forms.length ? (
+        <React.Fragment>
+          <BuilderContainer>
+            <FormElements />
+          </BuilderContainer>
+          <FooterContainer>
+            <Button>Save</Button>
+          </FooterContainer>
+        </React.Fragment>
+      ) : null}
       <Modal open={modalOpen} handleClose={() => handleModalActions('close')}>
         {modalOpen && <CreateFormModal onSubmit={handleFormSubmit} />}
       </Modal>
