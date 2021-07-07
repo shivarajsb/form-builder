@@ -25,7 +25,7 @@ const Wrapper = styled('div')({
     marginTop: '40px',
   },
 })
-const Sidebar = ({ handleCreateForm, formList, handleFormClick }) => (
+const Sidebar = ({ handleCreateForm, formList, handleFormClick, currentForm }) => (
   <Wrapper>
     <div>
       <SpaceBetween>
@@ -39,7 +39,13 @@ const Sidebar = ({ handleCreateForm, formList, handleFormClick }) => (
       <div style={{ maxHeight: '200px', overflow: 'scroll' }}>
         {formList &&
           formList.map(item => (
-            <ListItem label={item.name} key={item.id} id={item.id} onClickItem={handleFormClick} />
+            <ListItem
+              label={item.name}
+              key={item.id}
+              id={item.id}
+              onClickItem={handleFormClick}
+              selected={currentForm && currentForm.id === item.id}
+            />
           ))}
       </div>
     </div>
@@ -85,6 +91,15 @@ Sidebar.propTypes = {
     createdAt: PropTypes.number,
   }).isRequired,
   handleFormClick: PropTypes.func.isRequired,
+  currentForm: PropTypes.objectOf({
+    name: PropTypes.string,
+    id: PropTypes.string,
+    createdAt: PropTypes.number,
+  }),
+}
+
+Sidebar.defaultProps = {
+  currentForm: {},
 }
 
 export default Sidebar

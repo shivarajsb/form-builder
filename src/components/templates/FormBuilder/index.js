@@ -8,8 +8,8 @@ import Typography from '../../atoms/typography'
 import CreateFormModal from '../../molecules/CreateFormModal'
 import FormElements from '../../organisms/FormElements'
 import Sidebar from '../../organisms/Sidebar'
-import { createForm } from '../../redux-utils/actions/form.actions'
-import { getForms } from '../../redux-utils/selectors/form.selector'
+import { createForm, selectForm } from '../../redux-utils/actions/form.actions'
+import { getCurrentForm, getForms } from '../../redux-utils/selectors/form.selector'
 
 const GridParent = styled('div')({
   display: 'grid',
@@ -44,6 +44,7 @@ const FormBuilder = () => {
   const dispatch = useDispatch()
   const forms = useSelector(getForms)
   const [modalOpen, setModalOpen] = useState(false)
+  const currentForm = useSelector(getCurrentForm)
   const handleModalActions = action => {
     setModalOpen(action === 'open')
   }
@@ -52,7 +53,7 @@ const FormBuilder = () => {
     handleModalActions('close')
   }
   const handleClickForm = e => {
-    console.log(e)
+    dispatch(selectForm(e))
   }
   return (
     <GridParent>
@@ -61,6 +62,7 @@ const FormBuilder = () => {
           handleCreateForm={() => handleModalActions('open')}
           formList={forms}
           handleFormClick={handleClickForm}
+          currentForm={currentForm}
         />
       </SidebarContainer>
       <HeaderContainer>

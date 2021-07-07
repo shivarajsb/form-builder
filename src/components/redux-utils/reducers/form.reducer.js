@@ -25,9 +25,11 @@ const formReducer = (state = initialState, action) => {
       }
     case formTypes.form_delete.failure:
       return { ...state, loading: false }
+    /* Select Form */
     case formTypes.select_form.request:
       return { ...state, loading: true }
     case formTypes.select_form.success:
+      console.log('This is the current form', action.payload)
       return { ...state, loading: false, currentForm: action.payload }
     case formTypes.select_form.failure:
       return { ...state, loading: false, error: action.payload }
