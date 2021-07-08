@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
@@ -9,7 +9,11 @@ import Typography from '../../atoms/typography'
 import CreateFormModal from '../../molecules/CreateFormModal'
 import FormElements from '../../organisms/FormElements'
 import Sidebar from '../../organisms/Sidebar'
-import { createForm, selectForm } from '../../redux-utils/actions/form.actions'
+import {
+  createForm,
+  getForms as getFormsAction,
+  selectForm,
+} from '../../redux-utils/actions/form.actions'
 import { getCurrentForm, getForms } from '../../redux-utils/selectors/form.selector'
 
 const GridParent = styled('div')({
@@ -63,6 +67,9 @@ const FormBuilder = () => {
   const redirectToViewer = () => {
     history.push(`/viewer/${currentForm.id}`)
   }
+  useEffect(() => {
+    dispatch(getFormsAction())
+  }, [])
   return (
     <GridParent>
       <SidebarContainer>

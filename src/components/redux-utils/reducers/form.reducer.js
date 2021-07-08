@@ -29,10 +29,16 @@ const formReducer = (state = initialState, action) => {
     case formTypes.select_form.request:
       return { ...state, loading: true }
     case formTypes.select_form.success:
-      console.log('This is the current form', action.payload)
       return { ...state, loading: false, currentForm: action.payload }
     case formTypes.select_form.failure:
       return { ...state, loading: false, error: action.payload }
+    /* Get Forms */
+    case formTypes.get_forms.request:
+      return { ...state, loading: true }
+    case formTypes.get_forms.success:
+      return { ...state, loading: false, forms: action.payload }
+    case formTypes.get_forms.failure:
+      return { ...state, loading: false }
     default: {
       return state
     }
