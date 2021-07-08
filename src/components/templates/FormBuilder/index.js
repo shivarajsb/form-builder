@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 import Button from '../../atoms/button'
@@ -39,9 +40,13 @@ const FooterContainer = styled('div')({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  '>*': {
+    margin: '20px',
+  },
 })
 const FormBuilder = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const forms = useSelector(getForms)
   const [modalOpen, setModalOpen] = useState(false)
   const currentForm = useSelector(getCurrentForm)
@@ -54,6 +59,9 @@ const FormBuilder = () => {
   }
   const handleClickForm = e => {
     dispatch(selectForm(e))
+  }
+  const redirectToViewer = () => {
+    history.push(`/viewer/${currentForm.id}`)
   }
   return (
     <GridParent>
@@ -77,6 +85,7 @@ const FormBuilder = () => {
           </BuilderContainer>
           <FooterContainer>
             <Button>Save</Button>
+            <Button onClick={redirectToViewer}>Go to Viewer</Button>
           </FooterContainer>
         </React.Fragment>
       ) : null}

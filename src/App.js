@@ -10,7 +10,7 @@ const App = () => (
   <div>
     <GlobalStyle />
     <Switch>
-      <Route path="/viewer" component={Viewer} />
+      <Route path="/viewer/:id" component={Viewer} />
       <Route path="/forms" component={Viewer} />
       <Route path="/" component={FormBuilder} />
     </Switch>

@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { useHistory, useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import Typography from '../../atoms/typography'
 import Div from '../../atoms/Div'
 import Button from '../../atoms/button'
+import { getFormById } from '../../redux-utils/selectors/form.selector'
 
 const GridParent = styled('grid')({
   display: 'grid',
@@ -35,42 +38,46 @@ const FooterContainer = styled('div')({
   gridArea: '5 / 1 / 6 / 6',
 })
 
-const Viewer = () => (
-  <GridParent>
-    <HeaderContainer>
-      <Typography fontSize="xl" color="#D7D8D8" bold>
-        Preview
-      </Typography>
-    </HeaderContainer>
-    <FormContainer>
-      <Typography fontSize="m">Preview</Typography>
-      <Div>
-        <Typography>Hello World this is Shivaraj Bakale</Typography>
-      </Div>
-    </FormContainer>
-    <DataContainer>
-      <Typography fontSize="m">Data</Typography>
-      <Div>
-        <Typography>Data Container here</Typography>
-      </Div>
-    </DataContainer>
-    <ErrorsContainer>
-      <Typography fontSize="m">Errors</Typography>
-      <Div>
-        <Typography>Errors Container here</Typography>
-      </Div>
-    </ErrorsContainer>
-    <EventsContainer>
-      <Typography fontSize="m">Events</Typography>
-      <Div>
-        <Typography>EventsContainer here</Typography>
-      </Div>
-    </EventsContainer>
-    <FooterContainer>
-      <Button>Submit</Button>
-    </FooterContainer>
-  </GridParent>
-)
-
+const Viewer = () => {
+  const { id } = useParams()
+  const currentForm = useSelector(getFormById(id))
+  console.log('This is the current form ', currentForm)
+  return (
+    <GridParent>
+      <HeaderContainer>
+        <Typography fontSize="xl" color="#D7D8D8" bold>
+          Preview
+        </Typography>
+      </HeaderContainer>
+      <FormContainer>
+        <Typography fontSize="m">Preview</Typography>
+        <Div>
+          <Typography>Hello World this is Shivaraj Bakale</Typography>
+        </Div>
+      </FormContainer>
+      <DataContainer>
+        <Typography fontSize="m">Data</Typography>
+        <Div>
+          <Typography>Data Container here</Typography>
+        </Div>
+      </DataContainer>
+      <ErrorsContainer>
+        <Typography fontSize="m">Errors</Typography>
+        <Div>
+          <Typography>Errors Container here</Typography>
+        </Div>
+      </ErrorsContainer>
+      <EventsContainer>
+        <Typography fontSize="m">Events</Typography>
+        <Div>
+          <Typography>EventsContainer here</Typography>
+        </Div>
+      </EventsContainer>
+      <FooterContainer>
+        <Button>Submit</Button>
+      </FooterContainer>
+    </GridParent>
+  )
+}
 Viewer.propTypes = {}
 export default Viewer
