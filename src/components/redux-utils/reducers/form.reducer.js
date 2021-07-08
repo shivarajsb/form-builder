@@ -11,7 +11,12 @@ const formReducer = (state = initialState, action) => {
     case formTypes.form_create.request:
       return { ...state, loading: true }
     case formTypes.form_create.success:
-      return { ...state, loading: false, forms: [...state.forms, action.payload] }
+      return {
+        ...state,
+        loading: false,
+        forms: [...state.forms, action.payload],
+        currentForm: action.payload,
+      }
     case formTypes.form_create.failure:
       return { ...state, loading: false }
     /* Form Delete */

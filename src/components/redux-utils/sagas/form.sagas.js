@@ -25,7 +25,8 @@ function* getAllForms() {
 
 function* deleteForm(action) {
   try {
-    yield put(formActions.deleteFormSuccess(action))
+    yield axios.delete('/forms', { data: { id: action.payload } })
+    yield put(formActions.deleteFormSuccess({ id: action.payload }))
   } catch (err) {
     yield put(formActions.deleteFormFailure(action))
   }

@@ -11,6 +11,7 @@ import FormElements from '../../organisms/FormElements'
 import Sidebar from '../../organisms/Sidebar'
 import {
   createForm,
+  deleteForm,
   getForms as getFormsAction,
   selectForm,
 } from '../../redux-utils/actions/form.actions'
@@ -32,7 +33,8 @@ const HeaderContainer = styled('div')({
   gridArea: '1 / 2 / 2 / 6',
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
+  justifyContent: 'space-between',
+  padding: '20px',
 })
 const BuilderContainer = styled('div')({
   gridArea: '2 / 2 / 5 / 6',
@@ -45,7 +47,7 @@ const FooterContainer = styled('div')({
   alignItems: 'center',
   justifyContent: 'center',
   '>*': {
-    margin: '20px',
+    margin: '30px',
   },
 })
 const FormBuilder = () => {
@@ -67,6 +69,12 @@ const FormBuilder = () => {
   const redirectToViewer = () => {
     history.push(`/viewer/${currentForm.id}`)
   }
+  const handleDeleteClick = () => {
+    const response = confirm('Are you sure you want to Delete the form?')
+    if (response) {
+      dispatch(deleteForm(currentForm && currentForm.id))
+    }
+  }
   useEffect(() => {
     dispatch(getFormsAction())
   }, [])
@@ -84,6 +92,7 @@ const FormBuilder = () => {
         <Typography fontSize="l" bold textAlign="center">
           {forms.length ? 'Drop and Create' : 'No Forms present. Create a form'}
         </Typography>
+        <Button onClick={handleDeleteClick}>Delete Form</Button>
       </HeaderContainer>
       {forms.length ? (
         <React.Fragment>

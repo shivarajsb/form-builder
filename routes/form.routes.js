@@ -18,4 +18,11 @@ router.post('/', async (req, res) => {
   return res.status(200).json({ ...form })
 })
 
+router.delete('/', async (req, res) => {
+  db.get('forms')
+    .remove({ id: req.body.id })
+    .write()
+  return res.status(200).json({ message: 'Successfully Deleted the Form' })
+})
+
 module.exports = router
