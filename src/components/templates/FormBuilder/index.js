@@ -78,6 +78,7 @@ const FormBuilder = () => {
   useEffect(() => {
     dispatch(getFormsAction())
   }, [])
+  console.log('This is the current form', currentForm)
   return (
     <GridParent>
       <SidebarContainer>
@@ -89,20 +90,29 @@ const FormBuilder = () => {
         />
       </SidebarContainer>
       <HeaderContainer>
+        <Typography fontSize="l" bold>
+          {currentForm && currentForm.name}
+        </Typography>
         <Typography fontSize="l" bold textAlign="center">
           {forms.length ? 'Drop and Create' : 'No Forms present. Create a form'}
         </Typography>
-        <Button onClick={handleDeleteClick}>Delete Form</Button>
+        <span>{currentForm && <Button onClick={handleDeleteClick}>Delete Form</Button>}</span>
       </HeaderContainer>
-      {forms.length ? (
+      {forms.length && currentForm ? (
         <React.Fragment>
-          <BuilderContainer>
-            <FormElements />
-          </BuilderContainer>
-          <FooterContainer>
-            <Button>Save</Button>
-            <Button onClick={redirectToViewer}>Go to Viewer</Button>
-          </FooterContainer>
+          {currentForm ? (
+            <React.Fragment>
+              <BuilderContainer>
+                <FormElements />
+              </BuilderContainer>
+              <FooterContainer>
+                <Button>Save</Button>
+                <Button onClick={redirectToViewer}>Go to Viewer</Button>
+              </FooterContainer>
+            </React.Fragment>
+          ) : (
+            <Typography>Select a form from the list</Typography>
+          )}
         </React.Fragment>
       ) : null}
       <Modal open={modalOpen} handleClose={() => handleModalActions('close')}>

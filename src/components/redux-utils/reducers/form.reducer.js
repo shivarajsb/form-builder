@@ -27,6 +27,7 @@ const formReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         forms: state.forms.filter(i => i.id !== action.payload.id),
+        currentForm: null,
       }
     case formTypes.form_delete.failure:
       return { ...state, loading: false }
