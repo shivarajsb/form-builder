@@ -25,6 +25,7 @@ const Toolbar = ({ onEdit, onDelete, onDuplicate, onDrag }) => {
     {
       component: Drag,
       fn: onDrag,
+      event: true,
     },
   ].map(({ component, fn }) => withHover(component, fn))
   return (
