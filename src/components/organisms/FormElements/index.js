@@ -37,9 +37,6 @@ const FormElements = () => {
   const dispatch = useDispatch()
   const [modalOpen, setModalOpen] = useState(false)
   const [selected, setSelected] = useState([])
-  const handleItemDrop = e => {
-    dispatch(componentActions.swapComponent(e))
-  }
   const components = useSelector(getComponentElements)
 
   const handleToolbarAction = e => {
@@ -76,7 +73,11 @@ const FormElements = () => {
                         ref={childProvided.innerRef}
                         {...childProvided.dragHandleProps}
                       >
-                        <Component data={{ ...meta }} />
+                        <Component
+                          data={{ ...meta, id }}
+                          handleAction={handleToolbarAction}
+                          type={type}
+                        />
                       </Grid>
                     )}
                   </Draggable>

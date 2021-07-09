@@ -1,7 +1,7 @@
 export const data = [
   {
-    id: '123',
     type: 'container',
+    id: '123',
     meta: {
       displayType: 'flex',
       childElements: [

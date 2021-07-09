@@ -2,13 +2,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { Draggable, DragDropContext, Droppable } from 'react-beautiful-dnd'
+import { Draggable, Droppable } from 'react-beautiful-dnd'
 
 import Button from '../../atoms/button'
 import SpaceBetween from '../../atoms/space-between'
 import Plus from '../../atoms/svg/plus'
 import Typography from '../../atoms/typography'
 import ListItem from '../../atoms/list-item'
+import Element from '../../atoms/element'
 
 const ComponentsGroup = styled('div')({
   display: 'flex',
@@ -93,15 +94,13 @@ const Sidebar = ({ handleCreateForm, formList, handleFormClick, currentForm }) =
             {formComponents.map(({ label, type }, index) => (
               <Draggable key={type} draggableId={type} index={index}>
                 {childProvided => (
-                  <div
+                  <Element
                     ref={childProvided.innerRef}
                     {...childProvided.draggableProps}
                     {...childProvided.dragHandleProps}
                   >
-                    <Button dashed variant="primary" id={type} type={type}>
-                      {label}
-                    </Button>
-                  </div>
+                    {label}
+                  </Element>
                 )}
               </Draggable>
             ))}

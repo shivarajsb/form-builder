@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useRef } from 'react'
+import { get } from 'lodash'
+import React from 'react'
 import styled from 'styled-components'
 
 import SpaceBetween from '../../components/atoms/space-between'
@@ -17,21 +18,10 @@ const Wrapper = styled('div')({
 const withToolbar = (Component, type, label) => props => {
   const handleUserAction = action => {
     const { handleAction, id } = props
-    handleAction({ action, id })
+    handleAction({ action, id: props.type === 'container' ? get(props, 'data.id') : id })
   }
-  const toolbarRef = useRef()
-  const { id } = props
-  useEffect(() => {
-    const toolbar = toolbarRef.current
-    toolbar.addEventListener('dragstart', e => {
-      e.dataTransfer.setData('text', JSON.stringify({ type, id }))
-    })
-    toolbar.addEventListener('drag', e => {
-      e.preventDefault()
-    })
-  }, [])
   return (
-    <Wrapper draggable ref={toolbarRef}>
+    <Wrapper>
       <SpaceBetween>
         <Typography>{label}</Typography>
         <Toolbar
