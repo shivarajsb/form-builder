@@ -12,13 +12,10 @@ export const Padding = styled('div')({
 })
 const InputModule = ({ handleAction, data, type }) => {
   const { label, name, required, min, max, placeholder, id } = data
-  const InputWithToolbar = withToolbar(Input, 'input')
+  const InputWithToolbar = withToolbar(Input, 'input', label)
 
   return (
     <div>
-      <Typography fontSize="m" bold>
-        {label}
-      </Typography>
       <Padding>
         <InputWithToolbar
           type={type}

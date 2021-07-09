@@ -2,8 +2,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { Draggable, DragDropContext, Droppable } from 'react-beautiful-dnd'
 
-import { DragButton } from '../../atoms/button'
+import Button from '../../atoms/button'
 import SpaceBetween from '../../atoms/space-between'
 import Plus from '../../atoms/svg/plus'
 import Typography from '../../atoms/typography'
@@ -25,6 +26,29 @@ const Wrapper = styled('div')({
     marginTop: '40px',
   },
 })
+
+const formComponents = [
+  {
+    label: 'Input',
+    type: 'input',
+  },
+  {
+    label: 'Checkbox',
+    type: 'checkbox',
+  },
+  {
+    label: 'File Uploader',
+    type: 'upload',
+  },
+  {
+    label: 'Text',
+    type: 'text',
+  },
+  {
+    label: 'Divider',
+    type: 'divider',
+  },
+]
 const Sidebar = ({ handleCreateForm, formList, handleFormClick, currentForm }) => (
   <Wrapper>
     <div>
@@ -54,32 +78,36 @@ const Sidebar = ({ handleCreateForm, formList, handleFormClick, currentForm }) =
         Cell Layout
       </Typography>
       <ComponentsGroup>
-        <DragButton dashed variant="primary" type="container">
+        <Button dashed variant="primary" type="container">
           Container
-        </DragButton>
+        </Button>
       </ComponentsGroup>
     </div>
     <div>
       <Typography bold fontSize="m" color="white">
         Form Components
       </Typography>
-      <ComponentsGroup>
-        <DragButton dashed variant="primary" id="input" type="input">
-          Input
-        </DragButton>
-        <DragButton dashed variant="primary" type="checkbox">
-          Checkbox
-        </DragButton>
-        <DragButton dashed variant="primary" type="upload">
-          File Uploader
-        </DragButton>
-        <DragButton dashed variant="primary" type="text">
-          Text
-        </DragButton>
-        <DragButton dashed variant="primary" type="divider">
-          Divider
-        </DragButton>
-      </ComponentsGroup>
+      <Droppable droppableId="components">
+        {provided => (
+          <ComponentsGroup {...provided.droppableProps} ref={provided.innerRef}>
+            {formComponents.map(({ label, type }, index) => (
+              <Draggable key={type} draggableId={type} index={index}>
+                {childProvided => (
+                  <div
+                    ref={childProvided.innerRef}
+                    {...childProvided.draggableProps}
+                    {...childProvided.dragHandleProps}
+                  >
+                    <Button dashed variant="primary" id={type} type={type}>
+                      {label}
+                    </Button>
+                  </div>
+                )}
+              </Draggable>
+            ))}
+          </ComponentsGroup>
+        )}
+      </Droppable>
     </div>
   </Wrapper>
 )

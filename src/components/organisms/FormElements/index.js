@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
+import { Droppable, Draggable } from 'react-beautiful-dnd'
 
 import CheckboxModule from '../../molecules/CheckboxModule'
 import DividerModule from '../../molecules/DividerModule'
 import InputModule from '../../molecules/InputModule'
 import TextModule from '../../molecules/TextModule'
-import Dropzone from '../../molecules/Dropzone'
 import { componentActions } from '../../redux-utils/actions'
 import { getComponentElements } from '../../redux-utils/selectors/component.selector'
 import ModalForm from '../../molecules/ModalForm'
@@ -63,20 +63,28 @@ const FormElements = () => {
   return (
     <Container>
       <Wrapper>
-        {components.map(({ type, id, meta }) => {
-          const Component = types[type]
-          return (
-            <Grid key={id}>
-              <Dropzone id={id} onItemDrop={handleItemDrop} key={id} />
-              <Component
-                data={{ ...meta, id }}
-                handleAction={handleToolbarAction}
-                onItemDrop={e => console.log(e)}
-              />
-            </Grid>
-          )
-        })}
-        <Dropzone id={'end'} onItemDrop={handleItemDrop} key={'end'} />
+        <Droppable droppableId="components">
+          {provided => (
+            <div {...provided.droppableProps} ref={provided.innerRef}>
+              {components.map(({ type, id, meta }, index) => {
+                const Component = types[type]
+                return (
+                  <Draggable key={id} draggableId={id} index={index}>
+                    {childProvided => (
+                      <Grid
+                        {...childProvided.draggableProps}
+                        ref={childProvided.innerRef}
+                        {...childProvided.dragHandleProps}
+                      >
+                        <Component data={{ ...meta }} />
+                      </Grid>
+                    )}
+                  </Draggable>
+                )
+              })}
+            </div>
+          )}
+        </Droppable>
       </Wrapper>
       {modalOpen && (
         <ModalForm

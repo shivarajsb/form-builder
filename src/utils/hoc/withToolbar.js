@@ -2,21 +2,19 @@
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
+import SpaceBetween from '../../components/atoms/space-between'
+import Typography from '../../components/atoms/typography'
 import Toolbar from '../../components/molecules/toolbar'
 
 const Wrapper = styled('div')({
   position: 'relative',
   padding: '20px 10px 20px 10px',
   backgroundColor: 'white',
+  border: '1px solid #e8e8e8',
+  borderRadius: '20px',
+  marginTop: '20px',
 })
-
-const PositionWrapper = styled('div')({
-  position: 'absolute',
-  right: '-10px',
-  top: '-40px',
-})
-
-const withToolbar = (Component, type) => props => {
+const withToolbar = (Component, type, label) => props => {
   const handleUserAction = action => {
     const { handleAction, id } = props
     handleAction({ action, id })
@@ -34,14 +32,14 @@ const withToolbar = (Component, type) => props => {
   }, [])
   return (
     <Wrapper draggable ref={toolbarRef}>
-      <PositionWrapper>
+      <SpaceBetween>
+        <Typography>{label}</Typography>
         <Toolbar
           onDelete={() => handleUserAction('delete')}
-          onDrag={() => handleUserAction('drag')}
           onEdit={() => handleUserAction('edit')}
           onDuplicate={() => handleUserAction('duplicate')}
         />
-      </PositionWrapper>
+      </SpaceBetween>
       <Component {...props} />
     </Wrapper>
   )

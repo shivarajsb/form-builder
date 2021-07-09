@@ -23,24 +23,7 @@ const Button = styled('button')({
 
 export default Button
 
-export const DragButton = ({ children, type, ...other }) => {
-  const buttonRef = useRef()
-  useEffect(() => {
-    const button = buttonRef.current
-    button.addEventListener('dragstart', e => {
-      e.dataTransfer.setData('text', JSON.stringify({ type, id: null }))
-    })
-    button.addEventListener('drag', e => {
-      e.preventDefault()
-      e.dataTransfer.setData('text/plain', e.currentTarget.type)
-    })
-  }, [])
-  return (
-    <Button {...other} ref={buttonRef} draggable>
-      {children}
-    </Button>
-  )
-}
+export const DragButton = ({ children, type, ...other }) => <Button {...other}>{children}</Button>
 
 DragButton.propTypes = {
   children: Proptypes.any.isRequired,

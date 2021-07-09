@@ -23,7 +23,7 @@ export const data = [
   },
   {
     type: 'text',
-    id: 1,
+    id: '1',
     meta: {
       label: 'Text',
       name: 'text',
@@ -33,7 +33,7 @@ export const data = [
   },
   {
     type: 'input',
-    id: 2,
+    id: '2',
     meta: {
       label: 'Name',
       name: 'name',
@@ -45,7 +45,7 @@ export const data = [
   },
   {
     type: 'input',
-    id: 5,
+    id: '5',
     meta: {
       label: 'Name',
       name: 'name',
@@ -57,7 +57,7 @@ export const data = [
   },
   {
     type: 'divider',
-    id: 3,
+    id: '3',
     meta: {
       label: 'Divider',
     },

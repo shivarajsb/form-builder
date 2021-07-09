@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import Droppable from '../../atoms/container'
-import Typography from '../../atoms/typography'
 import { Padding } from '../InputModule'
 import Plus from '../../atoms/svg/plus'
 import Minus from '../../atoms/svg/minus'
@@ -13,9 +12,7 @@ import withToolbar from '../../../utils/hoc/withToolbar'
 
 const Wrapper = styled('div')({
   backgroundColor: 'white',
-  padding: '20px',
   borderRadius: '10px',
-  border: '1px solid #dddddd',
   position: 'relative',
 })
 
@@ -59,7 +56,6 @@ const ContainerModule = ({ displayType, childElements, id, onItemDrop }) => {
           </Span>
         </HorizontalDiv>
       ) : null}
-      <Typography>Container</Typography>
       <Padding style={{ display: displayType }}>
         {displayType !== 'block' ? (
           times(numberChildren).map((i, index) => (
@@ -91,4 +87,4 @@ ContainerModule.propTypes = {
 ContainerModule.defaultProps = {
   displayType: 'block',
 }
-export default withToolbar(ContainerModule, 'container')
+export default withToolbar(ContainerModule, 'container', 'Container')
