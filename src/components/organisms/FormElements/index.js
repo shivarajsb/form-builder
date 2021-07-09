@@ -25,10 +25,13 @@ const Container = styled('div')({
   justifyContent: 'center',
   width: '100%',
   border: '1px solid #e8e8e8',
+  paddingTop: '0px 30px 30px 0px',
+  margin: '0px 30px 30px 0px',
 })
 const Wrapper = styled('div')({
   width: '90%',
   marginTop: 60,
+  marginBottom: 300,
 })
 const Grid = styled('div')({
   display: 'block',

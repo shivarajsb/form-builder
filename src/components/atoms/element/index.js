@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-const Element = styled('div')({
+const Element = styled('div').attrs({
+  draggable: true,
+})({
   textAlign: 'center',
   padding: '12px',
   borderRadius: '20px',

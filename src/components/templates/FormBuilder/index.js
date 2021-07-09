@@ -20,35 +20,30 @@ import { getCurrentForm, getForms } from '../../redux-utils/selectors/form.selec
 
 const GridParent = styled('div')({
   display: 'grid',
-  gridTemplateColumns: 'repeat(5, 1fr)',
-  gridTemplateRows: 'repeat(5, 1fr)',
+  gridTemplateColumns: 'repeat(6, 1fr)',
+  gridTemplateRows: 'repeat(6, 1fr)',
   gridColumnGap: '0px',
   gridRowGap: '0px',
   height: '100vh',
 })
 
 const SidebarContainer = styled('div')({
-  gridArea: '1/1/6/2',
+  gridArea: '1/1/7/2',
 })
 const HeaderContainer = styled('div')({
-  gridArea: '1 / 2 / 2 / 6',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
+  gridArea: '1 / 2 / 2 / 7',
   padding: '20px',
 })
 const BuilderContainer = styled('div')({
-  gridArea: '2 / 2 / 5 / 6',
+  gridArea: '2 / 2 / 7 / 7',
   overflow: 'scroll',
 })
 
-const FooterContainer = styled('div')({
-  gridArea: '5 / 2 / 6 / 6',
+const ButtonGroup = styled('div')({
   display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  flexDirection: 'row',
   '>*': {
-    margin: '30px',
+    marginRight: '20px',
   },
 })
 const FormBuilder = () => {
@@ -97,7 +92,15 @@ const FormBuilder = () => {
           <Typography fontSize="l" bold textAlign="center">
             {forms.length ? 'Drop and Create' : 'No Forms present. Create a form'}
           </Typography>
-          <span>{currentForm && <Button onClick={handleDeleteClick}>Delete Form</Button>}</span>
+          <span>
+            {currentForm ? (
+              <ButtonGroup>
+                <Button onClick={handleDeleteClick}>Delete Form</Button>
+                <Button>Save</Button>
+                <Button onClick={redirectToViewer}>Go to Viewer</Button>
+              </ButtonGroup>
+            ) : null}
+          </span>
         </HeaderContainer>
         {forms.length && currentForm ? (
           <React.Fragment>
@@ -106,10 +109,6 @@ const FormBuilder = () => {
                 <BuilderContainer>
                   <FormElements />
                 </BuilderContainer>
-                <FooterContainer>
-                  <Button>Save</Button>
-                  <Button onClick={redirectToViewer}>Go to Viewer</Button>
-                </FooterContainer>
               </React.Fragment>
             ) : (
               <Typography>Select a form from the list</Typography>
