@@ -1,10 +1,9 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useMemo } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Draggable, Droppable } from 'react-beautiful-dnd'
 
-import Button from '../../atoms/button'
 import SpaceBetween from '../../atoms/space-between'
 import Plus from '../../atoms/svg/plus'
 import Typography from '../../atoms/typography'
@@ -73,16 +72,6 @@ const Sidebar = ({ handleCreateForm, formList, handleFormClick, currentForm }) =
             />
           ))}
       </div>
-    </div>
-    <div>
-      <Typography bold fontSize="m" color="white">
-        Cell Layout
-      </Typography>
-      <ComponentsGroup>
-        <Button dashed variant="primary" type="container">
-          Container
-        </Button>
-      </ComponentsGroup>
     </div>
     <div>
       <Typography bold fontSize="m" color="white">

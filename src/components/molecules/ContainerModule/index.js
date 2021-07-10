@@ -35,9 +35,9 @@ const Span = styled('span')({
   padding: '0px',
 })
 
-const ContainerModule = ({ displayType, childElements, id, onItemDrop }) => {
-  const [numberChildren, setNumberChildren] = useState(1)
-
+const ContainerModule = ({ data, id, onItemDrop }) => {
+  const { childElements, children, displayType } = data
+  const [numberChildren, setNumberChildren] = useState(children || 1)
   const handleClick = action => {
     setNumberChildren(e => (action === 'plus' ? e + 1 : e - 1))
   }
@@ -45,7 +45,7 @@ const ContainerModule = ({ displayType, childElements, id, onItemDrop }) => {
     onItemDrop({ ...e, id })
   }
   return (
-    <Wrapper>
+    <Wrapper draggable>
       {displayType === 'flex' ? (
         <HorizontalDiv>
           <Span onClick={() => handleClick('minus')}>
@@ -83,6 +83,7 @@ ContainerModule.propTypes = {
   childElements: PropTypes.object.isRequired,
   id: PropTypes.string.isRequired,
   onItemDrop: PropTypes.func.isRequired,
+  data: PropTypes.any.isRequired,
 }
 ContainerModule.defaultProps = {
   displayType: 'block',

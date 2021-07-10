@@ -6,6 +6,7 @@ export const getInitialValues = values => {
     label: '',
     name: '',
     placeholder: '',
+    displayType: 'block',
     required: false,
   }
   const placeholders = {
