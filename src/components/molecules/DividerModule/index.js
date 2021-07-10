@@ -5,8 +5,8 @@ import withToolbar from '../../../utils/hoc/withToolbar'
 import Divider from '../../atoms/divider'
 
 const DividerModule = ({ handleAction, data }) => {
-  const DividerToolbar = withToolbar(Divider, 'divider', 'Divider')
-  const { id } = data
+  const { id, label } = data
+  const DividerToolbar = withToolbar(Divider, 'divider', label)
   return (
     <div>
       <DividerToolbar id={id} handleAction={handleAction} />
