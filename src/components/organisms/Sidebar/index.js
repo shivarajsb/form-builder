@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React from 'react'
+import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Draggable, Droppable } from 'react-beautiful-dnd'

@@ -17,6 +17,7 @@ import {
   selectForm,
 } from '../../redux-utils/actions/form.actions'
 import { getCurrentForm, getForms } from '../../redux-utils/selectors/form.selector'
+import { swapComponent } from '../../redux-utils/actions/component.actions'
 
 const GridParent = styled('div')({
   display: 'grid',
@@ -71,12 +72,15 @@ const FormBuilder = () => {
       dispatch(deleteForm(currentForm && currentForm.id))
     }
   }
+  const handleDropAction = e => {
+    dispatch(swapComponent(e))
+  }
   useEffect(() => {
     dispatch(getFormsAction())
   }, [])
   return (
     <GridParent>
-      <DragDropContext onDragEnd={e => console.log(e)}>
+      <DragDropContext onDragEnd={handleDropAction}>
         <SidebarContainer>
           <Sidebar
             handleCreateForm={() => handleModalActions('open')}

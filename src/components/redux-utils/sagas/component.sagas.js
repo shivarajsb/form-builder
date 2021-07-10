@@ -2,28 +2,25 @@
 import { put, select, takeLatest } from 'redux-saga/effects'
 
 import { generateSchema } from '../../../utils/data/schemas'
-import { duplicateElement, swapArray } from '../../../utils/helpers'
+import { duplicateElement } from '../../../utils/helpers'
 import { componentActions } from '../actions'
 import { getComponentById, getComponentElements } from '../selectors/component.selector'
 import { componentTypes } from '../types'
 
+const elements = ['input', 'container', 'checkbox', 'upload', 'text', 'divider']
+
 function* createComponent(action) {
   try {
-    const { type, target } = action.payload
-    const newElement = generateSchema(type)
+    const { payload } = action
+    const { draggableId, destination } = payload
+    const newElement = generateSchema(draggableId)
     const components = yield select(getComponentElements)
     let modifiedArray = []
-    if (target === 'end') {
-      modifiedArray = [...components, newElement]
-    } else {
-      const targetIndex = components.findIndex(i => i.id == target)
-      modifiedArray = [
-        ...components.slice(0, targetIndex),
-        newElement,
-        ...components.slice(targetIndex),
-      ]
-    }
-
+    modifiedArray = [
+      ...components.slice(0, destination.index),
+      newElement,
+      ...components.slice(destination.index),
+    ]
     yield put(componentActions.createComponentSuccess(modifiedArray))
   } catch (err) {
     yield put(componentActions.createComponentFailure(err))
@@ -51,7 +48,7 @@ function* editComponent(action) {
 }
 function* swapComponent(action) {
   try {
-    const { id, target } = action.payload
+    /* const { id, target } = action.payload
     if (id) {
       const components = yield select(getComponentElements)
       const data = yield select(getComponentById(id))
@@ -66,6 +63,13 @@ function* swapComponent(action) {
       yield put(componentActions.swapComponentSuccess(modifiedArray))
     } else {
       yield put(componentActions.createComponent(action.payload))
+    } */
+    const { payload } = action
+    const { source, destination, draggableId } = payload
+    if (elements.includes(draggableId)) {
+      yield put(componentActions.createComponent(action.payload))
+    } else {
+      console.log('Swapping the components', source, destination)
     }
   } catch (err) {
     yield put(componentActions.swapComponentFailure(err))
