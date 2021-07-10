@@ -1,11 +1,10 @@
 /* eslint-disable no-case-declarations */
-import { data } from '../../../utils/data/mockData'
 import { componentTypes } from '../types'
 
 const initialState = {
   loading: false,
   currentForm: null,
-  components: data,
+  components: [],
 }
 
 const componentsReducer = (state = initialState, action) => {
@@ -52,6 +51,9 @@ const componentsReducer = (state = initialState, action) => {
       return { ...state, components: action.payload, loading: false }
     case componentTypes.component_duplicate.failure:
       return { ...state, loading: false }
+    /* Get Form Components */
+    case componentTypes.get_form_components.success:
+      return { ...state, loading: false, components: action.payload }
     default:
       return state
   }

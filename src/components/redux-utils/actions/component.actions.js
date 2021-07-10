@@ -62,3 +62,12 @@ export const createDuplicateFailure = payload => ({
   type: componentTypes.component_duplicate.failure,
   payload,
 })
+/* Get form components */
+export const getFormComponentsSuccess = payload => ({
+  type: componentTypes.get_form_components.success,
+  payload,
+})
+export const getFormComponentsFailure = payload => ({
+  type: componentTypes.get_form_components.failure,
+  payload,
+})

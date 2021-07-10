@@ -18,3 +18,8 @@ export const selectFormFailure = payload => ({ type: formTypes.select_form.failu
 export const getForms = payload => ({ type: formTypes.get_forms.request, payload })
 export const getFormsSuccess = payload => ({ type: formTypes.get_forms.success, payload })
 export const getFormsFailure = payload => ({ type: formTypes.get_forms.failure, payload })
+
+/* Save Forms */
+export const saveForm = payload => ({ type: formTypes.save_form.request, payload })
+export const saveFormSuccess = payload => ({ type: formTypes.save_form.success, payload })
+export const saveFormFailure = payload => ({ type: formTypes.save_form.failure, payload })

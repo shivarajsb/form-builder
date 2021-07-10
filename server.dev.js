@@ -22,7 +22,7 @@ app.use(
 )
 app.use(bodyParser.json())
 app.use(webpackHotMiddleware(compiler))
-app.use('/forms', formRouter)
+app.use('/api/', formRouter)
 
 app.get('/static/404', (req, res) => {
   res.status(404).send('')

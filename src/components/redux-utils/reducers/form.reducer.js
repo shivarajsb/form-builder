@@ -45,6 +45,13 @@ const formReducer = (state = initialState, action) => {
       return { ...state, loading: false, forms: action.payload }
     case formTypes.get_forms.failure:
       return { ...state, loading: false }
+    /* Save Form */
+    case formTypes.save_form.request:
+      return { ...state, loading: true }
+    case formTypes.save_form.success:
+      return { ...state, loading: false }
+    case formTypes.save_form.failure:
+      return { ...state, loading: false }
     default: {
       return state
     }

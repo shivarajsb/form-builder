@@ -15,6 +15,7 @@ import {
   deleteForm,
   getForms as getFormsAction,
   selectForm,
+  saveForm,
 } from '../../redux-utils/actions/form.actions'
 import { getCurrentForm, getForms } from '../../redux-utils/selectors/form.selector'
 import { swapComponent } from '../../redux-utils/actions/component.actions'
@@ -75,6 +76,10 @@ const FormBuilder = () => {
   const handleDropAction = e => {
     dispatch(swapComponent(e))
   }
+
+  const handleSave = () => {
+    dispatch(saveForm(currentForm))
+  }
   useEffect(() => {
     dispatch(getFormsAction())
   }, [])
@@ -100,7 +105,7 @@ const FormBuilder = () => {
             {currentForm ? (
               <ButtonGroup>
                 <Button onClick={handleDeleteClick}>Delete Form</Button>
-                <Button>Save</Button>
+                <Button onClick={handleSave}>Save</Button>
                 <Button onClick={redirectToViewer}>Go to Viewer</Button>
               </ButtonGroup>
             ) : null}
