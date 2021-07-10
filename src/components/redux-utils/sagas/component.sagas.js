@@ -1,8 +1,9 @@
 /* eslint-disable eqeqeq */
+import { get } from 'lodash'
 import { put, select, takeLatest } from 'redux-saga/effects'
 
 import { generateSchema } from '../../../utils/data/schemas'
-import { duplicateElement } from '../../../utils/helpers'
+import { duplicateElement, moveArray } from '../../../utils/helpers'
 import { componentActions } from '../actions'
 import { getComponentById, getComponentElements } from '../selectors/component.selector'
 import { componentTypes } from '../types'
@@ -48,28 +49,16 @@ function* editComponent(action) {
 }
 function* swapComponent(action) {
   try {
-    /* const { id, target } = action.payload
-    if (id) {
-      const components = yield select(getComponentElements)
-      const data = yield select(getComponentById(id))
-      const sourceIndex = components.findIndex(i => i.id == data.id)
-      const targetIndex = components.findIndex(i => i.id == target)
-      let modifiedArray = []
-      if (target === 'start') {
-        modifiedArray = swapArray(components, sourceIndex, 0)
-      } else {
-        modifiedArray = swapArray(components, sourceIndex, targetIndex)
-      }
-      yield put(componentActions.swapComponentSuccess(modifiedArray))
-    } else {
-      yield put(componentActions.createComponent(action.payload))
-    } */
     const { payload } = action
     const { source, destination, draggableId } = payload
     if (elements.includes(draggableId)) {
       yield put(componentActions.createComponent(action.payload))
     } else {
-      console.log('Swapping the components', source, destination)
+      const sourceIndex = get(source, 'index')
+      const destinationIndex = get(destination, 'index')
+      const components = yield select(getComponentElements)
+      const modified = moveArray(components, sourceIndex, destinationIndex)
+      yield put(componentActions.swapComponentSuccess(modified))
     }
   } catch (err) {
     yield put(componentActions.swapComponentFailure(err))
