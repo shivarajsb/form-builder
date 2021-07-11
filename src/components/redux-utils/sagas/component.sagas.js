@@ -17,11 +17,17 @@ function* createComponent(action) {
     const newElement = generateSchema(draggableId)
     const components = yield select(getComponentElements)
     let modifiedArray = []
-    modifiedArray = [
-      ...components.slice(0, destination.index),
-      newElement,
-      ...components.slice(destination.index),
-    ]
+    if (destination) {
+      modifiedArray = [
+        ...components.slice(0, destination.index),
+        newElement,
+        ...components.slice(destination.index),
+      ]
+    } else if (!destination && components.length) {
+      modifiedArray = [...components, newElement]
+    } else {
+      modifiedArray = [newElement]
+    }
     yield put(componentActions.createComponentSuccess(modifiedArray))
   } catch (err) {
     yield put(componentActions.createComponentFailure(err))

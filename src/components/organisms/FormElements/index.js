@@ -36,6 +36,12 @@ const Wrapper = styled('div')({
 const Grid = styled('div')({
   display: 'block',
 })
+const DroppableContainer = styled('div')({
+  backgroundColor: ({ isDraggingOver }) => (isDraggingOver ? '#e8e8e8' : null),
+  padding: '30px 10px 30px 10px',
+  transition: '0.3s',
+  borderRadius: '20px',
+})
 const FormElements = () => {
   const dispatch = useDispatch()
   const [modalOpen, setModalOpen] = useState(false)
@@ -60,34 +66,42 @@ const FormElements = () => {
   const handleSubmit = e => {
     dispatch(componentActions.editComponent({ selected, data: e }))
   }
+
   return (
     <Container>
       <Wrapper>
         <Droppable droppableId="components">
-          {provided => (
-            <div {...provided.droppableProps} ref={provided.innerRef}>
-              {components.map(({ type, id, meta }, index) => {
-                const Component = types[type]
-                return (
-                  <Draggable key={id} draggableId={id} index={index}>
-                    {childProvided => (
-                      <Grid
-                        {...childProvided.draggableProps}
-                        ref={childProvided.innerRef}
-                        {...childProvided.dragHandleProps}
-                      >
-                        <Component
-                          data={{ ...meta, id }}
-                          handleAction={handleToolbarAction}
-                          type={type}
-                        />
-                      </Grid>
-                    )}
-                  </Draggable>
-                )
-              })}
-            </div>
-          )}
+          {(provided, snapshot) => {
+            console.log('This is the snapshot', snapshot)
+            return (
+              <DroppableContainer
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+                isDraggingOver={snapshot.isDraggingOver}
+              >
+                {components.map(({ type, id, meta }, index) => {
+                  const Component = types[type]
+                  return (
+                    <Draggable key={id} draggableId={id} index={index}>
+                      {childProvided => (
+                        <Grid
+                          {...childProvided.draggableProps}
+                          ref={childProvided.innerRef}
+                          {...childProvided.dragHandleProps}
+                        >
+                          <Component
+                            data={{ ...meta, id }}
+                            handleAction={handleToolbarAction}
+                            type={type}
+                          />
+                        </Grid>
+                      )}
+                    </Draggable>
+                  )
+                })}
+              </DroppableContainer>
+            )
+          }}
         </Droppable>
       </Wrapper>
       {modalOpen && (
