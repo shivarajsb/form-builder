@@ -1,73 +1,44 @@
 {
   "forms": [
     {
-      "id": "a6605ec9-42a4-4314-a80c-09ef453bca66",
-      "date": 1625775553420,
-      "name": "Hello World",
+      "id": "a4e6f3c6-1c95-4072-ba6c-1f9c89ecb476",
+      "date": 1626021525737,
+      "name": "Sachins Form",
       "components": [
         {
           "type": "text",
-          "id": "1",
+          "id": "4ba138ca-0cdf-4977-b478-639618459881",
           "meta": {
             "label": "Text",
-            "name": "text",
-            "fontSize": "m",
+            "fontSize": "xl",
             "bold": true
           }
         },
         {
           "type": "input",
-          "id": "2",
+          "id": "3b3ed81c-655b-45aa-a2fe-d2962ac1d7f4",
           "meta": {
-            "label": "Name",
-            "name": "name",
-            "required": true,
-            "min": 4,
-            "max": 100,
-            "placeholder": "Enter your name"
+            "label": "Username",
+            "name": "username",
+            "placeholder": "Enter your Username",
+            "displayType": "block",
+            "required": true
           }
         },
         {
           "type": "input",
-          "id": "5",
+          "id": "0166ad46-e680-4ff1-b336-fc8a4a237511",
           "meta": {
-            "label": "Name",
-            "name": "name",
-            "required": true,
-            "min": 4,
-            "max": 100,
-            "placeholder": "Enter your Email"
-          }
-        },
-        {
-          "type": "divider",
-          "id": "3",
-          "meta": {
-            "label": "Divider"
-          }
-        }
-      ]
-    },
-    {
-      "id": "9f9d077f-4776-4068-926b-044aeef4d820",
-      "date": 1625776366330,
-      "name": "aosaksok",
-      "components": [
-        {
-          "type": "input",
-          "id": "867d09d1-90e1-4bb9-9691-5299cc9e6b3f",
-          "meta": {
-            "label": "Input",
-            "name": "input",
-            "required": false,
-            "min": 100,
-            "max": 100,
-            "placeholder": "Enter Input"
+            "label": "City",
+            "name": "city",
+            "placeholder": "Enter your City",
+            "displayType": "block",
+            "required": true
           }
         },
         {
           "type": "checkbox",
-          "id": "a5610af0-7597-4670-881e-39eda690f734",
+          "id": "2fca1576-9b20-4637-a4aa-c028c8c6f672",
           "meta": {
             "name": "checkbox",
             "label": "Checkbox Label",
@@ -75,22 +46,13 @@
           }
         },
         {
-          "type": "text",
-          "id": "f346657c-61eb-42a1-9ea3-a2ec89654f30",
+          "type": "divider",
+          "id": "ec4e319a-323b-4ed4-b1f2-87d730ae2def",
           "meta": {
-            "label": "Text",
-            "name": "text",
-            "fontSize": "m",
-            "bold": true
+            "label": "Divider"
           }
         }
       ]
-    },
-    {
-      "id": "46fe8306-e26b-46d5-9446-288860d84293",
-      "date": 1625863017453,
-      "name": "plpwlepwle",
-      "components": []
     }
   ]
 }

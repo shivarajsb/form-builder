@@ -5,13 +5,13 @@ import { put, select, takeLatest } from 'redux-saga/effects'
 import { componentActions, formActions } from '../actions'
 import { saveFormSuccess } from '../actions/form.actions'
 import { getComponentElements } from '../selectors/component.selector'
-import { getCurrentForm, getFormById, getForms } from '../selectors/form.selector'
+import { getForms } from '../selectors/form.selector'
 import { formTypes } from '../types'
 
 function* createForm(action) {
   try {
     const { payload } = action
-    const response = yield axios.post('/forms', payload)
+    const response = yield axios.post('/api', payload)
     yield put(formActions.createFormSuccess(response.data))
   } catch (err) {
     yield put(formActions.createFormFailure(action))
@@ -53,10 +53,8 @@ function* saveForm(action) {
     const { id } = payload
     const components = yield select(getComponentElements)
     const response = yield axios.put('/api/', { id, components })
-    console.log(response)
-    yield put(saveFormSuccess(payload))
+    yield put(saveFormSuccess(response))
   } catch (err) {
-    console.log(err)
     yield put(formActions.saveFormFailure(err))
   }
 }

@@ -99,7 +99,8 @@ const FormBuilder = () => {
             {currentForm && currentForm.name}
           </Typography>
           <Typography fontSize="l" bold textAlign="center">
-            {forms.length ? 'Drop and Create' : 'No Forms present. Create a form'}
+            {forms.length && currentForm && 'Drop and Create'}
+            {forms.length && !currentForm && 'Please select a from from the sidebar '}
           </Typography>
           <span>
             {currentForm ? (

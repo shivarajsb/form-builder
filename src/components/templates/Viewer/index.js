@@ -1,13 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Typography from '../../atoms/typography'
 import Div from '../../atoms/Div'
 import Button from '../../atoms/button'
-import { getFormById } from '../../redux-utils/selectors/form.selector'
+import { componentActions } from '../../redux-utils/actions'
+import { getComponentElements } from '../../redux-utils/selectors/component.selector'
+import Input from '../../atoms/Input'
+import Checkbox from '../../atoms/checkbox'
+import Divider from '../../atoms/divider'
+import Text from '../../atoms/text'
 
 const GridParent = styled('grid')({
   display: 'grid',
@@ -38,10 +42,20 @@ const FooterContainer = styled('div')({
   gridArea: '5 / 1 / 6 / 6',
 })
 
+const types = {
+  input: Input,
+  checkbox: Checkbox,
+  text: Text,
+  divider: Divider,
+}
+
 const Viewer = () => {
   const { id } = useParams()
-  const currentForm = useSelector(getFormById(id))
-  console.log('This is the current form ', currentForm)
+  const dispatch = useDispatch()
+  const components = useSelector(getComponentElements)
+  useEffect(() => {
+    dispatch(componentActions.getFormComponents({ id }))
+  }, [])
   return (
     <GridParent>
       <HeaderContainer>
@@ -52,7 +66,10 @@ const Viewer = () => {
       <FormContainer>
         <Typography fontSize="m">Preview</Typography>
         <Div>
-          <Typography>Hello World this is Shivaraj Bakale</Typography>
+          {components.map(item => {
+            const Component = types[item.type]
+            return <div style={{ margin: '20px' }}>{<Component {...item.meta} />}</div>
+          })}
         </Div>
       </FormContainer>
       <DataContainer>

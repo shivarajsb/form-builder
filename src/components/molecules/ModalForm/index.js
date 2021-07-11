@@ -7,11 +7,13 @@ import Modal from '../../atoms/modal'
 import DividerModal from '../ModalContent/DividerModal'
 import InputModal from '../ModalContent/InputModal'
 import TextModal from '../ModalContent/TextModal'
+import CheckboxModal from '../ModalContent/CheckboxModal'
 
 const mapper = {
   input: InputModal,
   text: TextModal,
   divider: DividerModal,
+  checkbox: CheckboxModal,
 }
 
 const ModalForm = ({ selected, handleSubmit, open, handleClose }) => {

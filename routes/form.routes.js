@@ -28,7 +28,6 @@ router.get('/:formid', async (req, res) => {
 })
 
 router.put('/', async (req, res) => {
-  console.log(req.body)
   const { id, components } = req.body
   db.get('forms')
     .find({ id })

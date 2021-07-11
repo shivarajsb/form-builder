@@ -1,4 +1,5 @@
 /* eslint-disable eqeqeq */
+import axios from 'axios'
 import { get } from 'lodash'
 import { put, select, takeLatest } from 'redux-saga/effects'
 
@@ -88,11 +89,22 @@ function* duplicateComponent(action) {
     yield put(componentActions.createDuplicateFailure(err))
   }
 }
+function* getFormComponents(action) {
+  try {
+    const { id } = action.payload
+    const response = yield axios.get(`/api/${id}`)
+    const components = get(response, 'data.components')
+    yield put(componentActions.getFormComponentsSuccess(components))
+  } catch (err) {
+    yield put(componentActions.getFormComponentsFailure(err))
+  }
+}
 const watcherSaga = [
   takeLatest(componentTypes.component_create.request, createComponent),
   takeLatest(componentTypes.component_delete.request, deleteComponent),
   takeLatest(componentTypes.component_edit.request, editComponent),
   takeLatest(componentTypes.component_swap.request, swapComponent),
   takeLatest(componentTypes.component_duplicate.request, duplicateComponent),
+  takeLatest(componentTypes.get_form_components.request, getFormComponents),
 ]
 export default watcherSaga

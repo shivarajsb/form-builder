@@ -3,4 +3,4 @@ import React from 'react'
 
 import Checkbox from '.'
 
-storiesOf('Atoms/Checkbox', module).add('Checkbox', () => <Checkbox />)
+storiesOf('Atoms/Checkbox', module).add('Checkbox', () => <Checkbox label="Hello World" />)
