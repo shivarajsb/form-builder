@@ -53,6 +53,7 @@ function* saveForm(action) {
     const { id } = payload
     const components = yield select(getComponentElements)
     const response = yield axios.put('/api/', { id, components })
+    yield put(componentActions.saveForm())
     yield put(saveFormSuccess(response))
   } catch (err) {
     yield put(formActions.saveFormFailure(err))

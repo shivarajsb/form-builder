@@ -11,3 +11,5 @@ export const getComponentById = id =>
     const items = state.filter(i => i.id === id)
     return items && items.length ? items[0] : []
   })
+
+export const getSavedStatus = createSelector([getComponents], state => state.saved)

@@ -75,3 +75,8 @@ export const getFormComponentsFailure = payload => ({
   type: componentTypes.get_form_components.failure,
   payload,
 })
+/* Save Form */
+export const saveForm = payload => ({
+  type: componentTypes.save_form,
+  payload,
+})

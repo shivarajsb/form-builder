@@ -19,6 +19,7 @@ import {
 } from '../../redux-utils/actions/form.actions'
 import { getCurrentForm, getForms } from '../../redux-utils/selectors/form.selector'
 import { swapComponent } from '../../redux-utils/actions/component.actions'
+import { getSavedStatus } from '../../redux-utils/selectors/component.selector'
 
 const GridParent = styled('div')({
   display: 'grid',
@@ -52,8 +53,9 @@ const FormBuilder = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const forms = useSelector(getForms)
-  const [modalOpen, setModalOpen] = useState(false)
   const currentForm = useSelector(getCurrentForm)
+  const savedStatus = useSelector(getSavedStatus)
+  const [modalOpen, setModalOpen] = useState(false)
   const handleModalActions = action => {
     setModalOpen(action === 'open')
   }
@@ -65,7 +67,11 @@ const FormBuilder = () => {
     dispatch(selectForm(e))
   }
   const redirectToViewer = () => {
-    history.push(`/viewer/${currentForm.id}`)
+    if (savedStatus) {
+      history.push(`/viewer/${currentForm.id}`)
+    } else {
+      alert('Please save the form first')
+    }
   }
   const handleDeleteClick = () => {
     const response = confirm('Are you sure you want to Delete the form?')
@@ -83,6 +89,7 @@ const FormBuilder = () => {
   useEffect(() => {
     dispatch(getFormsAction())
   }, [])
+
   return (
     <GridParent>
       <DragDropContext onDragEnd={handleDropAction}>
@@ -106,7 +113,9 @@ const FormBuilder = () => {
             {currentForm ? (
               <ButtonGroup>
                 <Button onClick={handleDeleteClick}>Delete Form</Button>
-                <Button onClick={handleSave}>Save</Button>
+                <Button onClick={handleSave} disabled={savedStatus}>
+                  Save
+                </Button>
                 <Button onClick={redirectToViewer}>Go to Viewer</Button>
               </ButtonGroup>
             ) : null}

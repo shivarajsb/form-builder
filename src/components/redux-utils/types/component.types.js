@@ -7,4 +7,5 @@ export default {
   component_swap: generateTypes('COMPONENT_SWAP'),
   component_duplicate: generateTypes('COMPONENT_DUPLICATE'),
   get_form_components: generateTypes('GET_FORM_COMPONENTS'),
+  save_form: 'SAVE_FORM',
 }

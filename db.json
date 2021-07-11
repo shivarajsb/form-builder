@@ -6,15 +6,6 @@
       "name": "Sachins Form",
       "components": [
         {
-          "type": "text",
-          "id": "4ba138ca-0cdf-4977-b478-639618459881",
-          "meta": {
-            "label": "Text",
-            "fontSize": "xl",
-            "bold": true
-          }
-        },
-        {
           "type": "input",
           "id": "3b3ed81c-655b-45aa-a2fe-d2962ac1d7f4",
           "meta": {
@@ -43,6 +34,15 @@
             "name": "checkbox",
             "label": "Checkbox Label",
             "required": false
+          }
+        },
+        {
+          "type": "text",
+          "id": "4ba138ca-0cdf-4977-b478-639618459881",
+          "meta": {
+            "label": "Text",
+            "fontSize": "l",
+            "bold": false
           }
         },
         {
