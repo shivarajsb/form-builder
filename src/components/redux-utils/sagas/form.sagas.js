@@ -4,6 +4,7 @@ import { put, select, takeLatest } from 'redux-saga/effects'
 
 import { componentActions, formActions } from '../actions'
 import { saveFormSuccess } from '../actions/form.actions'
+import { getComponentElements } from '../selectors/component.selector'
 import { getCurrentForm, getFormById, getForms } from '../selectors/form.selector'
 import { formTypes } from '../types'
 
@@ -50,9 +51,12 @@ function* saveForm(action) {
   try {
     const { payload } = action
     const { id } = payload
-    const form = yield select(getFormById(id))
+    const components = yield select(getComponentElements)
+    const response = yield axios.put('/api/', { id, components })
+    console.log(response)
     yield put(saveFormSuccess(payload))
   } catch (err) {
+    console.log(err)
     yield put(formActions.saveFormFailure(err))
   }
 }

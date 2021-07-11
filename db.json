@@ -52,7 +52,29 @@
       "id": "9f9d077f-4776-4068-926b-044aeef4d820",
       "date": 1625776366330,
       "name": "aosaksok",
-      "components": []
+      "components": [
+        {
+          "type": "checkbox",
+          "id": "55e85611-7ffa-4395-8088-4f2bb19ce848",
+          "meta": {
+            "name": "checkbox",
+            "label": "Checkbox Label",
+            "required": false
+          }
+        },
+        {
+          "type": "input",
+          "id": "8bfccc91-f897-435b-b896-3e2b371b22ae",
+          "meta": {
+            "label": "Input",
+            "name": "input",
+            "required": false,
+            "min": 100,
+            "max": 100,
+            "placeholder": "Enter Input"
+          }
+        }
+      ]
     },
     {
       "id": "46fe8306-e26b-46d5-9446-288860d84293",

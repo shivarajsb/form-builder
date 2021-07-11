@@ -27,7 +27,15 @@ router.get('/:formid', async (req, res) => {
   return res.status(200).json({ id: formid, components: data.components })
 })
 
-router.put('/', async (req, res) => res.status(200).json({ message: 'Put Request at play' }))
+router.put('/', async (req, res) => {
+  console.log(req.body)
+  const { id, components } = req.body
+  db.get('forms')
+    .find({ id })
+    .assign({ components })
+    .write()
+  res.status(200).json({ message: 'Put Request at play' })
+})
 
 router.delete('/', async (req, res) => {
   db.get('forms')
