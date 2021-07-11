@@ -11,6 +11,7 @@ import { componentActions } from '../../redux-utils/actions'
 import { getComponentElements } from '../../redux-utils/selectors/component.selector'
 import ModalForm from '../../molecules/ModalForm'
 import ContainerModule from '../../molecules/ContainerModule'
+import Typography from '../../atoms/typography'
 
 export const types = {
   text: TextModule,
@@ -71,37 +72,35 @@ const FormElements = () => {
     <Container>
       <Wrapper>
         <Droppable droppableId="components">
-          {(provided, snapshot) => {
-            console.log('This is the snapshot', snapshot)
-            return (
-              <DroppableContainer
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                isDraggingOver={snapshot.isDraggingOver}
-              >
-                {components.map(({ type, id, meta }, index) => {
-                  const Component = types[type]
-                  return (
-                    <Draggable key={id} draggableId={id} index={index}>
-                      {childProvided => (
-                        <Grid
-                          {...childProvided.draggableProps}
-                          ref={childProvided.innerRef}
-                          {...childProvided.dragHandleProps}
-                        >
-                          <Component
-                            data={{ ...meta, id }}
-                            handleAction={handleToolbarAction}
-                            type={type}
-                          />
-                        </Grid>
-                      )}
-                    </Draggable>
-                  )
-                })}
-              </DroppableContainer>
-            )
-          }}
+          {(provided, snapshot) => (
+            <DroppableContainer
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              isDraggingOver={snapshot.isDraggingOver}
+            >
+              {!components.length && <Typography>No Form elements present</Typography>}
+              {components.map(({ type, id, meta }, index) => {
+                const Component = types[type]
+                return (
+                  <Draggable key={id} draggableId={id} index={index}>
+                    {childProvided => (
+                      <Grid
+                        {...childProvided.draggableProps}
+                        ref={childProvided.innerRef}
+                        {...childProvided.dragHandleProps}
+                      >
+                        <Component
+                          data={{ ...meta, id }}
+                          handleAction={handleToolbarAction}
+                          type={type}
+                        />
+                      </Grid>
+                    )}
+                  </Draggable>
+                )
+              })}
+            </DroppableContainer>
+          )}
         </Droppable>
       </Wrapper>
       {modalOpen && (

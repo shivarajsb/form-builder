@@ -4,27 +4,21 @@ import PropTypes from 'prop-types'
 
 import withToolbar from '../../../utils/hoc/withToolbar'
 import Checkbox from '../../atoms/checkbox'
-import Typography from '../../atoms/typography'
 
-const CheckboxToolbar = withToolbar(Checkbox, 'checkbox')
-const Row = styled('div')({
-  display: 'inline',
-})
-
-const CheckboxModule = ({ handleAction, data, type }) => {
+const CheckboxModule = ({ handleAction, data }) => {
   const { id, name, label, required } = data
+  const CheckboxToolbar = withToolbar(Checkbox, 'checkbox', label)
+  const Row = styled('div')({
+    display: 'inline',
+  })
   return (
     <Row>
-      <Typography fontSize="m" bold type={type}>
-        {label}
-      </Typography>
       <CheckboxToolbar name={name} id={id} required={required} handleAction={handleAction} />
     </Row>
   )
 }
 
 CheckboxModule.propTypes = {
-  type: PropTypes.string.isRequired,
   handleAction: PropTypes.func.isRequired,
   data: PropTypes.objectOf({
     id: PropTypes.string.isRequired,
