@@ -1,5 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
-import React, { useMemo } from 'react'
+import React, { useMemo, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { Formik } from 'formik'
 import styled from 'styled-components'
@@ -32,13 +32,25 @@ const ButtonContainer = styled('div')({
   backgroundColor: 'white',
   padding: '10px',
 })
-const PreviewSection = ({ components, handleValues, handleErrors }) => {
+const PreviewSection = ({ components, handleValues, handleErrors, handleFormSubmit }) => {
   const initialValues = useMemo(() => getInitialValues(components), [components])
   const handleValidate = values => validateData(components, values)
+  const formRef = useRef()
+
+  const handleSubmitForm = e => {
+    const { current } = formRef
+    handleFormSubmit(e)
+    current.resetForm()
+  }
   return (
     <Container>
-      <Formik initialValues={initialValues} validate={handleValidate}>
-        {({ handleChange, values, errors }) => {
+      <Formik
+        initialValues={initialValues}
+        validate={handleValidate}
+        innerRef={formRef}
+        onSubmit={handleSubmitForm}
+      >
+        {({ handleChange, values, errors, handleSubmit }) => {
           handleValues(values)
           handleErrors(errors)
           return (
@@ -65,7 +77,7 @@ const PreviewSection = ({ components, handleValues, handleErrors }) => {
                 )
               })}
               <ButtonContainer>
-                <Button>Submit</Button>
+                <Button onClick={handleSubmit}>Submit</Button>
               </ButtonContainer>
             </Form>
           )
@@ -78,6 +90,7 @@ PreviewSection.propTypes = {
   components: PropTypes.any.isRequired,
   handleValues: PropTypes.func.isRequired,
   handleErrors: PropTypes.func.isRequired,
+  handleFormSubmit: PropTypes.func.isRequired,
 }
 
 export default PreviewSection

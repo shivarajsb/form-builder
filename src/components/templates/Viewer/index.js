@@ -12,7 +12,7 @@ import Container from '../../molecules/DataContainer'
 import Back from '../../atoms/svg/back'
 import { LargeButton } from '../../atoms/button'
 
-const GridParent = styled('grid')({
+const GridParent = styled('div')({
   display: 'grid',
   gridTemplateColumns: 'repeat(5, 1fr)',
   gridTemplateRows: 'repeat(6, 1fr)',
