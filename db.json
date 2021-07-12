@@ -1,55 +1,9 @@
 {
   "forms": [
     {
-      "id": "a1533ae5-7d4c-47a9-8f47-481320244bba",
-      "date": 1626123473280,
-      "name": "First Form",
-      "components": [
-        {
-          "type": "input",
-          "id": "2c215b4a-de4f-4617-b025-c1e15bfa94d2",
-          "meta": {
-            "label": "First",
-            "name": "first",
-            "placeholder": "Enter First",
-            "displayType": "block",
-            "required": true
-          }
-        },
-        {
-          "type": "input",
-          "id": "43d3eced-ef1f-43d2-a3b4-4d2597480293",
-          "meta": {
-            "label": "Second",
-            "name": "second",
-            "placeholder": "Enter Second Value",
-            "displayType": "block",
-            "required": true
-          }
-        },
-        {
-          "type": "input",
-          "id": "c08a0f82-29a5-4098-a70e-13ad85b7f162",
-          "meta": {
-            "label": "Third",
-            "name": "third",
-            "placeholder": "Enter Third Value",
-            "displayType": "block",
-            "required": true
-          }
-        },
-        {
-          "type": "input",
-          "id": "1c804f36-262f-4030-9eed-1713ade8a782",
-          "meta": {
-            "label": "Fourth",
-            "name": "fourth",
-            "placeholder": "Enter the Fourth Value",
-            "displayType": "block",
-            "required": true
-          }
-        }
-      ]
+      "id": "099da4fc-b392-428e-8373-4ecfba6eab82",
+      "date": 1626124093937,
+      "name": "First Form"
     }
   ],
   "data": [
