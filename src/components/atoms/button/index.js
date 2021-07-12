@@ -22,5 +22,22 @@ const Button = styled('button')({
     color: 'grey',
   },
 })
-
+export const LargeButton = styled('button')({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  border: 'none',
+  '>*': {
+    margin: '0px 10px 0px 0px',
+  },
+  width: 'fit-content',
+  padding: '5px 10px 5px 10px',
+  borderRadius: '10px',
+  backgroundColor: 'white',
+  transition: '0.2s',
+  ':hover': {
+    backgroundColor: '#e8e8e8',
+    transition: '0.2s',
+  },
+})
 export default Button

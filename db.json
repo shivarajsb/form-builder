@@ -6,13 +6,6 @@
       "name": "Hello World",
       "components": [
         {
-          "type": "divider",
-          "id": "27569f21-325e-4d54-b228-5a66430e9f16",
-          "meta": {
-            "label": "Enter the Divider Text"
-          }
-        },
-        {
           "type": "text",
           "id": "d30ba7b0-6dc8-4e12-a12f-750c343b60db",
           "meta": {
@@ -28,6 +21,13 @@
             "label": "Requried",
             "name": "isRequired",
             "required": true
+          }
+        },
+        {
+          "type": "divider",
+          "id": "27569f21-325e-4d54-b228-5a66430e9f16",
+          "meta": {
+            "label": "Enter the Divider Text"
           }
         },
         {

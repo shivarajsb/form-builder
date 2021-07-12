@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Typography from '../../atoms/typography'
@@ -10,12 +10,12 @@ import { getComponentElements } from '../../redux-utils/selectors/component.sele
 import PreviewSection from '../../molecules/PreviewSection'
 import Container from '../../molecules/DataContainer'
 import Back from '../../atoms/svg/back'
-import Button from '../../atoms/button'
+import { LargeButton } from '../../atoms/button'
 
 const GridParent = styled('grid')({
   display: 'grid',
   gridTemplateColumns: 'repeat(5, 1fr)',
-  gridTemplateRows: 'repeat(5, 1fr)',
+  gridTemplateRows: 'repeat(6, 1fr)',
   gridColumnGap: '30px',
   gridRowGap: '30px',
   height: '93vh',
@@ -39,10 +39,14 @@ const ErrorsContainer = styled('div')({
 const EventsContainer = styled('div')({
   gridArea: '4 / 4 / 5 / 6',
 })
+const FooterSection = styled('div')({
+  gridArea: '6 / 1/7/6',
+})
 
 const Viewer = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
+  const history = useHistory()
   const components = useSelector(getComponentElements)
   const [values, setValues] = useState({})
   const [errors, setErrors] = useState({})
@@ -56,9 +60,18 @@ const Viewer = () => {
       setValues(data)
     }
   }
+  const handleRedirect = () => {
+    history.goBack()
+  }
   return (
     <GridParent>
       <HeaderContainer>
+        <LargeButton onClick={handleRedirect}>
+          <Back />
+          <Typography fontSize="l" color="#888888" bold>
+            Back
+          </Typography>
+        </LargeButton>
         <Typography fontSize="xl" color="#D7D8D8" bold>
           Preview
         </Typography>
@@ -91,6 +104,7 @@ const Viewer = () => {
           <Container />
         </Div>
       </EventsContainer>
+      <FooterSection />
     </GridParent>
   )
 }
