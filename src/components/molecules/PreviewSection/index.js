@@ -42,6 +42,8 @@ const PreviewSection = ({ components, handleValues, handleErrors, handleFormSubm
     handleFormSubmit(e)
     current.resetForm()
   }
+  const isFormValid = (values, initialValues) =>
+    Object.keys(values).length === Object.keys(initialValues).length
   return (
     <Container>
       <Formik
@@ -53,7 +55,7 @@ const PreviewSection = ({ components, handleValues, handleErrors, handleFormSubm
         {({ handleChange, values, errors, handleSubmit, isValid, dirty }) => {
           handleValues(values || initialValues)
           handleErrors(errors)
-          const disableSubmit = !(isValid && dirty)
+          const disableSubmit = !(isValid && dirty && isFormValid(values, initialValues))
           return (
             <Form>
               {components.map(item => {
