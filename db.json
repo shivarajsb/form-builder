@@ -6,15 +6,6 @@
       "name": "Hello World",
       "components": [
         {
-          "type": "text",
-          "id": "d30ba7b0-6dc8-4e12-a12f-750c343b60db",
-          "meta": {
-            "label": "Username Section",
-            "fontSize": "s",
-            "bold": false
-          }
-        },
-        {
           "type": "checkbox",
           "id": "550deb94-40c9-43e4-aa91-cfce59495aa0",
           "meta": {
@@ -30,6 +21,15 @@
             "label": "Requried",
             "name": "isRequired",
             "required": true
+          }
+        },
+        {
+          "type": "text",
+          "id": "d30ba7b0-6dc8-4e12-a12f-750c343b60db",
+          "meta": {
+            "label": "Username Section",
+            "fontSize": "s",
+            "bold": false
           }
         },
         {
@@ -159,6 +159,14 @@
           }
         }
       ]
+    }
+  ],
+  "data": [
+    {
+      "checkbox": true,
+      "isRequired": false,
+      "input": "Hello World this is SHivaraj Bakael",
+      "id": "f8431248-67d2-40fe-b167-f0981719f113"
     }
   ]
 }

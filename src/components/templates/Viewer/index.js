@@ -11,6 +11,7 @@ import PreviewSection from '../../molecules/PreviewSection'
 import Container from '../../molecules/DataContainer'
 import Back from '../../atoms/svg/back'
 import { LargeButton } from '../../atoms/button'
+import { submitForm } from '../../redux-utils/actions/form.actions'
 
 const GridParent = styled('div')({
   display: 'grid',
@@ -64,7 +65,7 @@ const Viewer = () => {
     history.goBack()
   }
   const handleSubmit = e => {
-    console.log('This is the form data ', e)
+    dispatch(submitForm({ ...e, id }))
   }
   return (
     <GridParent>

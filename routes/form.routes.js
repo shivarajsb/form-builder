@@ -33,7 +33,7 @@ router.put('/', async (req, res) => {
     .find({ id })
     .assign({ components })
     .write()
-  res.status(200).json({ message: 'Put Request at play' })
+  res.status(200).json({ message: 'Successfully edited the form' })
 })
 
 router.delete('/', async (req, res) => {
@@ -41,6 +41,14 @@ router.delete('/', async (req, res) => {
     .remove({ id: req.body.id })
     .write()
   return res.status(200).json({ message: 'Successfully Deleted the Form' })
+})
+
+router.post('/submit', async (req, res) => {
+  const { body } = req
+  db.get('data')
+    .push(body)
+    .write()
+  return res.status(200).json({ message: 'Successfully Submitted the form' })
 })
 
 module.exports = router
