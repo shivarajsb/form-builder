@@ -51,7 +51,6 @@ const PreviewSection = ({
   }
   const isFormValid = (values, initialValues) => {
     const value = Object.keys(values).length === Object.keys(initialValues).length
-    console.log(values, initialValues)
     return value
   }
   return (
@@ -62,9 +61,9 @@ const PreviewSection = ({
         innerRef={formRef}
         onSubmit={handleSubmitForm}
       >
-        {({ handleChange, values, errors, handleSubmit, isValid, dirty }) => {
+        {({ handleChange, values, errors, handleSubmit, isValid, dirty, touched, handleBlur }) => {
           handleValues(values)
-          handleErrors(errors)
+          handleErrors(touched && errors)
           const disableSubmit = !(isValid && dirty && isFormValid(values, initialValues))
           return (
             <Form>
@@ -79,11 +78,12 @@ const PreviewSection = ({
                         {...item.meta}
                         value={values[name] || initialValues[name]}
                         onChange={name ? handleChange : null}
+                        onBlur={name ? handleBlur : null}
                       />
                     }
                     {errors[name] && (
                       <Typography fontSize="s" color="red">
-                        {errors[name]}
+                        {touched[name] && errors[name]}
                       </Typography>
                     )}
                   </div>
