@@ -112,7 +112,9 @@ const FormBuilder = () => {
           <span>
             {currentForm ? (
               <ButtonGroup>
-                <Button onClick={handleDeleteClick}>Delete Form</Button>
+                <Button onClick={handleDeleteClick} variant="danger">
+                  Delete Form
+                </Button>
                 <Button onClick={handleSave} disabled={savedStatus}>
                   Save
                 </Button>

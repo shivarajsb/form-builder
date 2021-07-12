@@ -1,13 +1,15 @@
-/* eslint-disable react/forbid-prop-types */
-import React from 'react'
 import styled from 'styled-components'
-import Proptypes from 'prop-types'
+
+const buttonTypes = {
+  primary: ['#197AFF', '#ffffff'],
+  danger: ['#ffffff', '#DA5555'],
+}
 
 const Button = styled('button')({
-  backgroundColor: ({ variant }) => (variant === 'primary' ? '#197AFF' : '#ffffff'),
+  backgroundColor: ({ variant }) => (variant ? buttonTypes[variant][0] : '#ffffff'),
   borderRadius: '10em',
   padding: '12px',
-  color: ({ variant }) => (variant === 'primary' ? 'white' : '#197AFF'),
+  color: ({ variant }) => (variant ? buttonTypes[variant][1] : '#197AFF'),
   fontSize: '16px',
   fontWeight: 'bold',
   border: ({ variant }) => `${variant === 'primary' ? '1px solid white' : '1px solid #e8e8e8'}`,
@@ -22,10 +24,3 @@ const Button = styled('button')({
 })
 
 export default Button
-
-export const DragButton = ({ children, type, ...other }) => <Button {...other}>{children}</Button>
-
-DragButton.propTypes = {
-  children: Proptypes.any.isRequired,
-  type: Proptypes.string.isRequired,
-}

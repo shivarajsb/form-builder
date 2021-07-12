@@ -9,6 +9,8 @@ import { componentActions } from '../../redux-utils/actions'
 import { getComponentElements } from '../../redux-utils/selectors/component.selector'
 import PreviewSection from '../../molecules/PreviewSection'
 import Container from '../../molecules/DataContainer'
+import Back from '../../atoms/svg/back'
+import Button from '../../atoms/button'
 
 const GridParent = styled('grid')({
   display: 'grid',
@@ -19,11 +21,11 @@ const GridParent = styled('grid')({
   height: '93vh',
   padding: '30px',
 })
-
 const HeaderContainer = styled('div')({
   gridArea: '1 / 1 / 2 / 6',
   display: 'flex',
-  alignItems: 'center',
+  justifyContent: 'center',
+  flexDirection: 'column',
 })
 const FormContainer = styled('div')({
   gridArea: '2 / 1 / 6 / 4',

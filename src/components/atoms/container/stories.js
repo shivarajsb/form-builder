@@ -2,7 +2,6 @@
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 
-import { DragButton } from '../button'
 import withToolbar from '../../../utils/hoc/withToolbar'
 
 import Droppable from '.'
@@ -13,7 +12,6 @@ storiesOf('Atoms/Droppable', module)
     const DroppableModule = withToolbar(Droppable)
     return (
       <div>
-        <DragButton type="sample">DragButton</DragButton>
         <div style={{ padding: '50px', backgroundColor: 'blue' }}>
           <DroppableModule onHandleDrop={e => console.log(e)} />
         </div>
