@@ -50,9 +50,10 @@ const PreviewSection = ({ components, handleValues, handleErrors, handleFormSubm
         innerRef={formRef}
         onSubmit={handleSubmitForm}
       >
-        {({ handleChange, values, errors, handleSubmit }) => {
-          handleValues(values)
+        {({ handleChange, values, errors, handleSubmit, isValid, dirty }) => {
+          handleValues(values || initialValues)
           handleErrors(errors)
+          const disableSubmit = !(isValid && dirty)
           return (
             <Form>
               {components.map(item => {
@@ -77,7 +78,9 @@ const PreviewSection = ({ components, handleValues, handleErrors, handleFormSubm
                 )
               })}
               <ButtonContainer>
-                <Button onClick={handleSubmit}>Submit</Button>
+                <Button onClick={handleSubmit} disabled={disableSubmit}>
+                  Submit
+                </Button>
               </ButtonContainer>
             </Form>
           )

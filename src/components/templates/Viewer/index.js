@@ -63,6 +63,9 @@ const Viewer = () => {
   const handleRedirect = () => {
     history.goBack()
   }
+  const handleSubmit = e => {
+    console.log('This is the form data ', e)
+  }
   return (
     <GridParent>
       <HeaderContainer>
@@ -83,6 +86,7 @@ const Viewer = () => {
             components={components}
             handleErrors={e => handlePreviewState('errors', e)}
             handleValues={e => handlePreviewState('values', e)}
+            handleFormSubmit={handleSubmit}
           />
         </Div>
       </FormContainer>
