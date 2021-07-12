@@ -6,4 +6,5 @@ export default {
   select_form: generateTypes('SELECT_FORM'),
   get_forms: generateTypes('GET_FORMS'),
   save_form: generateTypes('SAVE_FORM'),
+  submit_form: generateTypes('SUBMIT_FORM'),
 }

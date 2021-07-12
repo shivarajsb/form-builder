@@ -59,12 +59,22 @@ function* saveForm(action) {
     yield put(formActions.saveFormFailure(err))
   }
 }
+function* submitForm(action) {
+  try {
+    const { payload } = action
+    console.log(payload)
+    yield put(formActions.submitFormSuccess(payload))
+  } catch (err) {
+    yield put(formActions.submitFormFailure(err))
+  }
+}
 const watcherSaga = [
   takeLatest(formTypes.get_forms.request, getAllForms),
   takeLatest(formTypes.form_create.request, createForm),
   takeLatest(formTypes.form_delete.request, deleteForm),
   takeLatest(formTypes.select_form.request, selectForm),
   takeLatest(formTypes.save_form.request, saveForm),
+  takeLatest(formTypes.submit_form.request, submitForm),
 ]
 
 export default watcherSaga
