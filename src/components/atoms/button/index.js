@@ -1,9 +1,6 @@
 import styled from 'styled-components'
 
-const buttonTypes = {
-  primary: ['#197AFF', '#ffffff'],
-  danger: ['#ffffff', '#DA5555'],
-}
+import { buttonTypes } from '../../../utils/helpers/constants'
 
 const Button = styled('button')({
   backgroundColor: ({ variant }) => (variant ? buttonTypes[variant][0] : '#ffffff'),

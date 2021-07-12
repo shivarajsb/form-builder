@@ -1,6 +1,6 @@
 /* eslint-disable no-case-declarations */
 
-import { componentTypes } from '../types'
+import { componentTypes, formTypes } from '../types'
 
 const initialState = {
   loading: false,
@@ -56,6 +56,11 @@ const componentsReducer = (state = initialState, action) => {
     /* Get Form Components */
     case componentTypes.get_form_components.success:
       return { ...state, loading: false, components: action.payload }
+    /* Delete Form */
+    case formTypes.form_delete.success:
+      return { ...state, loading: false, components: [] }
+    case formTypes.form_create.success:
+      return { ...state, loading: false, components: [] }
     /* Save Form */
     case componentTypes.save_form:
       return { ...state, saved: true }

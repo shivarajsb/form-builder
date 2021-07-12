@@ -65,6 +65,7 @@ const FormElements = () => {
     setModalOpen(false)
   }
   const handleSubmit = e => {
+    console.log(e)
     dispatch(componentActions.editComponent({ selected, data: e }))
   }
 

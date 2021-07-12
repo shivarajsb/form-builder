@@ -11,7 +11,6 @@ const inputSchema = {
 
 const textSchema = {
   label: 'Text',
-  name: 'text',
   fontSize: 'm',
   bold: true,
 }

@@ -62,9 +62,8 @@ function* saveForm(action) {
 function* submitForm(action) {
   try {
     const { payload } = action
-    console.log(payload)
     const response = yield axios.post('/api/submit', payload)
-    yield put(formActions.submitFormSuccess(payload))
+    yield put(formActions.submitFormSuccess(response))
   } catch (err) {
     yield put(formActions.submitFormFailure(err))
   }

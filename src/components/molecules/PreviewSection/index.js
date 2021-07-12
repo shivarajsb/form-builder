@@ -33,9 +33,15 @@ const ButtonContainer = styled('div')({
   backgroundColor: 'white',
   padding: '10px',
 })
-const PreviewSection = ({ components, handleValues, handleErrors, handleFormSubmit }) => {
+const PreviewSection = ({
+  components,
+  handleValues,
+  handleErrors,
+  handleFormSubmit,
+  handleEvents,
+}) => {
   const initialValues = useMemo(() => getInitialValues(components), [components])
-  const handleValidate = values => validateData(components, values)
+  const handleValidate = values => validateData(components, values, handleEvents)
   const formRef = useRef()
 
   const handleSubmitForm = e => {
@@ -43,8 +49,11 @@ const PreviewSection = ({ components, handleValues, handleErrors, handleFormSubm
     handleFormSubmit(e)
     current.resetForm()
   }
-  const isFormValid = (values, initialValues) =>
-    Object.keys(values).length === Object.keys(initialValues).length
+  const isFormValid = (values, initialValues) => {
+    const value = Object.keys(values).length === Object.keys(initialValues).length
+    console.log(values, initialValues)
+    return value
+  }
   return (
     <Container>
       <Formik
@@ -54,7 +63,7 @@ const PreviewSection = ({ components, handleValues, handleErrors, handleFormSubm
         onSubmit={handleSubmitForm}
       >
         {({ handleChange, values, errors, handleSubmit, isValid, dirty }) => {
-          handleValues(values || initialValues)
+          handleValues(values)
           handleErrors(errors)
           const disableSubmit = !(isValid && dirty && isFormValid(values, initialValues))
           return (
@@ -68,7 +77,7 @@ const PreviewSection = ({ components, handleValues, handleErrors, handleFormSubm
                       <Component
                         key={item.id}
                         {...item.meta}
-                        value={values[name]}
+                        value={values[name] || initialValues[name]}
                         onChange={name ? handleChange : null}
                       />
                     }
@@ -97,6 +106,7 @@ PreviewSection.propTypes = {
   handleValues: PropTypes.func.isRequired,
   handleErrors: PropTypes.func.isRequired,
   handleFormSubmit: PropTypes.func.isRequired,
+  handleEvents: PropTypes.func.isRequired,
 }
 
 export default PreviewSection

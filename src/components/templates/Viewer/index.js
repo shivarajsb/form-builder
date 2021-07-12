@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -12,6 +12,7 @@ import Container from '../../molecules/DataContainer'
 import Back from '../../atoms/svg/back'
 import { LargeButton } from '../../atoms/button'
 import { submitForm } from '../../redux-utils/actions/form.actions'
+import { eventErrorTypes } from '../../../utils/helpers/constants'
 
 const GridParent = styled('div')({
   display: 'grid',
@@ -44,6 +45,11 @@ const FooterSection = styled('div')({
   gridArea: '6 / 1/7/6',
 })
 
+const EventsWrapper = styled(Container)({
+  overflow: 'hidden',
+  maxHeight: '100px',
+  minHeight: '100px',
+})
 const Viewer = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
@@ -51,21 +57,27 @@ const Viewer = () => {
   const components = useSelector(getComponentElements)
   const [values, setValues] = useState({})
   const [errors, setErrors] = useState({})
+  const [events, setEvents] = useState([])
+
   useEffect(() => {
     dispatch(componentActions.getFormComponents({ id }))
   }, [])
-  const handlePreviewState = (action, data) => {
+  const handlePreviewState = useCallback((action, data) => {
     if (action === 'errors') {
       setErrors(data)
     } else {
       setValues(data)
     }
-  }
+  })
   const handleRedirect = () => {
     history.goBack()
   }
   const handleSubmit = e => {
+    setEvents(data => [{ type: 'submit' }, ...data])
     dispatch(submitForm({ ...e, id }))
+  }
+  const handleEventsData = type => {
+    setEvents(e => [{ type }, ...e])
   }
   return (
     <GridParent>
@@ -88,6 +100,7 @@ const Viewer = () => {
             handleErrors={e => handlePreviewState('errors', e)}
             handleValues={e => handlePreviewState('values', e)}
             handleFormSubmit={handleSubmit}
+            handleEvents={handleEventsData}
           />
         </Div>
       </FormContainer>
@@ -106,7 +119,13 @@ const Viewer = () => {
       <EventsContainer>
         <Typography fontSize="m">Events</Typography>
         <Div>
-          <Container />
+          <EventsWrapper>
+            {events.map(item => (
+              <Typography fontSize="s" color={eventErrorTypes[item.type]}>
+                {item.type}
+              </Typography>
+            ))}
+          </EventsWrapper>
         </Div>
       </EventsContainer>
       <FooterSection />
