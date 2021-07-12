@@ -1,17 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Typography from '../../atoms/typography'
 import Div from '../../atoms/Div'
-import Button from '../../atoms/button'
 import { componentActions } from '../../redux-utils/actions'
 import { getComponentElements } from '../../redux-utils/selectors/component.selector'
-import Input from '../../atoms/Input'
-import Checkbox from '../../atoms/checkbox'
-import Divider from '../../atoms/divider'
-import Text from '../../atoms/text'
+import PreviewSection from '../../molecules/PreviewSection'
+import Container from '../../molecules/DataContainer'
 
 const GridParent = styled('grid')({
   display: 'grid',
@@ -25,9 +22,11 @@ const GridParent = styled('grid')({
 
 const HeaderContainer = styled('div')({
   gridArea: '1 / 1 / 2 / 6',
+  display: 'flex',
+  alignItems: 'center',
 })
 const FormContainer = styled('div')({
-  gridArea: '2 / 1 / 5 / 4',
+  gridArea: '2 / 1 / 6 / 4',
 })
 const DataContainer = styled('div')({
   gridArea: '2 / 4 / 3 / 6',
@@ -38,24 +37,23 @@ const ErrorsContainer = styled('div')({
 const EventsContainer = styled('div')({
   gridArea: '4 / 4 / 5 / 6',
 })
-const FooterContainer = styled('div')({
-  gridArea: '5 / 1 / 6 / 6',
-})
-
-const types = {
-  input: Input,
-  checkbox: Checkbox,
-  text: Text,
-  divider: Divider,
-}
 
 const Viewer = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
   const components = useSelector(getComponentElements)
+  const [values, setValues] = useState({})
+  const [errors, setErrors] = useState({})
   useEffect(() => {
     dispatch(componentActions.getFormComponents({ id }))
   }, [])
+  const handlePreviewState = (action, data) => {
+    if (action === 'errors') {
+      setErrors(data)
+    } else {
+      setValues(data)
+    }
+  }
   return (
     <GridParent>
       <HeaderContainer>
@@ -66,33 +64,31 @@ const Viewer = () => {
       <FormContainer>
         <Typography fontSize="m">Preview</Typography>
         <Div>
-          {components.map(item => {
-            const Component = types[item.type]
-            return <div style={{ margin: '20px' }}>{<Component {...item.meta} />}</div>
-          })}
+          <PreviewSection
+            components={components}
+            handleErrors={e => handlePreviewState('errors', e)}
+            handleValues={e => handlePreviewState('values', e)}
+          />
         </Div>
       </FormContainer>
       <DataContainer>
         <Typography fontSize="m">Data</Typography>
         <Div>
-          <Typography>Data Container here</Typography>
+          <Container>{JSON.stringify(values)}</Container>
         </Div>
       </DataContainer>
       <ErrorsContainer>
         <Typography fontSize="m">Errors</Typography>
         <Div>
-          <Typography>Errors Container here</Typography>
+          <Container type="error">{JSON.stringify(errors)}</Container>
         </Div>
       </ErrorsContainer>
       <EventsContainer>
         <Typography fontSize="m">Events</Typography>
         <Div>
-          <Typography>EventsContainer here</Typography>
+          <Container />
         </Div>
       </EventsContainer>
-      <FooterContainer>
-        <Button>Submit</Button>
-      </FooterContainer>
     </GridParent>
   )
 }

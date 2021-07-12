@@ -16,7 +16,7 @@ function* createComponent(action) {
     const { payload } = action
     const { draggableId, destination } = payload
     const newElement = generateSchema(draggableId)
-    const components = yield select(getComponentElements)
+    const components = yield select(getComponentElements) || []
     let modifiedArray = []
     if (destination) {
       modifiedArray = [

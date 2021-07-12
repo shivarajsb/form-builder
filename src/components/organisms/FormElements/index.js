@@ -78,27 +78,33 @@ const FormElements = () => {
               ref={provided.innerRef}
               isDraggingOver={snapshot.isDraggingOver}
             >
-              {!components.length && <Typography>No Form elements present</Typography>}
-              {components.map(({ type, id, meta }, index) => {
-                const Component = types[type]
-                return (
-                  <Draggable key={id} draggableId={id} index={index}>
-                    {childProvided => (
-                      <Grid
-                        {...childProvided.draggableProps}
-                        ref={childProvided.innerRef}
-                        {...childProvided.dragHandleProps}
-                      >
-                        <Component
-                          data={{ ...meta, id }}
-                          handleAction={handleToolbarAction}
-                          type={type}
-                        />
-                      </Grid>
-                    )}
-                  </Draggable>
-                )
-              })}
+              {!components.length && (
+                <Typography>
+                  No Form elements present. Drag and Drop elements from the sidebar
+                </Typography>
+              )}
+              {components &&
+                components.map(({ type, id, meta }, index) => {
+                  const Component = types[type]
+                  return (
+                    <Draggable key={id} draggableId={id} index={index}>
+                      {childProvided => (
+                        <Grid
+                          {...childProvided.draggableProps}
+                          ref={childProvided.innerRef}
+                          {...childProvided.dragHandleProps}
+                        >
+                          <Component
+                            key={id}
+                            data={{ ...meta, id }}
+                            handleAction={handleToolbarAction}
+                            type={type}
+                          />
+                        </Grid>
+                      )}
+                    </Draggable>
+                  )
+                })}
             </DroppableContainer>
           )}
         </Droppable>

@@ -15,7 +15,7 @@ const componentsReducer = (state = initialState, action) => {
     case componentTypes.component_create.request:
       return { ...state, loading: true }
     case componentTypes.component_create.success:
-      return { ...state, components: action.payload, loading: false }
+      return { ...state, components: action.payload, loading: false, saved: false }
     case componentTypes.component_create.failure:
       return { ...state, loading: false }
     /* Component Edit */

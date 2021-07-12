@@ -1,55 +1,45 @@
 {
   "forms": [
     {
-      "id": "a4e6f3c6-1c95-4072-ba6c-1f9c89ecb476",
-      "date": 1626021525737,
-      "name": "Sachins Form",
+      "id": "f8431248-67d2-40fe-b167-f0981719f113",
+      "date": 1626095843414,
+      "name": "Hello World",
       "components": [
         {
-          "type": "input",
-          "id": "3b3ed81c-655b-45aa-a2fe-d2962ac1d7f4",
+          "type": "divider",
+          "id": "27569f21-325e-4d54-b228-5a66430e9f16",
           "meta": {
-            "label": "Username",
-            "name": "username",
-            "placeholder": "Enter your Username",
-            "displayType": "block",
-            "required": true
-          }
-        },
-        {
-          "type": "input",
-          "id": "0166ad46-e680-4ff1-b336-fc8a4a237511",
-          "meta": {
-            "label": "City",
-            "name": "city",
-            "placeholder": "Enter your City",
-            "displayType": "block",
-            "required": true
-          }
-        },
-        {
-          "type": "checkbox",
-          "id": "2fca1576-9b20-4637-a4aa-c028c8c6f672",
-          "meta": {
-            "name": "checkbox",
-            "label": "Checkbox Label",
-            "required": false
+            "label": "Enter the Divider Text"
           }
         },
         {
           "type": "text",
-          "id": "4ba138ca-0cdf-4977-b478-639618459881",
+          "id": "d30ba7b0-6dc8-4e12-a12f-750c343b60db",
           "meta": {
-            "label": "Text",
-            "fontSize": "l",
+            "label": "Username Section",
+            "fontSize": "s",
             "bold": false
           }
         },
         {
-          "type": "divider",
-          "id": "ec4e319a-323b-4ed4-b1f2-87d730ae2def",
+          "type": "checkbox",
+          "id": "1aa790f3-03f3-4ded-a507-a1c3b96b1953",
           "meta": {
-            "label": "Divider"
+            "label": "Requried",
+            "name": "isRequired",
+            "required": true
+          }
+        },
+        {
+          "type": "input",
+          "id": "10391930-5687-4bce-ac8f-b0f425952988",
+          "meta": {
+            "label": "Input",
+            "name": "input",
+            "required": false,
+            "min": 100,
+            "max": 100,
+            "placeholder": "Enter Input"
           }
         }
       ]
