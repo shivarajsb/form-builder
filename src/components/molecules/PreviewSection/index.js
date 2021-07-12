@@ -11,6 +11,7 @@ import Divider from '../../atoms/divider'
 import { getInitialValues, validateData } from '../../../utils/FormSchemas/Preview'
 import { Form } from '../ModalContent/InputModal'
 import Typography from '../../atoms/typography'
+import Button from '../../atoms/button'
 
 const types = {
   input: Input,
@@ -20,6 +21,16 @@ const types = {
 }
 const Container = styled('div')({
   position: 'relative',
+  height: '100%',
+  overflow: 'scroll',
+})
+
+const ButtonContainer = styled('div')({
+  position: 'fixed',
+  left: 20,
+  bottom: 40,
+  backgroundColor: 'white',
+  padding: '10px',
 })
 const PreviewSection = ({ components, handleValues, handleErrors }) => {
   const initialValues = useMemo(() => getInitialValues(components), [components])
@@ -53,6 +64,9 @@ const PreviewSection = ({ components, handleValues, handleErrors }) => {
                   </div>
                 )
               })}
+              <ButtonContainer>
+                <Button>Submit</Button>
+              </ButtonContainer>
             </Form>
           )
         }}

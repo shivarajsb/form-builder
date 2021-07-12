@@ -16,6 +16,15 @@
         },
         {
           "type": "checkbox",
+          "id": "550deb94-40c9-43e4-aa91-cfce59495aa0",
+          "meta": {
+            "name": "checkbox",
+            "label": "Checkbox Label",
+            "required": false
+          }
+        },
+        {
+          "type": "checkbox",
           "id": "1aa790f3-03f3-4ded-a507-a1c3b96b1953",
           "meta": {
             "label": "Requried",
@@ -40,6 +49,113 @@
             "min": 100,
             "max": 100,
             "placeholder": "Enter Input"
+          }
+        }
+      ]
+    },
+    {
+      "id": "43184f71-2b82-4d0f-a428-ca5f91718439",
+      "date": 1626114985614,
+      "name": "New Form"
+    },
+    {
+      "id": "aa7b7b51-46ad-43f8-aab2-3baf14a6ae6e",
+      "date": 1626115002841,
+      "name": "New Form 1",
+      "components": [
+        {
+          "type": "input",
+          "id": "33cc3705-42ff-4ccc-9bb4-ba7dbd5df969",
+          "meta": {
+            "label": "Password",
+            "name": "password",
+            "placeholder": "Enter the Data",
+            "displayType": "block",
+            "required": true
+          }
+        },
+        {
+          "type": "text",
+          "id": "590b99f4-3bf1-46a1-853f-c770554b78c7",
+          "meta": {
+            "label": "Enter User Details",
+            "fontSize": "m",
+            "bold": true
+          }
+        },
+        {
+          "type": "input",
+          "id": "4ff2d73e-b4ef-4e74-a8fb-ccc597e564bc",
+          "meta": {
+            "label": "Username",
+            "name": "username",
+            "placeholder": "Enter the Username",
+            "displayType": "block",
+            "required": false
+          }
+        },
+        {
+          "type": "input",
+          "id": "9b9e7490-b2ca-47f2-ac3a-b4cc1a6b9e82",
+          "meta": {
+            "label": "Email",
+            "name": "email",
+            "placeholder": "Enter the Email",
+            "displayType": "block",
+            "required": true
+          }
+        },
+        {
+          "type": "text",
+          "id": "c5b3f2f2-2f1d-46a9-882d-67ae45a56d0b",
+          "meta": {
+            "label": "Enter the Resedential Data",
+            "fontSize": "m",
+            "bold": true
+          }
+        },
+        {
+          "type": "input",
+          "id": "626939ae-7a98-463f-b991-91ae66d4ddb0",
+          "meta": {
+            "label": "Address",
+            "name": "address",
+            "placeholder": "Enter the Address",
+            "displayType": "block",
+            "required": true
+          }
+        },
+        {
+          "type": "input",
+          "id": "3235f628-3da2-456a-9f58-5259e9b8b92c",
+          "meta": {
+            "label": "Address",
+            "name": "address",
+            "placeholder": "Enter the Address",
+            "displayType": "block",
+            "required": true
+          }
+        },
+        {
+          "type": "input",
+          "id": "9fb55a32-1e25-44e8-842f-d766e49dd51d",
+          "meta": {
+            "label": "Address",
+            "name": "address",
+            "placeholder": "Enter the Address",
+            "displayType": "block",
+            "required": true
+          }
+        },
+        {
+          "type": "input",
+          "id": "a74f092d-5968-4c9e-841e-0811396b6871",
+          "meta": {
+            "label": "Address",
+            "name": "address",
+            "placeholder": "Enter the Address",
+            "displayType": "block",
+            "required": true
           }
         }
       ]
