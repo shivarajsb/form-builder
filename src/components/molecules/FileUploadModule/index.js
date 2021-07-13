@@ -9,14 +9,15 @@ import Typography from '../../atoms/typography'
 
 const FileUploadBase = styled(Input).attrs({ type: 'file' })({})
 
-export const FileUpload = ({ label, ...others }) => (
+export const FileUpload = ({ label, value, ...others }) => (
   <div>
     <Typography>{label}</Typography>
-    <FileUploadBase {...others} />
+    <FileUploadBase value={value ? null : ''} {...others} />
   </div>
 )
 FileUpload.propTypes = {
   label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
 }
 
 const FileUploadModule = ({ handleAction, data }) => {

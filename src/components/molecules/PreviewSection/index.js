@@ -50,6 +50,7 @@ const PreviewSection = ({
     const { current } = formRef
     handleFormSubmit(e)
     current.resetForm()
+    current.values = initialValues
   }
   const isFormValid = (values, initialValues) => {
     const value = Object.keys(values).length === Object.keys(initialValues).length
@@ -78,7 +79,7 @@ const PreviewSection = ({
                       <Component
                         key={item.id}
                         {...item.meta}
-                        value={item.type !== 'upload' ? values[name] || initialValues[name] : null}
+                        value={values[name] || initialValues[name]}
                         onChange={name ? handleChange : null}
                         onBlur={name ? handleBlur : null}
                       />

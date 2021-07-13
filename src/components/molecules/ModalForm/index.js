@@ -11,7 +11,6 @@ import TextModal from '../ModalContent/TextModal'
 import CheckboxModal from '../ModalContent/CheckboxModal'
 import FileUploadModal from '../FileUploadModal'
 import { getComponentElements } from '../../redux-utils/selectors/component.selector'
-import { getCurrentForm } from '../../redux-utils/selectors/form.selector'
 
 const mapper = {
   input: InputModal,
