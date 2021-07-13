@@ -6,12 +6,12 @@
       "name": "First Form",
       "components": [
         {
-          "type":"upload",
-          "id":"8", 
-          "meta":{
-            "label":"File Upload",
-            "name":"file-upload",
-            "required":true
+          "type": "upload",
+          "id": "8",
+          "meta": {
+            "label": "File Upload",
+            "name": "file-upload",
+            "required": true
           }
         },
         {

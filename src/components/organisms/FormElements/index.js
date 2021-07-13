@@ -12,6 +12,7 @@ import { getComponentElements } from '../../redux-utils/selectors/component.sele
 import ModalForm from '../../molecules/ModalForm'
 import ContainerModule from '../../molecules/ContainerModule'
 import Typography from '../../atoms/typography'
+import FileUploadModule from '../../molecules/FileUploadModule'
 
 export const types = {
   text: TextModule,
@@ -19,6 +20,7 @@ export const types = {
   checkbox: CheckboxModule,
   divider: DividerModule,
   container: ContainerModule,
+  upload: FileUploadModule,
 }
 
 const Container = styled('div')({
