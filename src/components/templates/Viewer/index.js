@@ -58,10 +58,10 @@ const Viewer = () => {
   const [values, setValues] = useState({})
   const [errors, setErrors] = useState({})
   const [events, setEvents] = useState([])
-
   useEffect(() => {
     dispatch(componentActions.getFormComponents({ id }))
   }, [])
+
   const handlePreviewState = useCallback((action, data) => {
     if (action === 'errors') {
       setErrors(data)

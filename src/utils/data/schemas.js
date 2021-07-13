@@ -36,5 +36,4 @@ const schemas = {
   container: containerSchema,
   upload: uploadSchema,
 }
-
 export const generateSchema = type => ({ type, id: v4(), meta: { ...schemas[type] } })
