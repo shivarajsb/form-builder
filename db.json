@@ -1,67 +1,6 @@
 {
   "forms": [
     {
-      "id": "239d3e37-8073-40c0-aadf-07d6d17ef6e8",
-      "date": 1626167715930,
-      "name": "First Form",
-      "components": [
-        {
-          "type": "upload",
-          "id": "0e28b3b2-84fc-4940-8c9a-2ecb2abb0caa",
-          "meta": {
-            "name": "upload",
-            "label": "Upload",
-            "requried": false
-          }
-        },
-        {
-          "type": "checkbox",
-          "id": "86af22a2-9a6b-4a10-9c78-1ab6af7383a9",
-          "meta": {
-            "name": "checkbox",
-            "label": "Checkbox Label",
-            "required": false
-          }
-        },
-        {
-          "type": "input",
-          "id": "3088832c-78d5-4b31-b713-43f9613e4121",
-          "meta": {
-            "label": "Input",
-            "name": "input",
-            "required": false,
-            "min": 100,
-            "max": 100,
-            "placeholder": "Enter Input"
-          }
-        },
-        {
-          "type": "input",
-          "id": "ce087b9b-238c-4ef2-bfb6-dbbeb29e7f25",
-          "meta": {
-            "label": "Input",
-            "name": "input",
-            "required": false,
-            "min": 100,
-            "max": 100,
-            "placeholder": "Enter Input"
-          }
-        },
-        {
-          "type": "input",
-          "id": "943e1033-9652-41b6-b521-68b269813987",
-          "meta": {
-            "label": "Input",
-            "name": "input",
-            "required": false,
-            "min": 100,
-            "max": 100,
-            "placeholder": "Enter Input"
-          }
-        }
-      ]
-    },
-    {
       "id": "c7ea0451-fc33-4953-9475-a628572c4db7",
       "date": 1626168146973,
       "name": "Second Form"
@@ -116,6 +55,12 @@
     },
     {
       "input": "hello world ",
+      "id": "239d3e37-8073-40c0-aadf-07d6d17ef6e8"
+    },
+    {
+      "upload": "C:\\fakepath\\Tab_4.svg",
+      "checkbox": true,
+      "input": "aosokk",
       "id": "239d3e37-8073-40c0-aadf-07d6d17ef6e8"
     }
   ]
