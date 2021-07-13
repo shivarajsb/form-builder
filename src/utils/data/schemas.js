@@ -1,5 +1,7 @@
 import { v4 } from 'uuid'
 
+const generateID = () => v4().split('-')[3]
+
 const inputSchema = {
   label: 'Input',
   name: `input`,
@@ -36,4 +38,14 @@ const schemas = {
   container: containerSchema,
   upload: uploadSchema,
 }
-export const generateSchema = type => ({ type, id: v4(), meta: { ...schemas[type] } })
+
+const getMeta = type => {
+  const id = generateID()
+  const schema = schemas[type]
+  if (schema.name) {
+    return { ...schemas[type], name: `${schema.name}_${id}` }
+  }
+
+  return { ...schemas[type] }
+}
+export const generateSchema = type => ({ type, id: v4(), meta: getMeta(type) })

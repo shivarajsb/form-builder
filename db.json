@@ -1,85 +1,45 @@
 {
   "forms": [
     {
-      "id": "fed24c5d-45ea-4503-b737-b0c0160504ed",
-      "date": 1626184339310,
-      "name": "First Form",
+      "id": "4e27db42-d161-4c90-826a-3b4633a71e76",
+      "date": 1626194662317,
+      "name": "First",
       "components": [
         {
-          "type": "checkbox",
-          "id": "a5d6a596-d193-4dbe-9e03-cfb4590f5f7a",
+          "type": "upload",
+          "id": "91f4cf0b-df78-4de1-b231-74c5e01614ba",
           "meta": {
-            "name": "checkbox",
-            "label": "Checkbox Label",
-            "required": false
-          }
-        },
-        {
-          "type": "checkbox",
-          "id": "c09dc20c-dade-4a4c-91a4-8e5562daad08",
-          "meta": {
-            "name": "checkbox",
-            "label": "Checkbox Label",
-            "required": false
+            "name": "upload_87ef",
+            "label": "Upload",
+            "requried": false
           }
         },
         {
           "type": "input",
-          "id": "d2ff0a2d-abb7-4e1e-b8b7-1291cf9b8ac4",
+          "id": "ec77e7b0-4b83-46ac-a7e4-33c05f81ccfa",
           "meta": {
             "label": "Input",
-            "name": "input",
-            "placeholder": "Enter Input",
-            "displayType": "block",
-            "required": false
-          }
-        },
-        {
-          "type": "input",
-          "id": "8e9a8ac3-f857-4e2b-aee5-aa99d8f22dab",
-          "meta": {
-            "label": "Input",
-            "name": "input",
+            "name": "input_a640",
             "required": false,
             "placeholder": "Enter Input"
           }
         },
         {
           "type": "input",
-          "id": "0762d25f-de14-437b-8fb1-cf52b0b015c8",
+          "id": "efd17ee9-5c20-4917-8e5f-e1442595ad2b",
           "meta": {
             "label": "Input",
-            "name": "input",
+            "name": "input_bd3e",
             "required": false,
             "placeholder": "Enter Input"
           }
         },
         {
           "type": "input",
-          "id": "f67c3948-d8ae-435a-b94b-d7451ad111ef",
+          "id": "5dc1300d-eef4-4c10-8e38-9af4fe83b452",
           "meta": {
             "label": "Input",
-            "name": "input",
-            "required": false,
-            "placeholder": "Enter Input"
-          }
-        },
-        {
-          "type": "input",
-          "id": "7d416fc8-ac02-4ed8-b26a-9f44403131a4",
-          "meta": {
-            "label": "Input",
-            "name": "input",
-            "required": false,
-            "placeholder": "Enter Input"
-          }
-        },
-        {
-          "type": "input",
-          "id": "88370e4b-02da-4dc7-bcc7-c06c0633efde",
-          "meta": {
-            "label": "Input",
-            "name": "input",
+            "name": "input_9b32",
             "required": false,
             "placeholder": "Enter Input"
           }
@@ -87,5 +47,13 @@
       ]
     }
   ],
-  "data": []
+  "data": [
+    {
+      "upload_87ef": "C:\\fakepath\\README.md",
+      "input_a640": "kasokaso",
+      "input_bd3e": "okaoksoasko",
+      "input_9b32": "okaokskoas",
+      "id": "4e27db42-d161-4c90-826a-3b4633a71e76"
+    }
+  ]
 }
