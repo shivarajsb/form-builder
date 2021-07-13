@@ -16,11 +16,12 @@ const FileUploadModal = ({ values, handleSubmitForm }) => {
   const formRef = useRef()
 
   const handleFormSubmit = e => {
-    handleSubmitForm(e)
     const { current } = formRef
+    handleSubmitForm(e)
     current.resetForm()
   }
-  const { initialValues } = useMemo(() => getInitialValues(values))
+  const { initialValues } = useMemo(() => getInitialValues(values), [values])
+  console.log('These are the initial values ', initialValues)
   return (
     <div>
       <Formik
@@ -40,7 +41,7 @@ const FileUploadModal = ({ values, handleSubmitForm }) => {
                     placeholder="Enter the Name"
                     name="name"
                     onBlur={handleBlur}
-                    value={values.name}
+                    value={values.name || initialValues.name}
                     onChange={handleChange}
                   />
                   {touched.name && errors.name && (
@@ -55,7 +56,7 @@ const FileUploadModal = ({ values, handleSubmitForm }) => {
                     placeholder="Enter the Label"
                     name="label"
                     onBlur={handleBlur}
-                    value={values.label}
+                    value={values.label || initialValues.label}
                     onChange={handleChange}
                   />
                   {touched.label && errors.label && (
@@ -71,7 +72,7 @@ const FileUploadModal = ({ values, handleSubmitForm }) => {
                     label="Required"
                     name="required"
                     onBlur={handleBlur}
-                    value={values.required}
+                    checked={values.required || initialValues.required}
                     onChange={handleChange}
                   />
                   {touched.required && errors.required && (
@@ -82,7 +83,7 @@ const FileUploadModal = ({ values, handleSubmitForm }) => {
                 </div>
               </Flex>
               <Centered>
-                <Button onSubmit={handleSubmit} disabled={disableSubmit}>
+                <Button onClick={handleSubmit} disabled={disableSubmit}>
                   Submit
                 </Button>
               </Centered>

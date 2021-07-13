@@ -8,12 +8,14 @@ import DividerModal from '../ModalContent/DividerModal'
 import InputModal from '../ModalContent/InputModal'
 import TextModal from '../ModalContent/TextModal'
 import CheckboxModal from '../ModalContent/CheckboxModal'
+import FileUploadModal from '../FileUploadModal'
 
 const mapper = {
   input: InputModal,
   text: TextModal,
   divider: DividerModal,
   checkbox: CheckboxModal,
+  upload: FileUploadModal,
 }
 
 const ModalForm = ({ selected, handleSubmit, open, handleClose }) => {

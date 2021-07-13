@@ -4,14 +4,16 @@ export const getInitialValues = values => {
   const initialValues = {
     name: '',
     label: '',
-    required: '',
+    required: false,
   }
   if (values && values.name) {
     initialValues.name = values.name || ''
-  } else if (values && values.label) {
+  }
+  if (values && values.label) {
     initialValues.label = values.label || ''
-  } else if (values && values.required) {
-    initialValues.required = values.required || ''
+  }
+  if (values && values.required) {
+    initialValues.required = values.required
   }
   return { initialValues }
 }
