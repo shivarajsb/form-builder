@@ -1,6 +1,7 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-shadow */
 import { Formik } from 'formik'
-import React, { useMemo, useRef } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
@@ -9,6 +10,7 @@ import Checkbox from '../../../atoms/checkbox'
 import Input from '../../../atoms/Input'
 import Typography from '../../../atoms/typography'
 import { getInitialValues, inputValidationSchema } from '../../../../utils/FormSchemas/Input'
+import { validateDuplicateElement } from '../../../../utils/helpers'
 
 export const Flex = styled('div')({
   display: 'flex',
@@ -31,14 +33,20 @@ export const Centered = styled('div')({
   justifyContent: 'center',
 })
 
-const InputModal = ({ values, handleSubmitForm }) => {
+const InputModal = ({ values, handleSubmitForm, components }) => {
   const { placeholders, initialValues } = useMemo(() => getInitialValues(values), [values])
+  const [error, setError] = useState('')
   const formRef = useRef()
 
   const handleSubmit = e => {
     const { current } = formRef
-    handleSubmitForm(e)
-    current.resetForm()
+    if (validateDuplicateElement(components, { ...e, id: values.id })) {
+      setError(null)
+      handleSubmitForm(e)
+      current.resetForm()
+    } else {
+      setError("Please select a different name. Element with the same 'name' already exists")
+    }
   }
 
   return (
@@ -111,10 +119,17 @@ const InputModal = ({ values, handleSubmitForm }) => {
                   <Checkbox name="required" onChange={handleChange} checked={values.required} />
                 </div>
               </Flex>
+              {error ? (
+                <Typography fontSize="s" color="red">
+                  {error}
+                </Typography>
+              ) : null}
               <Centered>
-                <Button type="button" onClick={handleSubmit} disabled={!buttonValidState}>
-                  Save
-                </Button>
+                <div>
+                  <Button type="button" onClick={handleSubmit} disabled={!buttonValidState}>
+                    Save
+                  </Button>
+                </div>
               </Centered>
             </Form>
           )
@@ -125,8 +140,8 @@ const InputModal = ({ values, handleSubmitForm }) => {
 }
 
 InputModal.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   values: PropTypes.object.isRequired,
   handleSubmitForm: PropTypes.func.isRequired,
+  components: PropTypes.object.isRequired,
 }
 export default InputModal

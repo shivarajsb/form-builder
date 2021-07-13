@@ -1,3 +1,4 @@
+import { filter } from 'lodash'
 import { v4 } from 'uuid'
 
 export const generateTypes = type => ({
@@ -23,3 +24,11 @@ export const moveArray = (items, source, destination) => {
 }
 
 export const duplicateElement = element => ({ ...element, id: v4() })
+
+export const validateDuplicateElement = (components, current) => {
+  const doesExist = filter(
+    components,
+    item => item.id !== current.id && item.meta.name === current.name
+  )
+  return doesExist && doesExist.length === 0
+}

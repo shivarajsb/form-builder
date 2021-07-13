@@ -6,13 +6,32 @@
       "name": "First Form",
       "components": [
         {
+          "type": "checkbox",
+          "id": "a5d6a596-d193-4dbe-9e03-cfb4590f5f7a",
+          "meta": {
+            "name": "checkbox",
+            "label": "Checkbox Label",
+            "required": false
+          }
+        },
+        {
+          "type": "checkbox",
+          "id": "c09dc20c-dade-4a4c-91a4-8e5562daad08",
+          "meta": {
+            "name": "checkbox",
+            "label": "Checkbox Label",
+            "required": false
+          }
+        },
+        {
           "type": "input",
           "id": "d2ff0a2d-abb7-4e1e-b8b7-1291cf9b8ac4",
           "meta": {
             "label": "Input",
             "name": "input",
-            "required": false,
-            "placeholder": "Enter Input"
+            "placeholder": "Enter Input",
+            "displayType": "block",
+            "required": false
           }
         },
         {
@@ -48,6 +67,16 @@
         {
           "type": "input",
           "id": "7d416fc8-ac02-4ed8-b26a-9f44403131a4",
+          "meta": {
+            "label": "Input",
+            "name": "input",
+            "required": false,
+            "placeholder": "Enter Input"
+          }
+        },
+        {
+          "type": "input",
+          "id": "88370e4b-02da-4dc7-bcc7-c06c0633efde",
           "meta": {
             "label": "Input",
             "name": "input",

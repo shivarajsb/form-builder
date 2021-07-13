@@ -1,6 +1,7 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-shadow */
 import { Formik } from 'formik'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import Button from '../../../atoms/button'
@@ -8,14 +9,22 @@ import { Centered, Flex, Form } from '../InputModal'
 import { getInitialValues } from '../../../../utils/FormSchemas/Checkbox'
 import Input from '../../../atoms/Input'
 import Checkbox from '../../../atoms/checkbox'
+import { validateDuplicateElement } from '../../../../utils/helpers'
+import Typography from '../../../atoms/typography'
 
-const CheckboxModal = ({ values, handleSubmitForm }) => {
+const CheckboxModal = ({ values, handleSubmitForm, components }) => {
   const { initialValues } = getInitialValues(values)
+  const [error, setError] = useState()
   const formRef = useRef()
   const submitForm = e => {
     const { current } = formRef
-    current.resetForm()
-    handleSubmitForm(e)
+    if (validateDuplicateElement(components, { ...e, id: values.id })) {
+      setError(null)
+      handleSubmitForm(e)
+      current.resetForm()
+    } else {
+      setError('Please select a different name. Element with the same name already exists')
+    }
   }
 
   return (
@@ -54,6 +63,11 @@ const CheckboxModal = ({ values, handleSubmitForm }) => {
                 value={values.required}
               />
             </Flex>
+            {error ? (
+              <Typography fontSize="s" color="red">
+                {error}
+              </Typography>
+            ) : null}
             <Centered style={{ marginTop: '20px' }}>
               <Button onClick={handleSubmit}>Save</Button>
             </Centered>
@@ -71,5 +85,6 @@ CheckboxModal.propTypes = {
     required: PropTypes.string,
   }).isRequired,
   handleSubmitForm: PropTypes.func.isRequired,
+  components: PropTypes.any.isRequired,
 }
 export default CheckboxModal
