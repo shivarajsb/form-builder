@@ -11,5 +11,5 @@ export const getInitialValues = values => {
   return { initialValues }
 }
 export const dividerValidationSchema = yup.object().shape({
-  label: yup.string(),
+  label: yup.string().default(''),
 })

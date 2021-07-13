@@ -31,7 +31,13 @@ export const getInitialValues = values => {
 }
 
 export const textValidationSchema = yup.object().shape({
-  label: yup.string().required('Text is a required field'),
-  fontSize: yup.object().required('Font Size is a required field'),
-  bold: yup.bool(),
+  label: yup
+    .string()
+    .required('Text is a required field')
+    .default(''),
+  fontSize: yup
+    .object()
+    .required('Font Size is a required field')
+    .default(''),
+  bold: yup.bool().default(false),
 })

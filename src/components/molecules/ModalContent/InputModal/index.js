@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 import { Formik } from 'formik'
-import React, { useRef } from 'react'
+import React, { useMemo, useRef } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
@@ -32,7 +32,7 @@ export const Centered = styled('div')({
 })
 
 const InputModal = ({ values, handleSubmitForm }) => {
-  const { placeholders, initialValues } = getInitialValues(values)
+  const { placeholders, initialValues } = useMemo(() => getInitialValues(values), [values])
   const formRef = useRef()
 
   const handleSubmit = e => {
