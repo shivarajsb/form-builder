@@ -16,9 +16,17 @@ export const data = [
       label: 'Name',
       name: 'name',
       required: true,
-      min: 4,
-      max: 100,
       placeholder: 'Enter your name',
+    },
+  },
+  {
+    type: 'upload',
+    id: '8',
+    meta: {
+      label: 'File Upload',
+      name: 'file-upload',
+      required: true,
+      placeholder: '',
     },
   },
   {

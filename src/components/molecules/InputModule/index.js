@@ -10,7 +10,7 @@ export const Padding = styled('div')({
   padding: '10px 0px 5px 0px',
 })
 const InputModule = ({ handleAction, data, type }) => {
-  const { label, name, required, min, max, placeholder, id } = data
+  const { label, name, required, placeholder, id } = data
   const InputWithToolbar = withToolbar(Input, 'input', label)
 
   return (
@@ -22,8 +22,6 @@ const InputModule = ({ handleAction, data, type }) => {
           id={id}
           required={required}
           placeholder={placeholder}
-          min={min}
-          max={max}
           handleAction={handleAction}
         />
       </Padding>
@@ -37,8 +35,6 @@ InputModule.propTypes = {
     label: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     required: PropTypes.bool.isRequired,
-    min: PropTypes.number.isRequired,
-    max: PropTypes.number.isRequired,
     placeholder: PropTypes.string.isRequired.isRequired,
     id: PropTypes.string.isRequired,
   }),
@@ -49,8 +45,6 @@ InputModule.defaultProps = {
     label: 'Name',
     name: 'name',
     required: true,
-    min: 4,
-    max: 100,
     placeholder: 'Enter your name',
   },
 }
