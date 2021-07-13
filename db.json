@@ -6,6 +6,15 @@
       "name": "First Form",
       "components": [
         {
+          "type": "checkbox",
+          "id": "86af22a2-9a6b-4a10-9c78-1ab6af7383a9",
+          "meta": {
+            "name": "checkbox",
+            "label": "Checkbox Label",
+            "required": false
+          }
+        },
+        {
           "type": "upload",
           "id": "8",
           "meta": {

@@ -4,8 +4,6 @@ const inputSchema = {
   label: 'Input',
   name: 'input',
   required: false,
-  min: 100,
-  max: 100,
   placeholder: 'Enter Input',
 }
 
@@ -25,12 +23,18 @@ const checkboxSchema = {
 const containerSchema = {
   flex: false,
 }
+const uploadSchema = {
+  name: 'upload',
+  label: 'Upload',
+  requried: false,
+}
 const schemas = {
   input: inputSchema,
   text: textSchema,
   divider: dividerSchema,
   checkbox: checkboxSchema,
   container: containerSchema,
+  upload: uploadSchema,
 }
 
 export const generateSchema = type => ({ type, id: v4(), meta: { ...schemas[type] } })

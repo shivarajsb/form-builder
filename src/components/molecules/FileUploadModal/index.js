@@ -21,7 +21,6 @@ const FileUploadModal = ({ values, handleSubmitForm }) => {
     current.resetForm()
   }
   const { initialValues } = useMemo(() => getInitialValues(values), [values])
-  console.log('These are the initial values ', initialValues)
   return (
     <div>
       <Formik
