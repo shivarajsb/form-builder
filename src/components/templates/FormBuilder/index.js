@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Suspense } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
@@ -8,8 +8,6 @@ import Button from '../../atoms/button'
 import Modal from '../../atoms/modal'
 import Typography from '../../atoms/typography'
 import CreateFormModal from '../../molecules/CreateFormModal'
-import FormElements from '../../organisms/FormElements'
-import Sidebar from '../../organisms/Sidebar'
 import {
   createForm,
   deleteForm,
@@ -20,6 +18,9 @@ import {
 import { getCurrentForm, getForms } from '../../redux-utils/selectors/form.selector'
 import { swapComponent } from '../../redux-utils/actions/component.actions'
 import { getSavedStatus } from '../../redux-utils/selectors/component.selector'
+
+const FormElements = React.lazy(() => import('../../organisms/FormElements'))
+const Sidebar = React.lazy(() => import('../../organisms/Sidebar'))
 
 const GridParent = styled('div')({
   display: 'grid',
@@ -94,12 +95,14 @@ const FormBuilder = () => {
     <GridParent>
       <DragDropContext onDragEnd={handleDropAction}>
         <SidebarContainer>
-          <Sidebar
-            handleCreateForm={() => handleModalActions('open')}
-            formList={forms}
-            handleFormClick={handleClickForm}
-            currentForm={currentForm}
-          />
+          <Suspense fallback={<Typography>Loading...</Typography>}>
+            <Sidebar
+              handleCreateForm={() => handleModalActions('open')}
+              formList={forms}
+              handleFormClick={handleClickForm}
+              currentForm={currentForm}
+            />
+          </Suspense>
         </SidebarContainer>
         <HeaderContainer>
           <Typography fontSize="l" bold>
@@ -129,7 +132,9 @@ const FormBuilder = () => {
             {currentForm ? (
               <React.Fragment>
                 <BuilderContainer>
-                  <FormElements />
+                  <Suspense fallback={<Typography>Loading...</Typography>}>
+                    <FormElements />
+                  </Suspense>
                 </BuilderContainer>
               </React.Fragment>
             ) : (

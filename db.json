@@ -7,6 +7,15 @@
       "components": [
         {
           "type": "upload",
+          "id": "e7760a3e-25f7-4a86-8203-12c2712ca233",
+          "meta": {
+            "name": "upload_87ef",
+            "label": "Upload",
+            "requried": false
+          }
+        },
+        {
+          "type": "upload",
           "id": "91f4cf0b-df78-4de1-b231-74c5e01614ba",
           "meta": {
             "name": "upload_87ef",
@@ -26,20 +35,20 @@
         },
         {
           "type": "input",
-          "id": "efd17ee9-5c20-4917-8e5f-e1442595ad2b",
+          "id": "5dc1300d-eef4-4c10-8e38-9af4fe83b452",
           "meta": {
             "label": "Input",
-            "name": "input_bd3e",
+            "name": "input_9b32",
             "required": false,
             "placeholder": "Enter Input"
           }
         },
         {
           "type": "input",
-          "id": "5dc1300d-eef4-4c10-8e38-9af4fe83b452",
+          "id": "efd17ee9-5c20-4917-8e5f-e1442595ad2b",
           "meta": {
             "label": "Input",
-            "name": "input_9b32",
+            "name": "input_bd3e",
             "required": false,
             "placeholder": "Enter Input"
           }
@@ -53,6 +62,13 @@
       "input_a640": "kasokaso",
       "input_bd3e": "okaoksoasko",
       "input_9b32": "okaokskoas",
+      "id": "4e27db42-d161-4c90-826a-3b4633a71e76"
+    },
+    {
+      "input_a640": "",
+      "upload_87ef": "",
+      "input_9b32": "asokasok",
+      "input_bd3e": "",
       "id": "4e27db42-d161-4c90-826a-3b4633a71e76"
     }
   ]

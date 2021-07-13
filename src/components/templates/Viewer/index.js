@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState, Suspense } from 'react'
 import styled from 'styled-components'
 import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,12 +7,13 @@ import Typography from '../../atoms/typography'
 import Div from '../../atoms/Div'
 import { componentActions } from '../../redux-utils/actions'
 import { getComponentElements } from '../../redux-utils/selectors/component.selector'
-import PreviewSection from '../../molecules/PreviewSection'
 import Container from '../../molecules/DataContainer'
 import Back from '../../atoms/svg/back'
 import { LargeButton } from '../../atoms/button'
 import { submitForm } from '../../redux-utils/actions/form.actions'
 import { eventErrorTypes } from '../../../utils/helpers/constants'
+
+const PreviewSection = React.lazy(() => import('../../molecules/PreviewSection'))
 
 const GridParent = styled('div')({
   display: 'grid',
@@ -95,13 +96,15 @@ const Viewer = () => {
       <FormContainer>
         <Typography fontSize="m">Preview</Typography>
         <Div>
-          <PreviewSection
-            components={components}
-            handleErrors={e => handlePreviewState('errors', e)}
-            handleValues={e => handlePreviewState('values', e)}
-            handleFormSubmit={handleSubmit}
-            handleEvents={handleEventsData}
-          />
+          <Suspense fallback={<Typography>Loading...</Typography>}>
+            <PreviewSection
+              components={components}
+              handleErrors={e => handlePreviewState('errors', e)}
+              handleValues={e => handlePreviewState('values', e)}
+              handleFormSubmit={handleSubmit}
+              handleEvents={handleEventsData}
+            />
+          </Suspense>
         </Div>
       </FormContainer>
       <DataContainer>
