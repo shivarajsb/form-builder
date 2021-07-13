@@ -5,8 +5,19 @@ import PropTypes from 'prop-types'
 
 import withToolbar from '../../../utils/hoc/withToolbar'
 import Input from '../../atoms/Input'
+import Typography from '../../atoms/typography'
 
 const FileUploadBase = styled(Input).attrs({ type: 'file' })({})
+
+export const FileUpload = ({ label, ...others }) => (
+  <div>
+    <Typography>{label}</Typography>
+    <FileUploadBase {...others} />
+  </div>
+)
+FileUpload.propTypes = {
+  label: PropTypes.string.isRequired,
+}
 
 const FileUploadModule = ({ handleAction, data }) => {
   const { label, required, name, id } = data

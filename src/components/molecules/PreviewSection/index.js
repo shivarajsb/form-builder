@@ -13,12 +13,14 @@ import { getInitialValues, validateData } from '../../../utils/FormSchemas/Previ
 import { Form } from '../ModalContent/InputModal'
 import Typography from '../../atoms/typography'
 import Button from '../../atoms/button'
+import { FileUpload } from '../FileUploadModule'
 
 const types = {
   input: Input,
   checkbox: Checkbox,
   text: Text,
   divider: Divider,
+  upload: FileUpload,
 }
 const Container = styled('div')({
   position: 'relative',
