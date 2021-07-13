@@ -73,12 +73,12 @@ const PreviewSection = ({
                 const Component = types[item.type]
                 const { name } = item.meta
                 return (
-                  <div style={{ margin: '20px' }}>
+                  <div style={{ margin: '20px' }} key={item.id}>
                     {
                       <Component
                         key={item.id}
                         {...item.meta}
-                        value={values[name] || initialValues[name]}
+                        value={item.type !== 'upload' ? values[name] || initialValues[name] : null}
                         onChange={name ? handleChange : null}
                         onBlur={name ? handleBlur : null}
                       />

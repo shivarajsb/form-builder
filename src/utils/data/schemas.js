@@ -2,7 +2,7 @@ import { v4 } from 'uuid'
 
 const inputSchema = {
   label: 'Input',
-  name: 'input',
+  name: `input`,
   required: false,
   placeholder: 'Enter Input',
 }
@@ -16,7 +16,7 @@ const dividerSchema = {
   label: 'Divider',
 }
 const checkboxSchema = {
-  name: 'checkbox',
+  name: `checkbox`,
   label: 'Checkbox Label',
   required: false,
 }
@@ -24,7 +24,7 @@ const containerSchema = {
   flex: false,
 }
 const uploadSchema = {
-  name: 'upload',
+  name: `upload`,
   label: 'Upload',
   requried: false,
 }

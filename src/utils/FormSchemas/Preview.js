@@ -14,9 +14,10 @@ export const getInitialValues = components =>
   )
 export const validateData = (components, values, callback) => {
   const errors = {}
-  const metaObject = components.map(item => item.meta)
+  const metaObject = components.map(item => ({ ...item.meta, type: item.type }))
   Object.keys(values).forEach(item => {
     const metadata = filter(metaObject, { name: item })[0]
+
     if (values[item] === '' && metadata && metadata.required) {
       errors[item] = `${metadata.label} is a required field`
     }
